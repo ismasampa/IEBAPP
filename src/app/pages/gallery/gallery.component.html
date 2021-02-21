@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="col text-center">
+<ngb-carousel >  
+            <ng-template ngbSlide *ngFor="let item of Items; let i = index">  
+                <div class="picsum-img-wrapper text-center">
+                    <img src="{{item}}">
+                </div>
+                <div class="carousel-caption">  
+                    <h3>{{item}}</h3>  
+                </div>  
+            </ng-template>  
+        </ngb-carousel>  
+
+    </div>
+</div>

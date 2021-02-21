@@ -1,0 +1,17 @@
+ngb-carousel{
+    padding: 5px;
+    margin-top: 15px;
+    background-color: black;
+    border: rgb(146, 146, 146) solid 2px;
+    color: rgb(139, 139, 139);
+    text-shadow: rgb(0, 0, 0) 0 2px;
+    position: relative;
+    height: 70vh;
+}
+
+.picsum-img-wrapper>img{
+    max-height: 70vh;
+    max-width: 90vw;
+}
+
+

@@ -1,0 +1,81 @@
+.row{
+    height:15vh;
+}
+.announce {
+    text-align: center;
+    text-transform: uppercase;
+    margin: .2em 0 1em 0;
+    height: 2em;
+    letter-spacing: 1px;
+    color: #a6a6a6;
+    text-shadow: #fff 0 1px 0;
+    font-family: Artika;
+    font-size: 1.2vw;
+}
+
+.nav-link {
+    background-image: url(../../../assets/img/dots.png);
+    background-repeat: repeat-x;
+    background-position: left top;   
+    background-size: contain;
+    text-decoration: none;
+    color: #5c5c5c;
+    font-size: 2.5vh;
+    font-weight: normal;
+    font-family: "Artika";
+    text-transform:capitalize;
+    }
+    
+    .nav-link.active{
+        font-weight: bolder;
+        text-shadow: rgb(253, 217, 171) 0 3px 1px;        
+    }
+
+
+    .bebe{
+        text-decoration: none;
+        color: #4a81b0;
+        font-family: Dancing Script;
+        font-size: 7vh;
+        font-weight: bolder;
+        /*text-shadow: rgb(255 255 255) 0 2px 1px;
+         position: relative; */
+        margin-top: -3vh;
+        display: block;
+        height: 10vh;
+    }
+    li:hover{
+        text-shadow: white 0 2px;
+    }
+    .soundicon{
+        position: absolute;
+        top:10px;
+        right:25px;
+        width: 20px;
+        color: #4a81b0;
+    }
+
+    .componentbg{
+        background:transparent url('../../../assets/img/bg.png') repeat;
+    }
+
+    #triangle {
+        height: 1vh;
+        width: 100vw;
+
+        background-image: url(../../../assets/img/triangle.png);
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #topline {
+        background-color: #4a81b0;
+        height: 1vh;
+        width: 100%;
+    }
+
+    #menuline {
+        border-bottom: solid #4a80b067 1px;
+        padding-top: 5px;
+        height: 1px;
+    }

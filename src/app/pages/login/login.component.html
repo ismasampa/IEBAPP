@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card animate__animated animate__fadeInUp">
+			<div class="card-header">
+				<h3>Acessar</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>
+			</div>
+			<div class="card-body">
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="input-group mb-3">
+						<span class="input-group-text fas fa-user"></span>  
+                        <input type="text" class="form-control animated fadeIn infinite" formControlName="username" placeholder="Usuário">
+                    </div>
+                    <div *ngIf="username.touched && username.errors?.required" class="alert alert-danger">Campo Obrigatório</div>
+                    <div class="input-group mb-3">
+						<span class="input-group-text fas fa-key"></span>  
+                        <input  type="password" class="form-control" formControlName="password">
+                     </div>
+                     <div *ngIf="password.touched && password.errors?.required" class="alert alert-danger">Campo Obrigatório</div>                     
+                     
+                     <div class="mb-3"><button type="submit" class="btn btn-primary login_btn">Login</button></div>
+            </form>
+        </div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Não está cadastrado?<a href="#">Cadastre-se</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Esqueceu sua senha?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
