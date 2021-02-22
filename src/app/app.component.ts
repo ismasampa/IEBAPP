@@ -12,7 +12,6 @@ export class AppComponent {
   title = 'iebapp';
 
   constructor( private authService : AuthService, private router : Router){
-    if(!this.isAuthenticated){this.router.navigate(['login']);} 
   }
 
   isAuthenticated(){

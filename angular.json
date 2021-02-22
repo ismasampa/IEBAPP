@@ -24,11 +24,16 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/css/fa.all.min.css",
               "src/styles.css",
               "node_modules/animate.css/animate.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/fa.all.min.js"
+            ]
           },
           "configurations": {
             "production": {

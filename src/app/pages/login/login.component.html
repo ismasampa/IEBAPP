@@ -12,12 +12,12 @@
 			<div class="card-body">
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <div class="input-group mb-3">
-						<span class="input-group-text fas fa-user"></span>  
-                        <input type="text" class="form-control animated fadeIn infinite" formControlName="username" placeholder="Usuário">
+						<div class="input-group-text"><i class="fas fa-user"></i></div>
+						<input type="text" class="form-control animated fadeIn infinite" formControlName="username" placeholder="Usuário">
                     </div>
                     <div *ngIf="username.touched && username.errors?.required" class="alert alert-danger">Campo Obrigatório</div>
                     <div class="input-group mb-3">
-						<span class="input-group-text fas fa-key"></span>  
+						<div class="input-group-text"><i class="fas fa-key"></i></div>
                         <input  type="password" class="form-control" formControlName="password">
                      </div>
                      <div *ngIf="password.touched && password.errors?.required" class="alert alert-danger">Campo Obrigatório</div>                     

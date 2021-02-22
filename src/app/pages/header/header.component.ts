@@ -20,13 +20,11 @@ export class HeaderComponent implements OnInit {
     return this.authService.isAuthenticated();
   }
 
-  logOff(){
-    this.router.navigate(['Login']);
-    this.authService.logoff();
-  }
-
   logIn(){
-    return this.router.navigate(['Login']);
+    if(this.isAuthenticated()){
+      this.authService.logoff();
+    }
+    return this.router.navigate(['login']);
   }
 
   playAudio(){

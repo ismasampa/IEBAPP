@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: "http://localhost/ieventbook/",
+  apiUrl: "https://iebapi.azurewebsites.net/",
   apiUrlproxyed: "http://localhost/ieventbook/",
   userAuth: "IsmaelRibeiro",
   JUNO_CLIENT_ID:"0MofIktZ1QNRiVBF",

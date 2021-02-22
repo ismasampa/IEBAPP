@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: "http://localhost/ieventbook/",
+  production: true,
+  apiUrl: "https://iebapi.azurewebsites.net/",
   apiUrlproxyed: "http://localhost/ieventbook/",
   userAuth: "IsmaelRibeiro",
   JUNO_CLIENT_ID:"0MofIktZ1QNRiVBF",

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JunoService } from './services/juno.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -18,6 +18,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PreviewComponent } from './pages/preview/preview.component';
+import { ItemsComponent } from './pages/items/items/items.component';
+import { ItemsService } from './services/items.service';
 
 @NgModule({
   declarations: [
@@ -28,20 +31,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoaderComponent,
     HomeComponent,
     HeaderComponent,
-    GalleryComponent
+    GalleryComponent,
+    PreviewComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     AuthService, AuthGuardService, 
     LoaderService,
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
     CadfotosService,
+    ItemsService,
     JunoService
   ],
   bootstrap: [AppComponent]

@@ -9,24 +9,36 @@ import { CadfotosService } from '../../services/cadfotos.service';
   styleUrls: ['./cadfotos.component.css']
 })
 export class CadfotosComponent implements OnInit {
-
+  Items
   cadfotoForm: FormGroup;
   constructor(private fb:FormBuilder, private cadfotosService:CadfotosService) { 
     this.cadfotoForm = this.fb.group({
       'Description': ['', [Validators.required]],
       'ImageUrl': ['', [Validators.required]]
-    })
+    });
+    this.cadfotosService.read().subscribe(data=>{     
+      this.Items = data;
+    });
   }
 
   ngOnInit(): void {
   }
   
   registrar() {     
-    this.cadfotosService.create(this.cadfotoForm.value).subscribe(data=>{
-      console.log(data);
+    this.cadfotosService.create(this.cadfotoForm.value).subscribe(data=>{     
     });
 
   }
+
+  excluir(idx) {     
+    this.cadfotosService.delete(idx).subscribe(data=>{ 
+      this.cadfotosService.read().subscribe(data=>{     
+        this.Items = data;
+      });
+    });
+
+  }
+
 
   get Description(){
     return this.cadfotoForm.get("Description");
