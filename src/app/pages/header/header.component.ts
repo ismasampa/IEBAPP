@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService, private router : Router) { }
   audio;
+  toggleNavbar;
 
   ngOnInit(): void {
     this.audio = null
