@@ -1,34 +1,39 @@
-<div class="container-fluid componentbg">
-<div class="row h-25 text-center">
-    <div id="topline"> </div>
-    <div id="triangle"> </div>
-    <div class="d-flex w-100 justify-content-center">
-      <div class="flex announce"> QUEREMOS COMPARTILHAR NOSSA ALEGRIA COM VOCÊ ...</div>
-    </div>
-    <h3>
+<nav class="navbar navbar-expand-lg navbar-light componentbg m-0 p-1">
+  <a class="navbar-brand bebe animate__animated animate__fadeInLeft animate_bounced pl-2" href="#"><h1 class="m-0 p-0">Martim</h1></a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar = !toggleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" [ngbCollapse]="!toggleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/preview">Previsão</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/gallery">Imagens</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/home" >Martim</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/cad">Chá de bebê</a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/cad">Mural</a>
+      </li>  
+      <li ngbDropdown class="nav-item" hidden>
+        <a class="nav-link" id="navbarDropdownMenuLink" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/home" >Martim</a>
+          <a class="dropdown-item" href="#"routerLinkActive="active" routerLink="/preview">Previsão</a>
+          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/gallery">Imagens</a>
+          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/home">Chá de bebê</a>
+          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/home">Mural</a>
+        </div>
+      </li>
+    </ul>
     <i class="soundicon fas fa-volume-up" *ngIf="this.audio?.src" (click)="this.stopAudio();" ></i>
-    <i class="soundicon fas fa-volume-off" *ngIf="!this.audio?.src" (click)="this.playAudio();" ></i>
-    <a href="/login"><i  (click)="this.logIn();" class="adminicon fas fa-user-cog" ></i></a>
-    </h3>
+<i class="soundicon fas fa-volume-off" *ngIf="!this.audio?.src" (click)="this.playAudio();" ></i>
   </div>
-    <div class="d-flex w-80 justify-content-center mx-5" role="tablist">
-        <div class="flex-fill w-25 text-center" >
-          <a class="nav-link" routerLinkActive="active" routerLink="/preview"><h3>Previsão</h3></a>
-        </div>
-        <div class="flex-fill w-25 text-center">
-          <a class="nav-link " routerLinkActive="active" routerLink="/gallery">Imagens</a>
-        </div>
-        <div class="flex-fill  w-25 text-center" >
-          <a class="bebe" routerLinkActive="active" routerLink="/home" >Martim</a>
-        </div>
-        <div class="flex-fill w-25  text-center">
-          <a class="nav-link" routerLinkActive="active" routerLink="/cad">Chá de bebe</a>
-        </div>
-        <div class="flex-fill w-25  text-center">
-          <a class="nav-link" routerLinkActive="active" routerLink="/cad">Mural</a>
-        </div>
-
-      </div>
-      <div class="row" id="menuline"></div>
-    </div>
-
+</nav>
