@@ -1,3 +1,6 @@
+.collapse:not(.show) {
+    margin-right: 4vh;
+}
 
 .nav-link {
     background-image: url(../../../assets/img/dots.png);
@@ -5,7 +8,7 @@
     background-position: left top;   
     background-size: contain;
     text-decoration: none;
-    color: #a6a6a6!Important;
+    color: #0003a0!Important;
     text-shadow: #fff 0 1px 0;
     font-family: Artika;
     text-transform:capitalize;
@@ -15,13 +18,22 @@
         color: #060c5c!important;
     }
 
+    .menu-collapse{
+        position: relative;
+        text-align: center;
+        width: 100%;
+        background: rgba(255,255,255,0.3);
+    }
+
     .bebe{
-        text-decoration: none;
-        color: #4a81b0;
+        color: #2e5b83;
         font-family: Dancing Script;
         font-weight: bolder;
+        font-size: 3rem;
         display: block;
+        text-shadow: white 1px 3px 2px ;
     }
+
     li:hover{
         text-shadow: white 0 2px;
     }
@@ -44,7 +56,9 @@
     }
 
     .componentbg{
-        background:transparent url('../../../assets/img/bg.png') repeat;
+        background:white url('../../../assets/img/header2.jpg') top right no-repeat;
+        background-size: 100% 72px;
+        box-shadow: black 1px -3px 7px;
     }
 
     #menuline {

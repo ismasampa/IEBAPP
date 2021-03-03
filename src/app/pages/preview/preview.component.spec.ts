@@ -2,10 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PreviewComponent } from './preview.component';
 
+
 describe('PreviewComponent', () => {
   let component: PreviewComponent;
   let fixture: ComponentFixture<PreviewComponent>;
-
+  let videoplayer: any;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PreviewComponent ]
@@ -22,4 +23,5 @@ describe('PreviewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

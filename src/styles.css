@@ -14,3 +14,7 @@
   font-family: Artika;
   src:url(assets/fonts/Artifika-Regular.ttf)
 }
+
+.bg-linho{
+  background: url(assets/img/linho.jpg) repeat;
+}

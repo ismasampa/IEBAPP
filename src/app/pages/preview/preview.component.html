@@ -1,22 +1,34 @@
-<div class="container-fluid">
-    <div class="d-flex justify-content-center">
-        <p class="fontDefault text-center fst-italic">16 de Maio de 2021</p>
+<div class="container-fluid card-columns p-2">
+    <div class="card h-100">
+        <div class="card-header m-0 bg-linho">
+            <h5 class="card-title text-center m-0">Simulação</h5>
+        </div>
+        <div class="card-body text-center">
+            <video controls (click)="toggleVideo()" width="auto" height="400px" id="videoPlayer" autoplay loop>
+                <source src="{{videosource}}" type="video/mp4" />
+                Browser not supported
+            </video>
+        </div>
     </div>
-    <div class="d-flex justify-content-center">
-        <p class="fontDefault2 text-center">--------- Curiosidade do período atual de gestação ---------</p>
+    <div class="card h-100">
+        <div class="card-header text-center m-0 bg-linho">
+            <h5 class="card-title m-0">Estimativa para a chegada</h5>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text">entre 16 à 28 /05/2021</p>
+        </div>
     </div>
-    <div class="card mb-3 w-50 m-auto">
-        <div class="row g-0">
-            <div class="col-md-5">
-                <div class="card-body fontDefault3">
-                    <div class=" ">Período:</div>
-                    <div class="ps-3">- 24 á 27 semanas</div>
-                    <div class="mt-4">Relação de Tamanho:</div>
-                    <div class="ps-3">- Mamão</div>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <img class="bd-placeholder-img imgcss" src="assets/img/fruta-27.png">
+    <div class="card h-100">
+        <div class="card-header m-0 bg-linho">
+            <h5 class="card-title m-0">Curiosidade do período atual de gestação</h5>
+        </div>
+        <div class="card-body card-img">
+            <img class="bd-placeholder-img imgcss" src="assets/img/fruta-27.png" >
+            <div class="card-text">
+                <div class=" ">Período:</div>
+                <div class="ps-3">- 24 á 27 semanas</div>
+                <div class="mt-4">Relação de Tamanho:</div>
+                <div class="ps-3">- Mamão</div>
             </div>
         </div>
     </div>

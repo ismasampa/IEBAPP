@@ -1,7 +1,7 @@
 ngb-carousel{
     padding: 5px;
     margin-top: 15px;
-    background-color: black;
+    background-color: rgba(0,0,0,0.3);
     border: rgb(146, 146, 146) solid 2px;
     color: rgb(255, 255, 255);
     text-shadow: rgb(0, 0, 0) 1px 1px 2px;
@@ -20,7 +20,7 @@ ngb-carousel{
 }
 
 .carousel-caption{
-    top: 84vh;
+    top: 81vh;
     font-size: 3vh;
     position: fixed;
 }

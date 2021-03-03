@@ -1,39 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light componentbg m-0 p-1">
-  <a class="navbar-brand bebe animate__animated animate__fadeInLeft animate_bounced pl-2" href="#"><h1 class="m-0 p-0">Martim</h1></a>
-  <button class="navbar-toggler" type="button" (click)="toggleNavbar = !toggleNavbar">
+<nav class="navbar navbar-expand-lg navbar-light nav-fill componentbg m-0 p-0">
+  <a class="col-2 bebe animate__animated animate__fadeInLeft ps-2" href="#">Martim</a>
+  <button class="navbar-toggler mr-3" type="button" (click)="toggleNavbar = !toggleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" [ngbCollapse]="!toggleNavbar">
-    <ul class="navbar-nav">
+  <i class="soundicon ni ni-settings-gear fas fa-volume-up" *ngIf="this.audio?.src" (click)="this.stopAudio();" ></i>
+  <i class="soundicon ni ni-settings-gear fas fa-volume-off" *ngIf="!this.audio?.src" (click)="this.playAudio();" ></i>
+  <div class="collapse navbar-collapse animate__animated animate__fadeInDown ps-2" [ngbCollapse]="!toggleNavbar">
+    <ul class="navbar-nav menu-collapse">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/home" >Home</a>
+      </li>    
       <li class="nav-item">
         <a class="nav-link" href="#" routerLinkActive="active" routerLink="/preview">Previsão</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" routerLinkActive="active" routerLink="/gallery">Imagens</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/home" >Martim</a>
-      </li>    
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/cad">Chá de bebê</a>
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/convite">Chá de bebê</a>
       </li>  
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/cad">Mural</a>
+        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/mural">Mural</a>
       </li>  
-      <li ngbDropdown class="nav-item" hidden>
-        <a class="nav-link" id="navbarDropdownMenuLink" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/home" >Martim</a>
-          <a class="dropdown-item" href="#"routerLinkActive="active" routerLink="/preview">Previsão</a>
-          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/gallery">Imagens</a>
-          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/home">Chá de bebê</a>
-          <a class="dropdown-item" href="#" routerLinkActive="active" routerLink="/home">Mural</a>
-        </div>
-      </li>
     </ul>
-    <i class="soundicon fas fa-volume-up" *ngIf="this.audio?.src" (click)="this.stopAudio();" ></i>
-<i class="soundicon fas fa-volume-off" *ngIf="!this.audio?.src" (click)="this.playAudio();" ></i>
   </div>
 </nav>

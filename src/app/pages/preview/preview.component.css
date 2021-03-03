@@ -1,31 +1,21 @@
-.fontDefault{
-    margin: 1% 10% 1% 10%;
-    font-family: Artika;
-    font-size: 10vh;
-    font-weight: normal;
-    color: #4a81b0;
-    text-shadow: rgb(255 255 255) 0 2px 1px;
-}
 
-.fontDefault2{
+.card-title{
     font-family: Artika ;
-    font-size: 2vh;
-    font-weight: lighter;
-    color: #4a81b0;
+    color: #1e3447;
+    text-shadow: white  1px 2px 2px;
+    text-align: center;
 }
 
-.fontDefault3{
-    font-family: Artika ;
-    font-size: 2.5vh;
-    font-weight: lighter;
-    color: #4a81b0;
+.card-img{
+    height: 35vh;
 }
-
 .imgcss{
+    position: absolute;
     height: 40vh;
     max-width: 80vw;
     max-height: 40vh;
-    /*border: solid 5px white;
-    background: rgb(240, 240, 240);
-    box-shadow: 0px 1vh 2vh rgba(0,0,0,.8);*/
+    padding: 0;
+    margin: 0;
+    top: 37px;
+    right: -38px;
 }
