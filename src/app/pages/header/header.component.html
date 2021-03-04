@@ -5,22 +5,22 @@
   </button>
   <i class="soundicon ni ni-settings-gear fas fa-volume-up" *ngIf="this.audio?.src" (click)="this.stopAudio();" ></i>
   <i class="soundicon ni ni-settings-gear fas fa-volume-off" *ngIf="!this.audio?.src" (click)="this.playAudio();" ></i>
-  <div class="collapse navbar-collapse animate__animated animate__fadeInDown ps-2" [ngbCollapse]="!toggleNavbar">
-    <ul class="navbar-nav menu-collapse">
+  <div class="collapse navbar-collapse  ps-2" [ngbCollapse]="!toggleNavbar">
+    <ul class="navbar-nav menu-collapse animate__animated animate__fadeInDown">
       <li class="nav-item active">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/home" >Home</a>
+        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/home" >Home</a>
       </li>    
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/preview">Previsão</a>
+        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/preview">Previsão</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/gallery">Imagens</a>
+        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/gallery">Imagens</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/convite">Chá de bebê</a>
+        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/convite">Chá de bebê</a>
       </li>  
       <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active" routerLink="/mural">Mural</a>
+        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/mural">Mural</a>
       </li>  
     </ul>
   </div>

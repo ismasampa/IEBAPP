@@ -1,5 +1,7 @@
+
+
 .collapse:not(.show) {
-    margin-right: 4vh;
+    margin-right: 4vw!important;
 }
 
 .nav-link {
@@ -8,22 +10,35 @@
     background-position: left top;   
     background-size: contain;
     text-decoration: none;
-    color: #0003a0!Important;
+    color: #4483b9!Important;
     text-shadow: #fff 0 1px 0;
     font-family: Artika;
     text-transform:capitalize;
     }
     
     .nav-link.active{
-        color: #060c5c!important;
+        color: #2e5b83!important;
+        text-shadow: #fff 0 2px 2px;
     }
 
+    @media(max-width: 991px){
     .menu-collapse{
-        position: relative;
+        position: fixed;
         text-align: center;
         width: 100%;
-        background: rgba(255,255,255,0.3);
+        background: rgba(255,255,255,0.9);
+        z-index: 30;
     }
+}
+
+    @media(min-width: 992px){
+    .menu-collapse{
+        text-align: center;
+        width: 100%;
+        background: rgba(255,255,255,0.4);
+        margin-right: 4vw;
+    }
+}
 
     .bebe{
         color: #2e5b83;
@@ -37,10 +52,11 @@
     li:hover{
         text-shadow: white 0 2px;
     }
+    
     .soundicon{
         position: absolute;
         top:2vh;
-        right:1vw;
+        right:3px;
         font-size: 3vh;
         width: 20px;
         color: #4a81b0;

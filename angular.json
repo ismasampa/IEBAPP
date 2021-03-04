@@ -25,9 +25,9 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/css/fontawesome.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css",
-              "node_modules/animate.css/animate.compat.css",
+              "node_modules/animate.css/animate.min.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
