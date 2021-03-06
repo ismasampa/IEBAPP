@@ -16,7 +16,7 @@ export class CadMuralService {
   let mural: Mural;
   mural = new Mural();
   const response = await fetch('http://api.ipify.org/?format=json');
-  const api = response.json();
+  const api = await response.json();
   mural.nome = data.Nome;
   mural.nota = data.Nota;
   mural.privado = data.Privado;
