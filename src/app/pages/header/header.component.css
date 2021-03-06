@@ -1,5 +1,3 @@
-
-
 .collapse:not(.show) {
     margin-right: 4vw!important;
 }
@@ -53,20 +51,29 @@
         text-shadow: white 0 2px;
     }
     
+    @media(min-width: 992px){
+        .soundicon{top:.5rem;
+        right:10px;}
+        .adminicon{top:2.5rem;
+        right:10px;}
+    }
+    @media(max-width: 991px){
+        .soundicon{top:1.3rem;
+        right:6rem;}
+        .adminicon{top:1.5rem;
+        right:9rem;}
+    }
+    
     .soundicon{
         position: absolute;
-        top:2vh;
-        right:3px;
-        font-size: 3vh;
+        font-size: 1.5rem;
         width: 20px;
         color: #4a81b0;
     }
 
     .adminicon{
         position: absolute;
-        top:2vh;
-        right:4vw;
-        font-size: 3vh;
+        font-size: 1,5rem;
         width: 20px;
         color: #4a81b0;
     }

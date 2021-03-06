@@ -21,6 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PreviewComponent } from './pages/preview/preview.component';
 import { ItemsComponent } from './pages/items/items/items.component';
 import { ItemsService } from './services/items.service';
+import { EventComponent } from './pages/event/event.component';
+import { MuralComponent } from './pages/mural/mural.component';
+import { CadMuralService } from './pages/mural/cad-mural.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { ItemsService } from './services/items.service';
     HeaderComponent,
     GalleryComponent,
     PreviewComponent,
-    ItemsComponent
+    ItemsComponent,
+    EventComponent,
+    MuralComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { ItemsService } from './services/items.service';
     LoaderService,
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
     CadfotosService,
+    CadMuralService,    
     ItemsService,
     JunoService
   ],

@@ -10,8 +10,9 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'iebapp';
-
+  routerLocal:any;
   constructor( private authService : AuthService, private router : Router){
+    this.routerLocal = router;
   }
 
   isAuthenticated(){
