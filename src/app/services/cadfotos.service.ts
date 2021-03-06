@@ -12,15 +12,15 @@ export class CadfotosService {
   constructor(private http: HttpClient, private authService: AuthService) {
     }
   create(data){
-    return this.http.post(environment.apiUrl + 'fotos/', data, { headers: {Authorization: `Bearer ${this.authService.getToken()}`} } );
+    return this.http.post(environment.apiUrl + 'foto/', data, { headers: {Authorization: `Bearer ${this.authService.getToken()}`} } );
   }
 
   read(){
-    return this.http.get(environment.apiUrl + 'fotos/', { headers: {Authorization: `Bearer ${this.authService.getToken()}`} } );
+    return this.http.get(environment.apiUrl + 'foto/', { headers: {Authorization: `Bearer ${this.authService.getToken()}`} } );
   }
 
   delete(idx){
-    return this.http.delete(environment.apiUrl + 'fotos/' + idx, { headers: {Authorization: `Bearer ${this.authService.getToken()}`} } );
+    return this.http.delete(environment.apiUrl + 'foto/' + idx, { headers: {Authorization: `Bearer ${this.authService.getToken()}`} } );
   }
 
 
