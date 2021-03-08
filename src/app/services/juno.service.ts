@@ -1,29 +1,36 @@
 import { Injectable } from '@angular/core';
-//import Juno from 'juno-payments';
-import { environment } from 'src/environments/environment';
-
+import JunoCardHash from 'react-native-juno-rn-card-hash';
 @Injectable({
   providedIn: 'root'
 })
+
+class iCardData {
+  holderName: string;
+  cardNumber: string;
+  securityCode: string;
+  expirationMonth: string;
+  expirationYear: string;
+}
 export class JunoService {
 
-  /*junosvc = new Juno({
-    clientId: environment.JUNO_CLIENT_ID,
-    clientSecret: environment.JUNO_SECRET,
-    mode: environment.JUNO_ENV,
-    token: environment.JUNO_TOKEN
-  })*/
+  juno: JunoCardHash;
+  constructor( ) {
+    //this.juno.publicToken = '970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D';
+    //this.juno.environment = 'sandbox';
+}
 
-  constructor() { }
-
-  /*getSaldo () {
-    try {
-      const result = this.junosvc.gestao.saldo.consultarSaldo()
-      return result
-    } catch (error) {
-        throw new Error(error)
-    }
-  }*/
+  getCardHash(){
+    const card = {
+    cardNumber : "5579006606178504",
+    expirationMonth : "12",
+    expirationYear : "29",
+    holderName : "SEI LA",
+    securityCode : "123"};
+    this.juno = new JunoCardHash('970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D','sandbox');
+    this.juno.getCardHash(card).then(data=> console.log(data));
+    return;
+  }
+  
 
 }
 

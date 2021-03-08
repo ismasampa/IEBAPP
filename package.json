@@ -29,10 +29,10 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "jquery": "^3.4.1",
-    "juno-payments": "^1.1.0",
     "ng-gallery": "^5.0.0",
     "ngx-toastr": "^12.0.1",
     "popper.js": "^1.16.1",
+    "react-native-juno-rn-card-hash": "^1.2.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.3"

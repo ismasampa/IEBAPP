@@ -7,10 +7,14 @@ export const environment = {
   apiUrl: "https://iebapi.azurewebsites.net/",
   apiUrlproxyed: "http://localhost/ieventbook/",
   userAuth: "IsmaelRibeiro",
-  JUNO_CLIENT_ID:"0MofIktZ1QNRiVBF",
-  JUNO_SECRET:"oY|h_(<hyff#V7v8pT)72NA1q[{6#M3z",
+  JUNO_CLIENT_ID:"h3k4OwqtSN2IKRfT",
+  JUNO_SECRET:"?]D-:cw^w{PC_IclvOT0xaLeV5Ax*rU$",
   JUNO_TOKEN:"899F73CEC229B80B1616838302BE3F2D5152DD95D9B91058B2705BD35F545411",
-  JUNO_ENV:"dev"
+  JUNO_ENV:"dev",
+  JUNO_API_AUTH_SERVER_DEV:"https://sandbox.boletobancario.com/authorization-server",
+  JUNO_API_AUTH_SERVER:"https://api.juno.com.br/authorization-server",
+  JUNO_API_RESOUCE_DEV: "https://sandbox.boletobancario.com/api-integration",
+  JUNO_API_RESOUCE: "https://api.juno.com.br"
 };
 
 /*

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CadfotosComponent } from './pages/cadfotos/cadfotos.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { EventComponent } from './pages/event/event.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'preview', component: PreviewComponent},
   { path: 'event', component: EventComponent},
   { path: 'mural', component: MuralComponent},
+  { path: 'checkout', component: CheckoutComponent},
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JunoService } from './services/juno.service';
 import { AuthService } from './services/auth.service';
@@ -24,6 +24,8 @@ import { ItemsService } from './services/items.service';
 import { EventComponent } from './pages/event/event.component';
 import { MuralComponent } from './pages/mural/mural.component';
 import { CadMuralService } from './pages/mural/cad-mural.service';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import JunoCardHash from 'react-native-juno-rn-card-hash';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { CadMuralService } from './pages/mural/cad-mural.service';
     PreviewComponent,
     ItemsComponent,
     EventComponent,
-    MuralComponent
+    MuralComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -49,9 +52,9 @@ import { CadMuralService } from './pages/mural/cad-mural.service';
     FormsModule
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
     AuthService, AuthGuardService, 
     LoaderService,
-    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
     CadfotosService,
     CadMuralService,    
     ItemsService,
