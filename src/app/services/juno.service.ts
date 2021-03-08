@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import JunoCardHash from 'react-native-juno-rn-card-hash';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +12,7 @@ class iCardData {
 }
 export class JunoService {
 
-  juno: JunoCardHash;
-  constructor( ) {
+    constructor( ) {
     //this.juno.publicToken = '970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D';
     //this.juno.environment = 'sandbox';
 }
@@ -26,8 +24,8 @@ export class JunoService {
     expirationYear : "29",
     holderName : "SEI LA",
     securityCode : "123"};
-    this.juno = new JunoCardHash('970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D','sandbox');
-    this.juno.getCardHash(card).then(data=> console.log(data));
+    //this.juno = new JunoCardHash('970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D','sandbox');
+    //this.juno.getCardHash(card).then(data=> console.log(data));
     return;
   }
   

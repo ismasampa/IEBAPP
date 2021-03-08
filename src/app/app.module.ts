@@ -25,7 +25,6 @@ import { EventComponent } from './pages/event/event.component';
 import { MuralComponent } from './pages/mural/mural.component';
 import { CadMuralService } from './pages/mural/cad-mural.service';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import JunoCardHash from 'react-native-juno-rn-card-hash';
 
 @NgModule({
   declarations: [

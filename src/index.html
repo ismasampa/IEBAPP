@@ -6,8 +6,31 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript" src="https://www.boletobancario.com/boletofacil/wro/direct-checkout.min.js"></script>
 </head>
 <body style="background: transparent url(assets/img/fundo2.jpg) repeat;">
   <app-root></app-root>
+    <script type="text/javascript">
+  var checkout = new DirectCheckout('970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D', false);
+  /* Em sandbox utilizar o construtor new DirectCheckout('PUBLIC_TOKEN', false); */            
+
+  window.generateHash = function() {
+    var cardData = {
+        cardNumber: '5579006606178504',
+        holderName: 'Nome do Titular do Cartão',
+        securityCode: '000',
+        expirationMonth: '12',
+        expirationYear: '2045'
+      };
+  
+  checkout.getCardHash(cardData, function(cardHash) {
+      /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
+      console.log(cardHash);
+  }, function(error) {
+    console.log(error);
+      /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
+  });
+};
+  </script>
 </body>
 </html>
