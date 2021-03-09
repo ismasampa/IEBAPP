@@ -28,9 +28,11 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css",
               "node_modules/animate.css/animate.min.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/smartwiz.css"
             ],
             "scripts": [
+              "src/smartwiz.js"
             ]
           },
           "configurations": {

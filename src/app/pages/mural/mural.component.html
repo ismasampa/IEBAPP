@@ -5,10 +5,10 @@
                 <h5 class="text-uppercase">Deixe sua mensagem para o Martim</h5>
                 <p class="m-0 p-0">É possível deixar mensagem privada. As mensagem serão censuradas e não devem conter teor político ...</p>
             </div>
-            <div class="col-4"><button class="btn btn-sm btn-primary mt-3" (click)="open(mymodal)">Adicionar mensagem</button></div>
+            <div class="col-4"><button class="btn btn-sm btn-primary mt-3" (click)="open(mymodal)"><i class="fas fa-comments mr-2" ></i>Deixar mensagem</button></div>
         </div>
         <div class="row p-0 m-0" *ngIf="Items">
-            <div class="col-xl-6 col-md-12 pt-4"  *ngFor="let item of Items; idx">
+            <div class="col-xl-6 col-md-12 pt-3"  *ngFor="let item of Items; idx">
                 <div class="card overflow-hidden">
                     <div class="card-content">
                         <div class="card-body cleartfix">

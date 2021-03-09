@@ -1,31 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-light nav-fill componentbg m-0 p-0">
-  <a class="col-2 bebe animate__animated animate__fadeInLeft ps-2" href="#">Martim</a>
-  <button class="navbar-toggler mr-3" type="button" (click)="toggleNavbar = !toggleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <i class="soundicon ni ni-settings-gear fas fa-volume-up" *ngIf="this.audio?.src" (click)="this.stopAudio();" ></i>
-  <i class="soundicon ni ni-settings-gear fas fa-volume-off" *ngIf="!this.audio?.src" (click)="this.playAudio();" ></i>
-  <i class="adminicon ni ni-settings-gear fas fa-cog" routerLink="/login" ></i>
-  <div class="collapse navbar-collapse  ps-2" [ngbCollapse]="!toggleNavbar">
-    <ul class="navbar-nav menu-collapse animate__animated animate__fadeInDown">
-      <li class="nav-item active">
-        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/home" >Home</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/preview">Previsão</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/gallery">Imagens</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/event">Chá de bebê</a>
-      </li>  
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/mural">Mural</a>
-      </li>  
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/checkout">Fralda</a>
-      </li>  
-    </ul>
-  </div>
-</nav>
+<header class="header">
+    <!-- Itens body -->
+    <img src="/assets/img/icon-nuvem-1.png" class="ftl">
+    <img src="/assets/img/icon-nuvem-2.png" class="ft2">
+    <img src="/assets/img/icon-balao-1.png" class="ft3">
+    <img src="/assets/img/icon-balao-2.png" class="ft4">
+    <i class="soundicon ni ni-settings-gear fas fa-volume-up" *ngIf="this.audio?.src" (click)="this.stopAudio();"></i>
+    <i class="soundicon ni ni-settings-gear fas fa-volume-off" *ngIf="!this.audio?.src" (click)="this.playAudio();"></i>
+    <i class="adminicon ni ni-settings-gear fas fa-cog" routerLink="/login"></i>
+
+    <div class="wdh flex">
+
+        <div class="item-left">
+            <img src="/assets/img/icon-balao-left.png">
+        </div>
+
+        <div class="item-title">
+
+            <div class="sub-title">
+                Chá de fraldas
+            </div>
+
+            <div class="">
+                <a class="bebe animate__animated animate__fadeInLeft" href="#">Martim</a>
+            </div>
+        </div>
+
+        <div class="item-right">
+            <img src="/assets/img/icon-balao-right.png">
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light nav-fill m-0 p-0">
+            <button class="navbar-toggler" type="button" (click)="toggleNavbar = !toggleNavbar">
+                 <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse  ps-2" [ngbCollapse]="!toggleNavbar">
+                <ul class="navbar-nav menu-collapse animate__animated animate__fadeInDown">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/preview">Previsão</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/gallery">Imagens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/event">Chá de bebê</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/mural">Mural</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/checkout">Fralda</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
