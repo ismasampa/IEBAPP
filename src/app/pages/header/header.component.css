@@ -110,6 +110,14 @@
     text-shadow: #2e5b83 0px 0px 3px;
 }
 
+@media(min-width: 992px) {
+    .menu-collapse {
+        text-align: center;
+        width: 100%;
+        background: #8badd6;
+    }
+}
+
 @media(max-width: 991px) {
     .menu-collapse {
         position: fixed;
@@ -118,22 +126,7 @@
         z-index: 99;
         top: 50px;
         width: 50%;
-    }
-}
-
-.nav-item:first-child {
-    border: 0;
-}
-
-.nav-item {
-    border-left: rgb(255, 255, 255) solid 1px;
-}
-
-@media(min-width: 992px) {
-    .menu-collapse {
-        text-align: center;
-        width: 100%;
-        background: #8badd6;
+        text-decoration: none;
     }
 }
 
@@ -144,6 +137,9 @@
     font-size: 5rem;
     display: block;
     text-shadow: gray 1px 3px 2px;
+    top: -19px;
+    position: relative;
+    text-decoration: none;
 }
 
 li:hover {
@@ -158,6 +154,12 @@ li:hover {
     .adminicon {
         top: 3rem;
         right: 10px;
+    }
+    .nav-item:first-child {
+        border: 0;
+    }
+    .nav-item {
+        border-left: rgb(255, 255, 255) solid 1px;
     }
 }
 
@@ -195,7 +197,7 @@ li:hover {
 .navbar-toggler {
     position: absolute;
     left: 5px;
-    top: -220px;
+    top: -200px;
 }
 
 #menuline {
