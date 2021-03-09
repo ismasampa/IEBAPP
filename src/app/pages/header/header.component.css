@@ -167,10 +167,15 @@ li:hover {
     .soundicon {
         top: 1.3rem;
         right: 1rem;
+        zoom: 0.7;
     }
     .adminicon {
         top: 1.5rem;
         right: 4rem;
+        zoom: 0.7;
+    }
+    .bebe {
+        zoom: 0.7;
     }
 }
 
@@ -197,7 +202,7 @@ li:hover {
 .navbar-toggler {
     position: absolute;
     left: 5px;
-    top: -200px;
+    top: -168px;
 }
 
 #menuline {
