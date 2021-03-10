@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { Mural } from 'src/app/models/Mural';
 import { CadMuralService } from './cad-mural.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class MuralComponent implements OnInit {
   modalOptions: NgbModalOptions;
   Items:any;
   cadmuralForm: FormGroup;
+
+  listMural = new Array<Mural>();
   
   constructor(private modalService: NgbModal, private fb:FormBuilder, private cadmuralService:CadMuralService) {
     this.modalOptions = {
@@ -34,6 +37,18 @@ export class MuralComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.mockupMural();
+  }
+
+  mockupMural(){
+
+    var mural = new Mural();
+    mural.nome = "André Abreu";
+    mural.nota = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at convallis nisl, quis molestie nibh. Ut tortor mi, hendrerit et elit efficitur, consectetur ultricies nibh. Fusce tristique erat sed posuere vehicula. In vestibulum leo a metus dignissim";
+    mural.privado = 0;
+    
+    this.listMural.push(mural)
+
   }
 
   

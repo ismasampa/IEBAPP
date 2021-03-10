@@ -27,6 +27,7 @@ import { CadMuralService } from './pages/mural/cad-mural.service';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopService } from './services/shop.service';
+import { AvatarModule } from 'ngx-avatar';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ShopService } from './services/shop.service';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AvatarModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
