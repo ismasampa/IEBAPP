@@ -55,4 +55,11 @@ export class HeaderComponent implements OnInit {
     this.audio = null;
   }
   
+  prepareCart(){
+    this.shopService.setopencart(true);
+  }
+
+  getroute(){
+    return this.router.url;
+  }
 }

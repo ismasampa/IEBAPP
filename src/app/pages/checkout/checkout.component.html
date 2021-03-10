@@ -1,23 +1,24 @@
+<a *ngIf="this.cart?.length" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="this.step = 0;this.openModal(bscheckout);" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
 <div class="container mt-5">
-    <div class="container">
+    <div class="container pl-1vw pr-1vw">
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let item of this.items; index">
+            <div class="col-lg-3 col-md-3 col-6 pl-1vw pr-1vw" *ngFor="let item of this.items; index">
                 <div class="card product_item">
                     <div class="body">
                         <div class="cp_img">
                             <img src="assets/img/fralda.png" alt="Product" class="img-fluid" style="cursor: pointer;">
                             <div _ngcontent-aur-c3="" class="hover"></div>
-                            <div _ngcontent-aur-c3="" class="fraldatipo">{{item.description}}</div>
+                            <div _ngcontent-aur-c3="" class="fraldatipo zoom-50">{{item.description}}</div>
                         </div>
                         <div class="product_details">
                             <div class="row align-items-center">
-                                <div class="col m-o pr-0">
+                                <div class="col-lg-6 col-md-6 col-12 m-0 p-0">
                                     <a class="h6 productname" href="javascript:void(0)" (click)="addItem(item)">{{item.product}}</a>
                                     <ul class="product_price list-unstyled">
                                         <li class="old_price">R$ {{item.value}}</li>
                                     </ul>
                                 </div>
-                                <div class="col">
+                                <div class="col-lg-6 col-md-6 col-12 m-0 p-0">
                                     <a *ngIf="!item.qtd" href="javascript:void(0);" (click)="addItem(item)" class="btn btn-primary btn-sm waves-effect">Adicionar</a>
                                     <div *ngIf="item.qtd">
                                         <a href="javascript:void(0);" (click)="addItem(item)" class="btn btn-primary btn-sm waves-effect"><i class="fas fa-plus"></i></a>
@@ -254,7 +255,6 @@
             <div width=100px height=100px>.</div>
         </div>
     </ng-template>
-    <button type="button" class="btn btn-primary mx-3" (click)="this.step = 0;openModal(bscheckout);">Pagamento</button>
     <script type="text/javascript">
         /*jslint browser: true*/
         /*global $, jQuery, alert*/

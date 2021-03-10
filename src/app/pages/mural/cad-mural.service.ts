@@ -15,12 +15,12 @@ export class CadMuralService {
   async create(data){
   let mural: Mural;
   mural = new Mural();
-  const response = await fetch('http://api.ipify.org/?format=json');
-  const api = await response.json();
+  //const response = await fetch('http://api.ipify.org/?format=json');
+  //const api = await response.json();
   mural.nome = data.Nome;
   mural.nota = data.Nota;
   mural.privado = data.Privado;
-  mural.source = api.ip;
+  mural.source = "httpsfail";
   console.log(mural);
   return this.http.post(environment.apiUrl + 'mural/', mural, { headers: {Authorization: `Bearer ${this.authService.getToken()}`} } );
 }

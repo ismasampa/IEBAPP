@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Item } from 'src/app/models/Item';
 import { Observable } from 'rxjs';
 import { isIndexSignatureDeclaration } from 'typescript';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 
@@ -30,7 +31,8 @@ export class CheckoutComponent implements OnInit {
   ];
   unsubscribe$: Observable<any>;
   cart: Item[];
-  step:number;
+  step: number;
+  @ViewChild('bscheckout') modalPayment: TemplateRef<any>;  
 
   constructor(private junoCardService: JunoCardService, 
     private modalService: BsModalService, 
@@ -40,7 +42,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initCart();
+    this.initCart();    
   }
 
   initCart() {
@@ -49,6 +51,13 @@ export class CheckoutComponent implements OnInit {
         this.items.filter(z=>z.product==x.product)[0].qtd = x.qtd;
       }
     });
+    setTimeout(() => 
+    {
+      if(this.shopService.getopencart()==true){
+        this.openModal(this.modalPayment);
+      } 
+    },
+    1000);
   }
 
   openModal(template: TemplateRef<any>) {

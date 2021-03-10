@@ -8,6 +8,7 @@ import { Item } from '../models/Item';
 
 export class ShopService {
   private _cart: BehaviorSubject<Array<Item>> = new BehaviorSubject<Array<Item>>([]);
+  public cartopen: boolean;
 
   constructor() {
     let cartcache = localStorage.getItem("cart");
@@ -18,6 +19,16 @@ export class ShopService {
   getcart(): Observable<Array<Item>> {
     return this._cart.asObservable();
   }
+
+  getopencart(){
+    let aux = this.cartopen;
+    this.cartopen=false;
+    return aux;
+  };
+  
+  setopencart(parm){
+    this.cartopen=parm;
+  };
 
   addItem(item: Item) {
     let add = this._cart.value.filter(x => x.product == item.product)[0];

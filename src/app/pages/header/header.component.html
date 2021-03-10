@@ -1,4 +1,4 @@
-<a *ngIf="this.cart?.length" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
+<a *ngIf="this.cart?.length && this.getroute() != '/checkout'" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="prepareCart();" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
 
 <header class="header">
     <!-- Itens body -->

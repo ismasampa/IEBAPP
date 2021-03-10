@@ -949,3 +949,33 @@ body {
         display: inline-block
     }
 }
+
+@media (max-width:766px) {
+    .zoom-70 {
+        zoom: .7;
+    }
+    .zoom-50 {
+        zoom: .5;
+    }
+    .zoom-30 {
+        zoom: .3;
+    }
+    .pl-1vw {
+        padding-left: 1vw;
+    }
+    .pr-1vw {
+        padding-right: 1vw;
+    }
+}
+
+.cart {
+    position: fixed;
+    right: 1vw;
+    bottom: 1vw;
+    z-index: 99;
+    --animation-repeat: 4;
+}
+
+.cart img {
+    height: 6rem;
+}
