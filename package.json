@@ -28,6 +28,7 @@
     "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "isomorphic-webcrypto": "^2.3.8",
     "jquery": "^3.4.1",
     "juno-nodejs": "^1.0.14",
     "ng-gallery": "^5.0.0",
