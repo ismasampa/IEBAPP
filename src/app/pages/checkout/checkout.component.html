@@ -5,17 +5,16 @@
                 <div class="card product_item">
                     <div class="body">
                         <div class="cp_img">
-                            <img src="https://picsum.photos/300" alt="Product" class="img-fluid" style="cursor: pointer;">
-                            <div class="hover">
-                                {{item.description}}
-                            </div>
+                            <img src="assets/img/fralda.png" alt="Product" class="img-fluid" style="cursor: pointer;">
+                            <div _ngcontent-aur-c3="" class="hover"></div>
+                            <div _ngcontent-aur-c3="" class="fraldatipo">{{item.description}}</div>
                         </div>
                         <div class="product_details">
                             <div class="row align-items-center">
                                 <div class="col m-o pr-0">
                                     <a class="h6 productname" href="javascript:void(0)" (click)="addItem(item)">{{item.product}}</a>
                                     <ul class="product_price list-unstyled">
-                                        <li class="old_price">R$ {{item.valor}}</li>
+                                        <li class="old_price">R$ {{item.value}}</li>
                                     </ul>
                                 </div>
                                 <div class="col">
@@ -70,8 +69,26 @@
             <div id="my-modal-description">
                 <div *ngIf="this.step==0" class="container">
                     <ul class="list-group list-group-flush">
-                        <li *ngFor="let item of this.cart; index" class="list-group-item">{{item.product}} ({{item.qtd}}) {{item.valor * item.qtd}}</li>
+                        <li *ngFor="let item of this.cart; index" class="list-group-item">{{item.product}} ({{item.qtd}}) R$ {{item.value}}</li>
                     </ul>
+                    <div class="row m-0 p-0">
+                        <div class="col">
+                            <div class="action-btn">
+                                <button class="btn btn-success btn-lg" (click)="modalRef.hide()">
+                                    Voltar
+                                    <i class="fa fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="action-btn">
+                                <button class="btn btn-success btn-lg" (click)="this.sobeStep()">
+                                    Proximo
+                                    <i class="fa fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div *ngIf="this.step==1" class="container">
                     <div class="view-account">
@@ -210,11 +227,34 @@
                         </section>
                     </div>
                 </div>
+                <div *ngIf="this.step==2" class="container">
+                    <div class="content-panel">
+                        <h2 class="title">Confirmação</h2>
+                        <div class="row m-0 p-0">
+                            <div class="col">
+                                <div class="action-btn">
+                                    <button class="btn btn-success btn-lg" (click)="this.desceStep()">
+                                        Voltar
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="action-btn">
+                                    <button class="btn btn-success btn-lg" (click)="modalRef.hide()">
+                                        Proximo
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div width=100px height=100px>.</div>
         </div>
     </ng-template>
-    <button type="button" class="btn btn-primary" (click)="this.step = 0;openModal(bscheckout);">Pagamento</button>
+    <button type="button" class="btn btn-primary mx-3" (click)="this.step = 0;openModal(bscheckout);">Pagamento</button>
     <script type="text/javascript">
         /*jslint browser: true*/
         /*global $, jQuery, alert*/

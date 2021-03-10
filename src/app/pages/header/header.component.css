@@ -107,7 +107,6 @@
 }
 
 .nav-link {
-    background-image: url(../../../assets/img/dots.png);
     background-repeat: repeat-x;
     background-position: left top;
     background-size: contain;
