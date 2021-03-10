@@ -1,6 +1,6 @@
 .imgcss {
-    margin: 5px;
-    max-width: 80%;
+    margin: auto;
+    max-width: 90vw;
     height: auto;
     border: solid 5px white;
     background: rgba(255, 255, 255, .5);
