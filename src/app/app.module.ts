@@ -25,6 +25,7 @@ import { EventComponent } from './pages/event/event.component';
 import { MuralComponent } from './pages/mural/mural.component';
 import { CadMuralService } from './pages/mural/cad-mural.service';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},

@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { JunoCardService } from 'src/app/services/juno-card.service';
 import { JunoService } from 'src/app/services/juno.service';
+
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 declare var window;
 declare var checkout;
@@ -15,12 +17,18 @@ export class CheckoutComponent implements OnInit {
   @ViewChild("cardHash") cardHash: ElementRef;
   @ViewChild("cardHashError") cardHashError: ElementRef;
 
-  constructor(private junoservice: JunoService, private junoCardService: JunoCardService) {
+  modalRef: BsModalRef;
+
+  constructor(private junoservice: JunoService, private junoCardService: JunoCardService, private modalService: BsModalService) {
 
   }
 
   ngOnInit(): void {
   };
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 
   recebeHash() {
 
