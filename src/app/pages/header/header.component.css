@@ -1,3 +1,15 @@
+.cart {
+    position: fixed;
+    right: 1vw;
+    bottom: 1vw;
+    z-index: 99;
+    --animation-repeat: 4;
+}
+
+.cart img {
+    height: 4rem;
+}
+
 <!-- header.header .navbar nav ul.mobile li a {
     padding: 0 0 18px 0;
 }

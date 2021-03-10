@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { ShopService } from 'src/app/services/shop.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,14 +11,24 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  audio: any;
+  toggleNavbar: any;
+  cart: any;
+  unsubscribe$: Subject<boolean> = new Subject();
 
-  constructor(private authService: AuthService, private router : Router) { }
-  audio;
-  toggleNavbar;
+  constructor(private authService: AuthService, private router : Router, private shopService : ShopService) { 
+  }  
 
-  ngOnInit(): void {
-    this.audio = null
+  ngOnInit() {    
+    this.audio = null;
+    this.shopService.getcart().subscribe(rcart => {this.cart = rcart;});
   }
+  
+  ngOnDestroy() {
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
+  }
+
 
   isAuthenticated(){
     return this.authService.isAuthenticated();

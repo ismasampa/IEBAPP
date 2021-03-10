@@ -15,6 +15,10 @@
     src: url(assets/fonts/Artifika-Regular.ttf)
 }
 
+.btn-primary {
+    background: #8badd6!important;
+}
+
 .bg-linho {
     background: rgb(248, 250, 252);
 }
@@ -802,6 +806,7 @@ content.home {}
     color: rgb(100, 100, 100);
 }
 
+.modal select,
 .modal input,
 .modal textarea {
     border: rgb(107, 137, 162) solid 1px!important;
