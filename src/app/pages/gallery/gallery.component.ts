@@ -21,8 +21,6 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit(): void {
     this.bCarregado = false;
-    //this.Items = ["casal.jpeg","home.jpg","home0.png","home1.png","home2.png","home3.png"]
-    //  .map((n) => `assets\\album\\${n}`);
     this.cadfotosService.read().subscribe(data=>{this.Items = data;this.bCarregado = true;});
     }
 

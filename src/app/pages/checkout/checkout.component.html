@@ -1,399 +1,282 @@
 <div class="container mt-5">
     <div class="container">
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let item of this.items; index">
                 <div class="card product_item">
                     <div class="body">
                         <div class="cp_img">
                             <img src="https://picsum.photos/300" alt="Product" class="img-fluid" style="cursor: pointer;">
                             <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect">Adicionar</a>
+                                {{item.description}}
                             </div>
                         </div>
                         <div class="product_details">
-                            <h5><a href="javascript:void(0)" (click)="this.recebeHash();lgModal.show()">Pacote 50 unidades P</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">R$ 35,00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
+                            <div class="row align-items-center">
+                                <div class="col m-o pr-0">
+                                    <a class="h6 productname" href="javascript:void(0)" (click)="addItem(item)">{{item.product}}</a>
+                                    <ul class="product_price list-unstyled">
+                                        <li class="old_price">R$ {{item.valor}}</li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    <a *ngIf="!item.qtd" href="javascript:void(0);" (click)="addItem(item)" class="btn btn-primary btn-sm waves-effect">Adicionar</a>
+                                    <div *ngIf="item.qtd">
+                                        <a href="javascript:void(0);" (click)="addItem(item)" class="btn btn-primary btn-sm waves-effect"><i class="fas fa-plus"></i></a>
+                                        <span class="h4 productqtd"> {{item.qtd}} </span>
+                                        <a href="javascript:void(0);" (click)="delItem(item)" class="btn btn-danger btn-sm waves-effect"><i class="fas fa-minus"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$12.00</li>
-                                <li class="new_price">$11.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Brone Candle</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$23.00</li>
-                                <li class="new_price">$17.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$16.00</li>
-                                <li class="new_price">$10.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Brone Lamp Glasses</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$18.00</li>
-                                <li class="new_price">$15.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Unero Small Bag</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$21.00</li>
-                                <li class="new_price">$17.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Unero Round lass</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$16.00</li>
-                                <li class="new_price">$10.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Wood Simple Clock</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$16.00</li>
-                                <li class="new_price">$10.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Wood Long TV</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$16.00</li>
-                                <li class="new_price">$10.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$16.00</li>
-                                <li class="new_price">$10.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Wood Simple Chair</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$16.00</li>
-                                <li class="new_price">$10.00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Product" class="img-fluid">
-                            <div class="hover">
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-plus"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
-                    class="zmdi zmdi-shopping-cart"></i></a>
-                            </div>
-                        </div>
-                        <div class="product_details">
-                            <h5><a href="ec-product-detail.html">Simple Black</a></h5>
-                            <ul class="product_price list-unstyled">
-                                <li class="old_price">$16.00</li>
-                                <li class="new_price">$10.00</li>
-                            </ul>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Smart Wizard modal</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                </div>
-                <div class="modal-body">
-                    <div id="smartwizard">
-                        <ul>
-                            <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
-                            <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
-                            <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
-                            <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
-                        </ul>
-                        <div class="mt-4">
-                            <div id="step-1">
-                                <div class="row">
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required>
-                                    </div>
-                                </div>
+    <ng-template #bscheckout>
+        <div class="modal-header">
+            <div class="modal-title h4 pull-left" id="my-modal-title">Finalizar presente(s)</div>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body m-0 p-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="steps d-flex flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                        <div class="step" [ngClass]="{completed: step>-1}">
+                            <div class="step-icon-wrap">
+                                <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
                             </div>
-                            <div id="step-2">
-                                <div class="row">
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
-                                </div>
+                            <h4 class="step-title">Resumo</h4>
+                        </div>
+                        <div class="step" [ngClass]="{completed: step>0}">
+                            <div class="step-icon-wrap">
+                                <div class="step-icon"><i class="fas fa-money-check-alt"></i></div>
                             </div>
-                            <div id="step-3" class="">
-                                <div class="row">
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required>
-                                    </div>
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name" required> </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
-                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required>
-                                    </div>
-                                </div>
+                            <h4 class="step-title">Dados do Pagamento</h4>
+                        </div>
+                        <div class="step" [ngClass]="{completed: step>1}">
+                            <div class="step-icon-wrap">
+                                <div class="step-icon"><i class="fas fa-check"></i></div>
                             </div>
-                            <div id="step-4" class="">
-                                <div class="row">
-                                    <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send
-                      you a confirmation email. We will review your details and revert back.</span> </div>
-                                </div>
-                            </div>
+                            <h4 class="step-title">Confirmação</h4>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </div>
-    </div>
-    <input id="cardHash" hidden />
-    <input id="cardHashError" hidden />
-</div>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.smartWizard.min.js">
-</script>
-
-<p>Small modal window have small width on screens only above 768px(boostrap3) and 576px(bootstrap4)</p>
-<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>
-
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Large modal</h4>
-                <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-            </div>
-            <div class="modal-body">
-                <div id="smartwizard">
-                    <ul>
-                        <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
-                        <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
-                        <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
-                        <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
+            <div id="my-modal-description">
+                <div *ngIf="this.step==0" class="container">
+                    <ul class="list-group list-group-flush">
+                        <li *ngFor="let item of this.cart; index" class="list-group-item">{{item.product}} ({{item.qtd}}) {{item.valor * item.qtd}}</li>
                     </ul>
-                    <div class="mt-4">
-                        <div id="step-1">
-                            <div class="row">
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required>
+                </div>
+                <div *ngIf="this.step==1" class="container">
+                    <div class="view-account">
+                        <section class="module">
+                            <div class="module-inner">
+                                <div class="content-panel">
+                                    <h2 class="title">Dados do Pagamento</h2>
+                                    <div class="billing">
+                                        <div class="secure text-center margin-bottom-md">
+                                            <div class="h4 margin-bottom-md text-success">
+                                                <span class="fs1 icon" aria-hidden="true" data-icon=""></span> Pagamento via cartão de crédito seguro<br>
+                                                <small>Ambiente seguro 256-bit SSL pagamento criptografado</small>
+                                            </div>
+                                            <div class="accepted-cards">
+                                                <ul class="d-flex flex-sm-nowrap justify-content-between list-inline mx-5">
+                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/visa-curved-32px.png" alt="Visa"></li>
+                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/mastercard-curved-32px.png" alt="MasterCard"></li>
+                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/maestro-curved-32px.png" alt="Maestro"></li>
+                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/american-express-curved-32px.png" alt="American Express"></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <form id="billing" class="form-horizontal" method="post" action="#" role="form">
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label">Nome no Cartão</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" placeholder="Your name">
+                                                    <p class="help-block">Como aparece no cartão</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label">Número do Cartão </label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" placeholder="•••• •••• •••• ••••">
+                                                    <p class="help-block">Os 16 digitos da frente do seu cartão de credito</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label">Vencimento</label>
+                                                <div class="col-sm-12 form-inline">
+                                                    <select class="form-control">
+                                                        <option value="01">01</option>
+                                                        <option value="01">02</option>
+                                                        <option value="01">03</option>
+                                                        <option value="01">04</option>
+                                                        <option value="01">05</option>
+                                                        <option value="01">06</option>
+                                                        <option value="01">07</option>
+                                                        <option value="01">08</option>
+                                                        <option value="01">09</option>
+                                                        <option value="01">10</option>
+                                                        <option value="01">11</option>
+                                                        <option value="01">12</option>
+                                                    </select>
+                                                    <span class="divider mx-1">/</span>
+                                                    <select class="form-control">
+                                                        <option value="01">2021</option>
+                                                        <option value="01">2022</option>
+                                                        <option value="01">2023</option>
+                                                        <option value="01">2024</option>
+                                                        <option value="01">2025</option>
+                                                        <option value="01">2026</option>
+                                                        <option value="01">2027</option>
+                                                        <option value="01">2028</option>
+                                                        <option value="01">2029</option>
+                                                        <option value="01">2030</option>
+                                                        <option value="01">2031</option>
+                                                        <option value="01">2032</option>
+                                                        <option value="01">2033</option>
+                                                        <option value="01">2034</option>
+                                                        <option value="01">2035</option>
+                                                    </select>
+                                                    <p class="help-block">A data do seu cartão de crédito expirou. Procure o vencto na frente do seu cartão.</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label">Código de Segurança(CVC)</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" style="width: 120px;" placeholder="CVC">
+                                                    <p class="help-block">São 3 digitos que ficam nas costas do seu cartão de crédito.</p>
+                                                </div>
+                                            </div>
+                                            <div class="address">
+                                                <div class="form-group">
+                                                    <label class="col-sm-12 control-label">Endereço</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" placeholder="Endereço">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-horizontal">
+                                                    <div class="row m-0 p-0">
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" placeholder="Cidade">
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <input type="text" class="form-control" placeholder="CEP">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-horizontal">
+                                                    <div class="row m-0 p-0">
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control" placeholder="Pais">
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control" placeholder="Estado">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="action-wrapper text-center">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col">
+                                                        <div class="action-btn">
+                                                            <button class="btn btn-success btn-lg" (click)="this.desceStep()">
+                                                                Voltar
+                                                                <i class="fa fa-chevron-right"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="action-btn">
+                                                            <button class="btn btn-success btn-lg" (click)="this.sobeStep()">
+                                                                Proximo
+                                                                <i class="fa fa-chevron-right"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="step-2">
-                            <div class="row">
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
-                            </div>
-                        </div>
-                        <div id="step-3" class="">
-                            <div class="row">
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required>
-                                </div>
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name" required> </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
-                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="step-4" class="">
-                            <div class="row">
-                                <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send
-                      you a confirmation email. We will review your details and revert back.</span> </div>
-                            </div>
-                        </div>
+                        </section>
                     </div>
                 </div>
             </div>
+            <div width=100px height=100px>.</div>
         </div>
-    </div>
-</div>
+    </ng-template>
+    <button type="button" class="btn btn-primary" (click)="this.step = 0;openModal(bscheckout);">Pagamento</button>
+    <script type="text/javascript">
+        /*jslint browser: true*/
+        /*global $, jQuery, alert*/
+        (function($) {
+            'use strict';
+
+            $(function() {
+
+                $(document).ready(function() {
+                    function triggerClick(elem) {
+                        $(elem).click();
+                    }
+                    var $progressWizard = $('.stepper'),
+                        $tab_active,
+                        $tab_prev,
+                        $tab_next,
+                        $btn_prev = $progressWizard.find('.prev-step'),
+                        $btn_next = $progressWizard.find('.next-step'),
+                        $tab_toggle = $progressWizard.find('[data-toggle="tab"]'),
+                        $tooltips = $progressWizard.find('[data-toggle="tab"][title]');
+
+                    // To do:
+                    // Disable User select drop-down after first step.
+                    // Add support for payment type switching.
+
+                    //Initialize tooltips
+                    $tooltips.tooltip();
+
+                    //Wizard
+                    $tab_toggle.on('show.bs.tab', function(e) {
+                        var $target = $(e.target);
+
+                        if (!$target.parent().hasClass('active, disabled')) {
+                            $target.parent().prev().addClass('completed');
+                        }
+                        if ($target.parent().hasClass('disabled')) {
+                            return false;
+                        }
+                    });
+
+                    // $tab_toggle.on('click', function(event) {
+                    //     event.preventDefault();
+                    //     event.stopPropagation();
+                    //     return false;
+                    // });
+
+                    $btn_next.on('click', function() {
+                        $tab_active = $progressWizard.find('.active');
+
+                        $tab_active.next().removeClass('disabled');
+
+                        $tab_next = $tab_active.next().find('a[data-toggle="tab"]');
+                        triggerClick($tab_next);
+
+                    });
+                    $btn_prev.click(function() {
+                        $tab_active = $progressWizard.find('.active');
+                        $tab_prev = $tab_active.prev().find('a[data-toggle="tab"]');
+                        triggerClick($tab_prev);
+                    });
+                });
+            });
+
+        }(jQuery, this));
+    </script>
