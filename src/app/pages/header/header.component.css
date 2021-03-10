@@ -110,7 +110,7 @@
     text-shadow: #2e5b83 0px 0px 3px;
 }
 
-@media(min-width: 992px) {
+@media(min-width: 931px) {
     .menu-collapse {
         text-align: center;
         width: 100%;
@@ -118,7 +118,7 @@
     }
 }
 
-@media(max-width: 991px) {
+@media(max-width: 930px) {
     .menu-collapse {
         position: fixed;
         text-align: center;
@@ -146,7 +146,7 @@ li:hover {
     text-shadow: #2e5b83 0px 0px 3px;
 }
 
-@media(min-width: 992px) {
+@media(min-width: 931px) {
     .soundicon {
         top: .5rem;
         right: 10px;
@@ -163,7 +163,7 @@ li:hover {
     }
 }
 
-@media(max-width: 991px) {
+@media(max-width: 930px) {
     .soundicon {
         top: 1.3rem;
         right: 1rem;
@@ -176,6 +176,7 @@ li:hover {
     }
     .bebe {
         zoom: 0.7;
+        top: +15px;
     }
 }
 
