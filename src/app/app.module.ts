@@ -26,6 +26,7 @@ import { MuralComponent } from './pages/mural/mural.component';
 import { CadMuralService } from './pages/mural/cad-mural.service';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ShopService } from './services/shop.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ItemsComponent,
     EventComponent,
     MuralComponent,
-    CheckoutComponent
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +60,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CadfotosService,
     CadMuralService,    
     ItemsService,
-    JunoService
+    JunoService,
+    ShopService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,410 +1,399 @@
-<!-- <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard.min.css" rel="stylesheet"
-  type="text/css" /> -->
 <div class="container mt-5">
-  <!-- <button type="button" class="btn btn-primary" (click)="recebeHash()">xx</button>
-  <div class="row d-flex justify-content-center mt-200"> <button type="button" class="btn btn-primary"
-      data-toggle="modal" data-target="#exampleModal"> Launch multistep Wizard </button> </div> -->
-
-  <div class="container">
-    <div class="row clearfix">
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://images-americanas.b2w.io/produtos/01/00/img/128513/4/128513420_1GG.jpg" alt="Product" class="img-fluid" style="cursor: pointer;">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect">Adicionar</a>
-              </div>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://picsum.photos/300" alt="Product" class="img-fluid" style="cursor: pointer;">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect">Adicionar</a>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="javascript:void(0)" (click)="this.recebeHash();lgModal.show()">Pacote 50 unidades P</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">R$ 35,00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="javascript:void(0)" (click)="lgModal.show()">Pacote 50 unidades P</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">R$ 35,00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$12.00</li>
+                                <li class="new_price">$11.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$12.00</li>
-                <li class="new_price">$11.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Brone Candle</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$23.00</li>
+                                <li class="new_price">$17.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Brone Candle</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$23.00</li>
-                <li class="new_price">$17.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$16.00</li>
+                                <li class="new_price">$10.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$16.00</li>
-                <li class="new_price">$10.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Brone Lamp Glasses</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$18.00</li>
+                                <li class="new_price">$15.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Brone Lamp Glasses</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$18.00</li>
-                <li class="new_price">$15.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Unero Small Bag</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$21.00</li>
+                                <li class="new_price">$17.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Unero Small Bag</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$21.00</li>
-                <li class="new_price">$17.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Unero Round lass</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$16.00</li>
+                                <li class="new_price">$10.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Unero Round lass</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$16.00</li>
-                <li class="new_price">$10.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Wood Simple Clock</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$16.00</li>
+                                <li class="new_price">$10.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Wood Simple Clock</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$16.00</li>
-                <li class="new_price">$10.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Wood Long TV</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$16.00</li>
+                                <li class="new_price">$10.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Wood Long TV</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$16.00</li>
-                <li class="new_price">$10.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$16.00</li>
+                                <li class="new_price">$10.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Simple Black Clock</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$16.00</li>
-                <li class="new_price">$10.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Wood Simple Chair</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$16.00</li>
+                                <li class="new_price">$10.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Wood Simple Chair</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$16.00</li>
-                <li class="new_price">$10.00</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card product_item">
-          <div class="body">
-            <div class="cp_img">
-              <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Product" class="img-fluid">
-              <div class="hover">
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Product" class="img-fluid">
+                            <div class="hover">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-plus"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
+                                <a href="javascript:void(0);" class="btn btn-primary btn-sm waves-effect"><i
                     class="zmdi zmdi-shopping-cart"></i></a>
-              </div>
+                            </div>
+                        </div>
+                        <div class="product_details">
+                            <h5><a href="ec-product-detail.html">Simple Black</a></h5>
+                            <ul class="product_price list-unstyled">
+                                <li class="old_price">$16.00</li>
+                                <li class="new_price">$10.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product_details">
-              <h5><a href="ec-product-detail.html">Simple Black</a></h5>
-              <ul class="product_price list-unstyled">
-                <li class="old_price">$16.00</li>
-                <li class="new_price">$10.00</li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Smart Wizard modal</h5> <button type="button" class="close"
-            data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-        </div>
-        <div class="modal-body">
-          <div id="smartwizard">
-            <ul>
-              <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
-              <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
-              <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
-              <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
-            </ul>
-            <div class="mt-4">
-              <div id="step-1">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Smart Wizard modal</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                 </div>
-                <div class="row mt-3">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required>
-                  </div>
-                </div>
-              </div>
-              <div id="step-2">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
-                </div>
-              </div>
-              <div id="step-3" class="">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required>
-                  </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name"
-                      required> </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required>
-                  </div>
-                </div>
-              </div>
-              <div id="step-4" class="">
-                <div class="row">
-                  <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send
+                <div class="modal-body">
+                    <div id="smartwizard">
+                        <ul>
+                            <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
+                            <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
+                            <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
+                            <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
+                        </ul>
+                        <div class="mt-4">
+                            <div id="step-1">
+                                <div class="row">
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="step-2">
+                                <div class="row">
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
+                                </div>
+                            </div>
+                            <div id="step-3" class="">
+                                <div class="row">
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required>
+                                    </div>
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name" required> </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
+                                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="step-4" class="">
+                                <div class="row">
+                                    <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send
                       you a confirmation email. We will review your details and revert back.</span> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <input id="cardHash" hidden />
-  <input id="cardHashError" hidden />
+    <input id="cardHash" hidden />
+    <input id="cardHashError" hidden />
 </div>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.smartWizard.min.js">
 </script>
 
 <p>Small modal window have small width on screens only above 768px(boostrap3) and 576px(bootstrap4)</p>
 <button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>
- 
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
-     role="dialog" aria-labelledby="dialog-sizes-name1">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Large modal</h4>
-        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-sizes-name1" class="modal-title pull-left">Large modal</h4>
+                <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        <div id="smartwizard">
-            <ul>
-              <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
-              <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
-              <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
-              <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
-            </ul>
-            <div class="mt-4">
-              <div id="step-1">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required>
-                  </div>
-                </div>
-              </div>
-              <div id="step-2">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
-                </div>
-              </div>
-              <div id="step-3" class="">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required>
-                  </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name"
-                      required> </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required>
-                  </div>
-                </div>
-              </div>
-              <div id="step-4" class="">
-                <div class="row">
-                  <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send
-                      you a confirmation email. We will review your details and revert back.</span> </div>
-                </div>
-              </div>
             </div>
-          </div>
-      </div>
+            <div class="modal-body">
+                <div id="smartwizard">
+                    <ul>
+                        <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
+                        <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
+                        <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
+                        <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
+                    </ul>
+                    <div class="mt-4">
+                        <div id="step-1">
+                            <div class="row">
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step-2">
+                            <div class="row">
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
+                            </div>
+                        </div>
+                        <div id="step-3" class="">
+                            <div class="row">
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required>
+                                </div>
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name" required> </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
+                                <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step-4" class="">
+                            <div class="row">
+                                <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send
+                      you a confirmation email. We will review your details and revert back.</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

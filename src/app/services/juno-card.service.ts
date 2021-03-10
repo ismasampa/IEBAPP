@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-
-import  WebCrypto  from '../../../node_modules/isomorphic-webcrypto';
+import {Crypto} from "@peculiar/webcrypto";
 
 import { decode } from "base-64";
 import * as qs from "qs";
 import axios, { AxiosInstance } from "axios";
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class JunoCardService {
 
   constructor() { }
@@ -123,7 +122,7 @@ class JunoCardHash {
     const algorithm = JunoCardHash.getAlgorithm();
 
     return new Promise((resolve, reject) =>
-      WebCrypto.subtle
+      crypto.subtle
         .importKey("spki", binaryKey, algorithm, false, ["encrypt"])
         .then(resolve, reject)
     );
@@ -135,7 +134,7 @@ class JunoCardHash {
   ): Promise<string | void> {
     const algorithm = JunoCardHash.getAlgorithm();
     return new Promise((resolve, reject) =>
-      WebCrypto.subtle
+      crypto.subtle
         .encrypt(algorithm, publicKey, encodedCardData)
         .then((data: ArrayBuffer) => this._encodeAb(data), reject)
         .then((encoded: string) => resolve(encoded))

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/
 import { JunoCardService } from 'src/app/services/juno-card.service';
 import { JunoService } from 'src/app/services/juno.service';
 
+
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 declare var window;
