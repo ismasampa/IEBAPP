@@ -471,7 +471,6 @@ body {
 
 .view-account {
     background: #FFFFFF;
-    margin-top: 20px;
 }
 
 .view-account .pro-label {
@@ -1005,5 +1004,22 @@ body {
 }
 
 .cart img {
+    height: 5rem;
+}
+
+.imgbank {
     height: 6rem;
+}
+
+.itaucard {
+    background-color: rgb(216 116 57);
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 1vh;
+    padding-top: 1vh;
+}
+
+.pixqr {
+    margin: auto;
+    width: 80%;
 }

@@ -1,12 +1,9 @@
-import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { JunoCardService } from 'src/app/services/juno-card.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ShopService } from 'src/app/services/shop.service';
-import { takeUntil } from 'rxjs/operators';
 import { Item } from 'src/app/models/Item';
-import { Observable } from 'rxjs';
-import { isIndexSignatureDeclaration } from 'typescript';
-import { ActivatedRoute } from '@angular/router';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
 
@@ -29,14 +26,15 @@ export class CheckoutComponent implements OnInit {
   { "product": "Fralda c/ alarme", "description": "Alerta", "value": 200, "qtd": 0 }, 
   { "product": "Fralda Geriátrica", "description": "Geriat.", "value": 300, "qtd": 0 }
   ];
-  unsubscribe$: Observable<any>;
+  tpPagto: any="";
   cart: Item[];
   step: number;
   @ViewChild('bscheckout') modalPayment: TemplateRef<any>;  
 
   constructor(private junoCardService: JunoCardService, 
     private modalService: BsModalService, 
-    private shopService: ShopService) {
+    private shopService: ShopService,
+    private clipboardService: ClipboardService) {
     this.shopService.getcart().subscribe(cart => this.cart = cart);
     this.step = 0;
   }
@@ -91,5 +89,9 @@ export class CheckoutComponent implements OnInit {
 
   desceStep(){
     this.step--;
+  }
+
+  copyContent() {
+    this.clipboardService.copyFromContent("00020126650014BR.GOV.BCB.PIX0111253540508390228Lista de presentes do Martim52040000530398654040.005802BR5925ISMAEL RIBEIRO DOS SANTOS6009SAO PAULO622605224k8UVH6YIySWErJELgmdHb63043FB6");
   }
 }

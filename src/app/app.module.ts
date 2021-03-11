@@ -27,6 +27,8 @@ import { CadMuralService } from './pages/mural/cad-mural.service';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopService } from './services/shop.service';
+import { ClipboardModule } from 'ngx-clipboard';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { ShopService } from './services/shop.service';
     ItemsComponent,
     EventComponent,
     MuralComponent,
-    CheckoutComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { ShopService } from './services/shop.service';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ClipboardModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},

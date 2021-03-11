@@ -86,11 +86,11 @@
                         </tbody>
                     </table>
                     <div class="row m-0 p-0 form-inline">
-                        <button class="btn btn-success col mr-3" (click)="modalRef.hide()">
+                        <button class="btn btn-success col mr-3 zoom-50" (click)="modalRef.hide()">
                             <i class="fa fa-chevron-left"></i>
                             Voltar
                         </button>
-                        <button class="btn btn-success col" (click)="this.sobeStep()">
+                        <button class="btn btn-success col zoom-50" (click)="this.sobeStep()">
                             Proximo
                             <i class="fa fa-chevron-right"></i>
                         </button>
@@ -101,20 +101,32 @@
                         <section class="module">
                             <div class="module-inner">
                                 <div class="content-panel">
-                                    <h2 class="title">Dados do Pagamento</h2>
-                                    <div class="billing">
+                                    <div class="btn-group btn-group-toggle text-center w-100 zoom-50" ngbRadioGroup name="radioBasic" [(ngModel)]="tpPagto">
+                                        <label ngbButtonLabel class="btn-primary">
+                                          <input ngbButton type="radio" [value]=""> <i class="fas fa-qrcode mr-3"></i> Pix
+                                        </label>
+                                        <label ngbButtonLabel class="btn-primary">
+                                          <input ngbButton type="radio" value="1"> <i class="fas fa-credit-card mr-3"></i>Cartão de Crédito
+                                        </label>
+                                        <label ngbButtonLabel class="btn-primary">
+                                          <input ngbButton type="radio" [value]="2"> <i class="fas fa-money-bill mr-3"></i> Depósito bancário
+                                        </label>
+                                    </div>
+                                    <div *ngIf="!tpPagto" class="text-center m-auto w-100">
+                                        <img class="pixqr m-2" src="/assets/img/pixqr.png" />
+                                        <button class="btn btn-default m-2 zoom-70" type="button" (click)="copyContent()"><i class="fas fa-clone mr-3"></i>copiar</button>
+                                    </div>
+
+                                    <div *ngIf="tpPagto=='1'" class="billing">
                                         <div class="secure text-center margin-bottom-md">
-                                            <div class="h4 margin-bottom-md text-success">
-                                                <span class="fs1 icon" aria-hidden="true" data-icon=""></span> Pagamento via cartão de crédito seguro<br>
+                                            <div class="h5 margin-bottom-md text-success">
                                                 <small>Ambiente seguro 256-bit SSL pagamento criptografado</small>
                                             </div>
-                                            <div class="accepted-cards">
-                                                <ul class="d-flex flex-sm-nowrap justify-content-between list-inline mx-5">
-                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/visa-curved-32px.png" alt="Visa"></li>
-                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/mastercard-curved-32px.png" alt="MasterCard"></li>
-                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/maestro-curved-32px.png" alt="Maestro"></li>
-                                                    <li><img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/american-express-curved-32px.png" alt="American Express"></li>
-                                                </ul>
+                                            <div class="m-auto">
+                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/visa-curved-32px.png" alt="Visa">
+                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/mastercard-curved-32px.png" alt="MasterCard">
+                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/maestro-curved-32px.png" alt="Maestro">
+                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/american-express-curved-32px.png" alt="American Express">
                                             </div>
                                         </div>
                                         <form id="billing" class="form-horizontal" method="post" action="#" role="form">
@@ -207,7 +219,7 @@
                                             </div>
                                             <hr>
                                             <div class="action-wrapper text-center">
-                                                <div class="row m-0 p-0">
+                                                <div class="row m-0 p-0 zoom-50">
                                                     <div class="col">
                                                         <div class="action-btn">
                                                             <button class="btn btn-success btn-lg" (click)="this.desceStep()">
@@ -227,6 +239,23 @@
                                                 </div>
                                             </div>
                                         </form>
+                                    </div>
+
+                                    <div *ngIf="tpPagto=='2'" class="row">
+                                        <div class="card itaucard text-dark">
+                                            <div class=" row w-100 h-50">
+                                                <div class="col-3 m-0 p-2">
+                                                    <img src="/assets/img/itaulogo.png" alt="" class="img-rounded imgbank mx-3" />
+                                                </div>
+                                                <div class="col-8 m-2">
+                                                    <span class="h4">Ismael Ribeiro dos Santos</span><br>
+                                                    <i class="fas fa-address-card mr-3"></i>CPF: 253.540.508-39<br>
+                                                    <i class="fas fa-university mr-3"></i>Banco Itaú<br>
+                                                    <i class="fas fa-home mr-3"></i>ag: 7068<br>
+                                                    <i class="fas fa-file-invoice-dollar mr-3"></i>cc: 10376-6
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
