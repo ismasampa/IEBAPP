@@ -1,4 +1,5 @@
 <div class="container mt-5">
+<<<<<<< HEAD
   <div class="mgb-40 padb-30 auto-invert line-b-4 align-center">
     <h5 class="text-uppercase">Deixe sua mensagem para o Martim</h5>
     <p class="m-0 p-0">É possível deixar mensagem privada. As mensagem serão censuradas e não devem conter teor político
@@ -44,10 +45,27 @@
       <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false">Fund Manager - Chicago</small>
     </li>
   </ul>
+=======
+    <div class="mgb-40 padb-30 auto-invert line-b-4 align-center">
+        <!-- <h4 class="font-cond-l fg-accent lts-md mgb-10" contenteditable="false">Not Yet Convinced?</h4>
+      <h1 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Read Customer Reviews</h1> -->
+        <h5 class="text-uppercase">Deixe sua mensagem para o Martim</h5>
+        <p class="m-0 p-0">É possível deixar mensagem privada. As mensagem serão censuradas e não devem conter teor político ...</p>
+        <button class="btn btn-sm btn-primary mt-3" (click)="open(mymodal)"><i class="fas fa-comments mr-2" ></i>Deixar mensagem</button>
+    </div>
+    <ul class="hash-list cols-3 cols-1-xs pad-30-all align-center text-sm" *ngIf="Items">
+        <li *ngFor="let item of Items; ; let i= index">
+            <img src="https://bootdey.com/img/Content/avatar/avatar{{i+1}}.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]">
+            <!--p class="fs-110 font-cond-l" contenteditable="false">" {{item.ip}} "</p-->
+            <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">{{item.nome}}</h5>
+            <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false" [innerHTML]="item.nota"></small>
+        </li>
+    </ul>
+>>>>>>> 60e71781963a7cbba966f23053588959ae12fdef
 </div>
 
-<!-- <div class="grey-bg container-fluid">
-    <section id="minimal-statistics">
+<div class="grey-bg container-fluid">
+    <!--section id="minimal-statistics">
         <div class="row">
             <div class="col-8 mt-3 mb-1">
                 <h5 class="text-uppercase">Deixe sua mensagem para o Martim</h5>
@@ -74,39 +92,43 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section-->
     <ng-template id="modal" #mymodal let-modal>
         <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">{{this.title}}</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <h4 class="modal-title" id="modal-basic-title">{{this.title}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
             <form [formGroup]="cadmuralForm" (ngSubmit)="registrar()">
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Nome(s)</span>
-                  <input type="text" class="form-control" formControlName="Nome" placeholder="Nome(s)">
+                    <span class="input-group-text">Nome(s)</span>
+                    <input type="text" class="form-control" formControlName="Nome" placeholder="Nome(s)">
                 </div>
                 <div *ngIf="Nome.touched && Nome.errors?.required" class="alert alert-danger">Campo Obrigatório</div>
                 <div class="input-group mb-3">
-                  <span class="input-group-text">Mensagem</span>
-                  <input type="text" class="form-control animated fadeIn infinite" formControlName="Nota"
-                    placeholder="Mensagem">
+                    <span class="input-group-text">Mensagem</span>
+                    <input type="text" class="form-control animated fadeIn infinite" formControlName="Nota" placeholder="Mensagem">
                 </div>
                 <div *ngIf="Nota.touched && Nota.errors?.required" class="alert alert-danger">Campo Obrigatório
                 </div>
                 <div class="form-group form-check">
-                    <input class="form-check-input" type="checkbox" formControlName="Privado" id="Privado" >
+                    <input class="form-check-input" type="checkbox" formControlName="Privado" id="Privado">
                     <label class="form-check-label" for="Privado">
                       Manter mensagem privada?
                     </label>
-                  </div>        
-                <div class="mb-3"><button type="submit" class="btn btn-primary login_btn" (click)="modal.close('Adicionar');">Adicionar</button></div>
-              </form>
+                </div>
+                <div class="modal-footer form-inline">
+                    <button type="submit" class="btn btn-primary col login_btn" (click)="modal.close('Adicionar');">Adicionar</button>
+                    <button type="button" class="btn btn-outline-dark col " (click)="modal.close('Cancelar')">Cancelar</button>
+                </div>
+            </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Cancelar')">Cancelar</button>
-        </div>
+<<<<<<< HEAD
       </ng-template>
 </div> -->
+=======
+    </ng-template>
+</div>
+>>>>>>> 60e71781963a7cbba966f23053588959ae12fdef

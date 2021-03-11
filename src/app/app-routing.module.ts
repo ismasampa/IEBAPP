@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'event', component: EventComponent},
   { path: 'mural', component: MuralComponent},
   { path: 'checkout', component: CheckoutComponent},
+  { path: '**', component: HomeComponent},
 ];
 
 @NgModule({

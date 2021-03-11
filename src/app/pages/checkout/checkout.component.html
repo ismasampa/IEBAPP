@@ -1,24 +1,24 @@
+<a *ngIf="this.cart?.length" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="this.step = 0;this.openModal(bscheckout);" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
 <div class="container mt-5">
-    <div class="container">
+    <div class="container pl-1vw pr-1vw">
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let item of this.items; index">
+            <div class="col-lg-3 col-md-3 col-6 pl-1vw pr-1vw" *ngFor="let item of this.items; index">
                 <div class="card product_item">
                     <div class="body">
                         <div class="cp_img">
-                            <img src="https://picsum.photos/300" alt="Product" class="img-fluid" style="cursor: pointer;">
-                            <div class="hover">
-                                {{item.description}}
-                            </div>
+                            <img src="assets/img/fralda.png" alt="Product" class="img-fluid" style="cursor: pointer;">
+                            <div _ngcontent-aur-c3="" class="hover"></div>
+                            <div _ngcontent-aur-c3="" class="fraldatipo zoom-50">{{item.description}}</div>
                         </div>
                         <div class="product_details">
                             <div class="row align-items-center">
-                                <div class="col m-o pr-0">
+                                <div class="col-lg-6 col-md-6 col-12 m-0 p-0">
                                     <a class="h6 productname" href="javascript:void(0)" (click)="addItem(item)">{{item.product}}</a>
                                     <ul class="product_price list-unstyled">
-                                        <li class="old_price">R$ {{item.valor}}</li>
+                                        <li class="old_price">R$ {{item.value}}</li>
                                     </ul>
                                 </div>
-                                <div class="col">
+                                <div class="col-lg-6 col-md-6 col-12 m-0 p-0">
                                     <a *ngIf="!item.qtd" href="javascript:void(0);" (click)="addItem(item)" class="btn btn-primary btn-sm waves-effect">Adicionar</a>
                                     <div *ngIf="item.qtd">
                                         <a href="javascript:void(0);" (click)="addItem(item)" class="btn btn-primary btn-sm waves-effect"><i class="fas fa-plus"></i></a>
@@ -45,19 +45,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="steps d-flex flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-                        <div class="step" [ngClass]="{completed: step>-1}">
+                        <div class="step" [ngClass]="{completed: step>-1, actived: step==0}">
                             <div class="step-icon-wrap">
                                 <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
                             </div>
                             <h4 class="step-title">Resumo</h4>
                         </div>
-                        <div class="step" [ngClass]="{completed: step>0}">
+                        <div class="step" [ngClass]="{completed: step>0,actived: step==1}">
                             <div class="step-icon-wrap">
                                 <div class="step-icon"><i class="fas fa-money-check-alt"></i></div>
                             </div>
                             <h4 class="step-title">Dados do Pagamento</h4>
                         </div>
-                        <div class="step" [ngClass]="{completed: step>1}">
+                        <div class="step" [ngClass]="{completed: step>1, actived: step==2}">
                             <div class="step-icon-wrap">
                                 <div class="step-icon"><i class="fas fa-check"></i></div>
                             </div>
@@ -69,9 +69,32 @@
             </div>
             <div id="my-modal-description">
                 <div *ngIf="this.step==0" class="container">
-                    <ul class="list-group list-group-flush">
-                        <li *ngFor="let item of this.cart; index" class="list-group-item">{{item.product}} ({{item.qtd}}) {{item.valor * item.qtd}}</li>
-                    </ul>
+                    <table class="table table-striped defaultColor">
+                        <thead>
+                            <tr>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Total(R$)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of this.cart">
+                                <th scope="row">{{item.product}}</th>
+                                <td>{{ item.qtd | number }}</td>
+                                <td>{{ item.value | number }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row m-0 p-0 form-inline">
+                        <button class="btn btn-success col mr-3" (click)="modalRef.hide()">
+                            <i class="fa fa-chevron-left"></i>
+                            Voltar
+                        </button>
+                        <button class="btn btn-success col" (click)="this.sobeStep()">
+                            Proximo
+                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
                 <div *ngIf="this.step==1" class="container">
                     <div class="view-account">
@@ -210,11 +233,33 @@
                         </section>
                     </div>
                 </div>
+                <div *ngIf="this.step==2" class="container">
+                    <div class="content-panel">
+                        <h2 class="title">Confirmação</h2>
+                        <div class="row m-0 p-0">
+                            <div class="col">
+                                <div class="action-btn">
+                                    <button class="btn btn-success btn-lg" (click)="this.desceStep()">
+                                        Voltar
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="action-btn">
+                                    <button class="btn btn-success btn-lg" (click)="modalRef.hide()">
+                                        Proximo
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div width=100px height=100px>.</div>
         </div>
     </ng-template>
-    <button type="button" class="btn btn-primary" (click)="this.step = 0;openModal(bscheckout);">Pagamento</button>
     <script type="text/javascript">
         /*jslint browser: true*/
         /*global $, jQuery, alert*/

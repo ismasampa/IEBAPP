@@ -1,6 +1,6 @@
 export class Item{
     product: string;
     description: string;
-    valor: number;
+    value: number;
     qtd: number;
 }

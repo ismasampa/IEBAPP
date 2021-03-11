@@ -1,5 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
+.defaultColor {
+    color: #8badd6;
+}
+
+.defaultBgColor {
+    background-color: #8badd6;
+}
+
+@font-face {
+    font-family: AMTW;
+    src: url(assets/fonts/AMTW-1.otf) format("opentype");
+}
+
 @font-face {
     font-family: Indie Flower;
     src: url(assets/fonts/IndieFlower-Regular.ttf) format("opentype");
@@ -819,9 +832,9 @@ content.home {}
     border: 0;
     color: rgb(255, 255, 255);
     padding: 15px 35px;
-    font-family: 'OPS'!important;
+    font-family: 'Verdana'!important;
     font-size: 22px!important;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
 }
 
 
