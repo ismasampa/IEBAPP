@@ -38,6 +38,9 @@ img {
 .wpx-100, .wpx-100-after:after {
     width: 100px;
 }
+.wpx-200, .wpx-200-after:after {
+    width: 200px;
+}
 .img-round, .img-rel-round {
     border-radius: 50%;
 }

@@ -28,8 +28,6 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopService } from './services/shop.service';
 import { ClipboardModule } from 'ngx-clipboard';
-import { RouterModule } from '@angular/router';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +52,8 @@ import { RouterModule } from '@angular/router';
     NgbModule,
     FormsModule,
     ModalModule.forRoot(),
-    ClipboardModule
+    ClipboardModule,
+    AvatarModule 
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
