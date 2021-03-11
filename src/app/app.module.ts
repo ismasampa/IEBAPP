@@ -28,6 +28,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopService } from './services/shop.service';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AvatarModule } from 'ngx-avatar';
+
 @NgModule({
   declarations: [
     AppComponent,
