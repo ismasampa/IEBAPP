@@ -48,6 +48,9 @@ export class MuralComponent implements OnInit {
     mural.privado = 0;
     
     this.listMural.push(mural)
+    this.listMural.push(mural)
+    this.listMural.push(mural)
+    this.listMural.push(mural)
 
   }
 
