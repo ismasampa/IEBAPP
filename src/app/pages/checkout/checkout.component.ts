@@ -3,7 +3,9 @@ import { JunoCardService } from 'src/app/services/juno-card.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ShopService } from 'src/app/services/shop.service';
 import { Item } from 'src/app/models/Item';
+import { Billing, Charge, ChargeContainer } from 'src/app/models/Charge';
 import { ClipboardService } from 'ngx-clipboard';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
 
@@ -29,12 +31,30 @@ export class CheckoutComponent implements OnInit {
   tpPagto: any="";
   cart: Item[];
   step: number;
+  cardHash: any;
+  chargeContainer: ChargeContainer;
+
   @ViewChild('bscheckout') modalPayment: TemplateRef<any>;  
+
+  checkoutForm = this.formBuilder.group({
+    nome: '',
+    cpf:'',
+    cartao: '',
+    mesvencto: '03',
+    anovencto: '2030',
+    cvc: '',
+    endereco: '',
+    cep:'',
+    cidade: '',
+    estado: '',
+    pais: ''
+  });
 
   constructor(private junoCardService: JunoCardService, 
     private modalService: BsModalService, 
     private shopService: ShopService,
-    private clipboardService: ClipboardService) {
+    private clipboardService: ClipboardService,
+    private formBuilder: FormBuilder) {
     this.shopService.getcart().subscribe(cart => this.cart = cart);
     this.step = 0;
   }
@@ -79,8 +99,70 @@ export class CheckoutComponent implements OnInit {
       this.shopService.delItem(del);
   }
 
-  recebeHash() {
-    this.junoCardService.cript();
+  preparaCartao() {
+    const cardData = {
+      holderName: this.checkoutForm.get("nome").value,
+      cardNumber: this.checkoutForm.get("cartao").value,
+      securityCode: this.checkoutForm.get("cvc").value,
+      expirationMonth: this.checkoutForm.get("mesvencto").value,
+      expirationYear: this.checkoutForm.get("anovencto").value,
+    };
+    this.junoCardService.cript(cardData, this.okPrepCartao.bind(this), this.nokPrepCartao.bind(this));
+  }
+
+  finalizar(tpPagto,fechar){
+    if(tpPagto==1){
+      this.cobraCartao()
+    }else{
+      fechar();
+    }
+  }
+
+  cobraCartao() {
+    this.chargeContainer = {
+                charge: {
+                    description : "Descrição da cobranca",
+                    amount : 2.23,
+                    installments : 1,
+                    paymentTypes: ["CREDIT_CARD"],
+                    CreditCardHash: this.cardHash
+                },
+                billings: {
+                    name : this.checkoutForm.get("nome").value,
+                    document : this.checkoutForm.get("cpf").value,
+                    email : "",
+                    address: {
+                        street : this.checkoutForm.get("endereco").value,
+                        number : "",
+                        complement : "",
+                        city : this.checkoutForm.get("cidade").value,
+                        state : this.checkoutForm.get("estado").value,
+                        postCode : this.checkoutForm.get("cep").value},
+                    birthDate : "",
+                    phone : "",
+                    notify : false
+                }
+              };
+
+    this.junoCardService.cobra(this.chargeContainer, this.okCobraCartao.bind(this), this.nokCobraCartao.bind(this));
+  }
+
+  okCobraCartao(msg){
+    console.log(msg);
+  }
+
+  nokCobraCartao(msg){
+    console.log(msg);
+  }
+
+  okPrepCartao(msg){
+    this.cardHash = msg;
+    console.log(this.cardHash);
+    this.sobeStep();
+  }
+
+  nokPrepCartao(msg){
+    alert(msg);
   }
 
   sobeStep(){

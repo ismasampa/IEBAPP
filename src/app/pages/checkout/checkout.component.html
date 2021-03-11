@@ -55,7 +55,7 @@
                             <div class="step-icon-wrap">
                                 <div class="step-icon"><i class="fas fa-money-check-alt"></i></div>
                             </div>
-                            <h4 class="step-title">Dados do Pagamento</h4>
+                            <h4 class="step-title">Pagamento</h4>
                         </div>
                         <div class="step" [ngClass]="{completed: step>1, actived: step==2}">
                             <div class="step-icon-wrap">
@@ -68,182 +68,177 @@
                 </div>
             </div>
             <div id="my-modal-description">
-                <div *ngIf="this.step==0" class="container">
+                <div *ngIf="this.step==0" class="container table-responsive">
                     <table class="table table-striped defaultColor">
-                        <thead>
-                            <tr>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Total(R$)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of this.cart">
-                                <th scope="row">{{item.product}}</th>
-                                <td>{{ item.qtd | number }}</td>
-                                <td>{{ item.value | number }}</td>
-                            </tr>
-                        </tbody>
+                        <tr class="defaultBgColor text-light">
+                            <td class="overflow-hidden">Produto</td>
+                            <td class="overflow-hidden">Quantidade</td>
+                            <td class="overflow-hidden">Total(R$)</td>
+                        </tr>
+                        <tr *ngFor="let item of this.cart; let i = index;">
+                            <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{item.product}}</td>
+                            <td [ngClass]="{'bg-light':i%2==1}">{{ item.qtd | number }}</td>
+                            <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ item.value | number }}</td>
+                        </tr>
                     </table>
                     <div class="row m-0 p-0 form-inline">
-                        <button class="btn btn-success col mr-3 zoom-50" (click)="modalRef.hide()">
-                            <i class="fa fa-chevron-left"></i>
-                            Voltar
-                        </button>
-                        <button class="btn btn-success col zoom-50" (click)="this.sobeStep()">
+                        <div class="btn btn-primary col h5 mr-3" (click)="modalRef.hide()">
+                            <i class="fa fa-chevron-left"></i> Voltar
+                        </div>
+                        <div class="btn btn-primary col h5" (click)="this.sobeStep()">
                             Proximo
                             <i class="fa fa-chevron-right"></i>
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <div *ngIf="this.step==1" class="container">
                     <div class="view-account">
                         <section class="module">
                             <div class="module-inner">
-                                <div class="content-panel">
-                                    <div class="btn-group btn-group-toggle text-center w-100 zoom-50" ngbRadioGroup name="radioBasic" [(ngModel)]="tpPagto">
-                                        <label ngbButtonLabel class="btn-primary">
-                                          <input ngbButton type="radio" [value]=""> <i class="fas fa-qrcode mr-3"></i> Pix
+                                <div class="content-panel m-0 p-0">
+                                    <div class="btn-group btn-group-toggle text-center w-100" ngbRadioGroup name="radioBasic" [(ngModel)]="tpPagto">
+                                        <label ngbButtonLabel [ngClass]="{'btn-primary':!tpPagto}" class="overflow-hidden btn-secondary">
+                                          <input ngbButton type="radio" class="h3" [value]=0><i class="fas fa-qrcode mr-1"></i>Pix
                                         </label>
-                                        <label ngbButtonLabel class="btn-primary">
-                                          <input ngbButton type="radio" value="1"> <i class="fas fa-credit-card mr-3"></i>Cartão de Crédito
+                                        <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==1}" class="overflow-hidden btn-secondary">
+                                          <input ngbButton type="radio"  value=1><i class="fas fa-credit-card mr-1"></i>Cartão
                                         </label>
-                                        <label ngbButtonLabel class="btn-primary">
-                                          <input ngbButton type="radio" [value]="2"> <i class="fas fa-money-bill mr-3"></i> Depósito bancário
+                                        <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==2}" class="overflow-hidden btn-secondary">
+                                          <input ngbButton type="radio" [value]=2><i class="fas fa-money-bill mr-1"></i>Depósito
                                         </label>
                                     </div>
                                     <div *ngIf="!tpPagto" class="text-center m-auto w-100">
+                                        <span class="pixmsg">Vc pode scanear o qrcode ou continuar para copiar o Pix</span>
                                         <img class="pixqr m-2" src="/assets/img/pixqr.png" />
-                                        <button class="btn btn-default m-2 zoom-70" type="button" (click)="copyContent()"><i class="fas fa-clone mr-3"></i>copiar</button>
+                                        <div class="row m-0 p-0 form-inline mt-2">
+                                            <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep();">
+                                                <i class="fa fa-chevron-left"></i> Voltar
+                                            </div>
+                                            <div class="btn btn-primary col h5" (click)="this.copyContent();this.sobeStep();">
+                                                Proximo
+                                                <i class="fa fa-chevron-right"></i>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div *ngIf="tpPagto=='1'" class="billing">
                                         <div class="secure text-center margin-bottom-md">
-                                            <div class="h5 margin-bottom-md text-success">
-                                                <small>Ambiente seguro 256-bit SSL pagamento criptografado</small>
+                                            <div class="h5 mb-1 p-0 mt-2 text-primary pixmsg">
+                                                Ambiente seguro 256-bit SSL - trafego criptografado
                                             </div>
-                                            <div class="m-auto">
+                                            <div class="m-auto mt-1">
                                                 <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/visa-curved-32px.png" alt="Visa">
                                                 <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/mastercard-curved-32px.png" alt="MasterCard">
                                                 <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/maestro-curved-32px.png" alt="Maestro">
                                                 <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/american-express-curved-32px.png" alt="American Express">
                                             </div>
                                         </div>
-                                        <form id="billing" class="form-horizontal" method="post" action="#" role="form">
+                                        <form id="billing" [formGroup]="checkoutForm" (ngSubmit)="preparaCartao();" class="form-horizontal" method="preparaCartao()" action="#" role="form">
                                             <div class="form-group">
-                                                <label class="col-sm-12 control-label">Nome no Cartão</label>
+                                                <label class="col-sm-12 control-label">Nome</label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" placeholder="Your name">
-                                                    <p class="help-block">Como aparece no cartão</p>
+                                                    <input type="text" formControlName="nome" class="form-control" placeholder="Nome como consta no cartão" data-bs-toggle="tooltip" title="Como aparece no cartão">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label">C.P.F</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" formControlName="cpf" class="form-control" placeholder="CPF" data-bs-toggle="tooltip" title="Como aparece no cartão">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-12 control-label">Número do Cartão </label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" placeholder="•••• •••• •••• ••••">
-                                                    <p class="help-block">Os 16 digitos da frente do seu cartão de credito</p>
+                                                    <input type="text" formControlName="cartao" data-bs-toggle="tooltip" title="Os 16 digitos da frente do seu cartão de credito" class="form-control" placeholder="•••• •••• •••• ••••">
+
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" data-bs-toggle="tooltip" title="Procure o vencto na frente do seu cartão.">
                                                 <label class="col-sm-12 control-label">Vencimento</label>
-                                                <div class="col-sm-12 form-inline">
-                                                    <select class="form-control">
+                                                <div class=" col-sm-12 form-inline">
+                                                    <select formControlName="mesvencto" class="col-3 form-control">
                                                         <option value="01">01</option>
-                                                        <option value="01">02</option>
-                                                        <option value="01">03</option>
-                                                        <option value="01">04</option>
-                                                        <option value="01">05</option>
-                                                        <option value="01">06</option>
-                                                        <option value="01">07</option>
-                                                        <option value="01">08</option>
-                                                        <option value="01">09</option>
-                                                        <option value="01">10</option>
-                                                        <option value="01">11</option>
-                                                        <option value="01">12</option>
+                                                        <option value="02">02</option>
+                                                        <option value="03">03</option>
+                                                        <option value="04">04</option>
+                                                        <option value="05">05</option>
+                                                        <option value="06">06</option>
+                                                        <option value="07">07</option>
+                                                        <option value="08">08</option>
+                                                        <option value="09">09</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
                                                     </select>
                                                     <span class="divider mx-1">/</span>
-                                                    <select class="form-control">
-                                                        <option value="01">2021</option>
-                                                        <option value="01">2022</option>
-                                                        <option value="01">2023</option>
-                                                        <option value="01">2024</option>
-                                                        <option value="01">2025</option>
-                                                        <option value="01">2026</option>
-                                                        <option value="01">2027</option>
-                                                        <option value="01">2028</option>
-                                                        <option value="01">2029</option>
-                                                        <option value="01">2030</option>
-                                                        <option value="01">2031</option>
-                                                        <option value="01">2032</option>
-                                                        <option value="01">2033</option>
-                                                        <option value="01">2034</option>
-                                                        <option value="01">2035</option>
+                                                    <select formControlName="anovencto" class="col-4 form-control">
+                                                        <option value="2021">2021</option>
+                                                        <option value="2022">2022</option>
+                                                        <option value="2023">2023</option>
+                                                        <option value="2024">2024</option>
+                                                        <option value="2025">2025</option>
+                                                        <option value="2026">2026</option>
+                                                        <option value="2027">2027</option>
+                                                        <option value="2028">2028</option>
+                                                        <option value="2029">2029</option>
+                                                        <option value="2030">2030</option>
+                                                        <option value="2031">2031</option>
+                                                        <option value="2032">2032</option>
+                                                        <option value="2033">2033</option>
+                                                        <option value="2034">2034</option>
+                                                        <option value="2035">2035</option>
                                                     </select>
-                                                    <p class="help-block">A data do seu cartão de crédito expirou. Procure o vencto na frente do seu cartão.</p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-12 control-label">Código de Segurança(CVC)</label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" style="width: 120px;" placeholder="CVC">
-                                                    <p class="help-block">São 3 digitos que ficam nas costas do seu cartão de crédito.</p>
+                                                    <input formControlName="cvc" type="password" class="form-control" style="width: 120px;" placeholder="CVC" data-bs-toggle="tooltip" title="São 3 digitos que ficam nas costas do seu cartão de crédito.">
                                                 </div>
                                             </div>
                                             <div class="address">
                                                 <div class="form-group">
                                                     <label class="col-sm-12 control-label">Endereço</label>
                                                     <div class="col-sm-12">
-                                                        <input type="text" class="form-control" placeholder="Endereço">
+                                                        <input formControlName="endereco" type="text" class="form-control" placeholder="Endereço">
                                                     </div>
                                                 </div>
                                                 <div class="form-group form-horizontal">
                                                     <div class="row m-0 p-0">
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" placeholder="Cidade">
+                                                        <div class="col-sm-6 mb-4">
+                                                            <input type="text" formControlName="cidade" class="form-control" placeholder="Cidade">
                                                         </div>
-                                                        <div class="col-sm-5">
-                                                            <input type="text" class="form-control" placeholder="CEP">
+                                                        <div class="col-sm-6">
+                                                            <input type="text" formControlName="cep" class="form-control" placeholder="CEP">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group form-horizontal">
                                                     <div class="row m-0 p-0">
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control" placeholder="Pais">
+                                                            <input type="text" formControlName="pais" class="form-control mb-4" placeholder="Pais">
                                                         </div>
-                                                        <div class="col-sm-4">
-                                                            <input type="text" class="form-control" placeholder="Estado">
+                                                        <div class="col-sm-5">
+                                                            <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr>
-                                            <div class="action-wrapper text-center">
-                                                <div class="row m-0 p-0 zoom-50">
-                                                    <div class="col">
-                                                        <div class="action-btn">
-                                                            <button class="btn btn-success btn-lg" (click)="this.desceStep()">
-                                                                Voltar
-                                                                <i class="fa fa-chevron-right"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="action-btn">
-                                                            <button class="btn btn-success btn-lg" (click)="this.sobeStep()">
-                                                                Proximo
-                                                                <i class="fa fa-chevron-right"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
+
+                                            <div class="row m-0 p-0 form-inline">
+                                                <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">
+                                                    <i class="fa fa-chevron-left"></i> Voltar
                                                 </div>
+                                                <div class="btn btn-primary col h5 mr-3" (click)="preparaCartao();">
+                                                    Proximo<i class="fa fa-chevron-right"></i></div>
                                             </div>
                                         </form>
                                     </div>
 
                                     <div *ngIf="tpPagto=='2'" class="row">
-                                        <div class="card itaucard text-dark">
-                                            <div class=" row w-100 h-50">
+                                        <div class="card itaucard text-dark zoom-70">
+                                            <div class=" row w-100 h-50 mt-0">
                                                 <div class="col-3 m-0 p-2">
                                                     <img src="/assets/img/itaulogo.png" alt="" class="img-rounded imgbank mx-3" />
                                                 </div>
@@ -256,6 +251,16 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row m-2 p-2 w-100 form-inline">
+                                            <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep();">
+                                                <i class="fa fa-chevron-left"></i> Voltar
+                                            </div>
+                                            <div class="btn btn-primary col h5" (click)="this.sobeStep();">
+                                                Proximo
+                                                <i class="fa fa-chevron-right"></i>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -263,24 +268,20 @@
                     </div>
                 </div>
                 <div *ngIf="this.step==2" class="container">
-                    <div class="content-panel">
+                    <div class="content-panel w-100">
                         <h2 class="title">Confirmação</h2>
-                        <div class="row m-0 p-0">
-                            <div class="col">
-                                <div class="action-btn">
-                                    <button class="btn btn-success btn-lg" (click)="this.desceStep()">
-                                        Voltar
-                                        <i class="fa fa-chevron-right"></i>
-                                    </button>
-                                </div>
+
+                        <div class="msgconfirmacao" *ngIf="!tpPagto">Código PIX foi copiado e pode ser colado no banco na área de transferencia Pix. Muito obrigado a família agradece.</div>
+                        <div class="msgconfirmacao" *ngIf="tpPagto==1">Dados preparados para envio para sua operadora. Confirma?</div>
+                        <div class="msgconfirmacao" *ngIf="tpPagto==2">Muito obrigado a família agradece.</div>
+
+                        <div class="row m-0 p-0 form-inline">
+                            <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">
+                                <i class="fa fa-chevron-left"></i> Voltar
                             </div>
-                            <div class="col">
-                                <div class="action-btn">
-                                    <button class="btn btn-success btn-lg" (click)="modalRef.hide()">
-                                        Proximo
-                                        <i class="fa fa-chevron-right"></i>
-                                    </button>
-                                </div>
+                            <div class="btn btn-primary col h5" (click)="this.finalizar(tpPagto,modalRef.hide)">
+                                Finalizar
+                                <i class="fa fa-chevron-right"></i>
                             </div>
                         </div>
                     </div>

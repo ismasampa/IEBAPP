@@ -13,9 +13,7 @@ class iCardData {
 export class JunoService {
 
     constructor( ) {
-    //this.juno.publicToken = '970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D';
-    //this.juno.environment = 'sandbox';
-}
+    }
 
   getCardHash(){
     const card = {

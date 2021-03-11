@@ -1008,18 +1008,30 @@ body {
 }
 
 .imgbank {
-    height: 6rem;
+    height: auto;
+    max-width: 20vw;
+    width: 6rem;
 }
 
 .itaucard {
     background-color: rgb(216 116 57);
-    margin-left: 1vw;
-    margin-right: 1vw;
-    margin-top: 1vh;
-    padding-top: 1vh;
+    margin: 20px;
+    padding: 10px;
+}
+
+.pixmsg {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-small;
 }
 
 .pixqr {
     margin: auto;
     width: 80%;
+}
+
+.msgconfirmacao {
+    padding: 10px;
+    font-family: monospace;
+    background: aliceblue;
+    margin-bottom: 20px;
 }

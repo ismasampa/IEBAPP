@@ -4,20 +4,108 @@ import {Crypto} from "@peculiar/webcrypto";
 import { decode } from "base-64";
 import * as qs from "qs";
 import axios, { AxiosInstance } from "axios";
+import { ChargeContainer } from '../models/Charge';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 
 export class JunoCardService {
+  constructor(private http: HttpClient){ 
 
-  constructor() { }
+  }
 
-  cript() {
+  cobra(chargeContainer: ChargeContainer, ok: any, nok: any) {
+    let request = {
+      "Description": chargeContainer.charge.description,
+      "Reference": "Lista de Presente Martim",
+      "Amount": 1,
+      "TotalAmount": chargeContainer.charge.amount,
+      "DueDate": Date.now,
+      "Installments": chargeContainer.charge.installments,
+      "MaxOverdueDays": 0,
+      "Fine": 0,
+      "Interest": 0,
+      "Discount": {
+        "Amount": 0,
+        "Days": 0
+      },
+      "Payer": {
+        "Name": chargeContainer.billings.name,
+        "CpfCnpj": chargeContainer.billings.document,
+        "BirthDate": chargeContainer.billings.birthDate,
+        "BirthDateString": "",
+        "Email": "",
+        "SecondaryEmail": "",
+        "Phone": ""
+      },
+      "BillingAddress": {
+        "Name": chargeContainer.billings.name,
+        "CpfCnpj": chargeContainer.billings.document,
+        "BirthDate": chargeContainer.billings.birthDate,
+        "BirthDateString": "",
+        "Street": chargeContainer.billings.address,
+        "Number": chargeContainer.billings.address.number,
+        "Complement": chargeContainer.billings.address.complement,
+        "Neighborhood": "",
+        "City": chargeContainer.billings.address.city,
+        "State": chargeContainer.billings.address.state,
+        "Postcode": chargeContainer.billings.address.postCode
+      },
+      "NotifyPayer": true,
+      "NotificationUrl": "",
+      "FeeSchemaToken": "",
+      "SplitRecipient": "",
+      "ReferralToken": "",
+      "PaymentTypes": [
+        0
+      ],
+      "CreditCard": {
+        "Number": "string",
+        "HolderName": "string",
+        "SecurityCode": 0,
+        "ExpirationMonth": 0,
+        "ExpirationYear": 0
+      },
+      "PaymentAdvance": true,
+      "CreditCardHash": chargeContainer.charge.CreditCardHash,
+      "CreditCardStore": false,
+      "CreditCardId": "",
+      "Code": "",
+      "Link": "",
+      "PayNumber": "",
+      "CheckoutUrl": "",
+      "BilletDetails": {
+        "BankAccount": "",
+        "OurNumber": "",
+        "BarcodeNumber": "",
+        "Portfolio": ""
+      },
+      "Payments": [
+        {
+          "Id": 0,
+          "CreditCardId": "",
+          "Amount": 0,
+          "Date": "",
+          "Fee": 0,
+          "Type": 0,
+          "Status": 0,
+          "DateString": ""
+        }
+      ],
+      "DueDateString": ""
+    }
+    console.log(request);
+    return this.http.post(environment.apiUrl + 'cartao/', request );
+  }
+
+  cript(cardData, ok: Function, nok: Function) {
 
     const publicToken = '970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D'; // Token público da api da JUNO
     const environment = 'sandbox'; // 'sandbox' || 'production'
 
-    const cardData = {
+    const cardData2 = {
       holderName: "José da Silva",
       cardNumber: "5253286010447710",
       securityCode: "172",
@@ -25,14 +113,11 @@ export class JunoCardService {
       expirationYear: "2021",
     };
 
-
-
     const junoService = new JunoCardHash(publicToken, environment);
 
-
-    junoService.getCardHash(cardData)
-      .then((data) => console.log(data))
-      .catch(err => console.log(err)); // Hash
+    return junoService.getCardHash(cardData)
+    .then((data) => ok(data))
+    .catch(err => nok(err)); // Hash
   }
 
 }

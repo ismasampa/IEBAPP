@@ -20,14 +20,14 @@
 }
 
 .modal {
-    font-family: 'OPSB'!important;
+    font-family: 'Open Sans'!important;
     padding: 15px!important;
 }
 
 .content.mural .block-button a.button-send-menssage {
     border-radius: 3px!important;
     padding: 15px 35px!important;
-    font-family: 'OPS'!important;
+    font-family: 'Open Sans'!important;
     font-size: 20px!important;
 }
 
@@ -185,8 +185,8 @@ li:hover {
         zoom: 0.7;
     }
     .bebe {
-        zoom: 0.7;
-        top: +15px;
+        zoom: 0.4;
+        top: +80px;
     }
 }
 

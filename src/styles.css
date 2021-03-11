@@ -15,17 +15,17 @@
 
 @font-face {
     font-family: Indie Flower;
-    src: url(assets/fonts/IndieFlower-Regular.ttf) format("opentype");
+    src: url(assets/fonts/IndieFlower-Regular.ttf) format("truetype");
 }
 
 @font-face {
     font-family: Dancing Script;
-    src: url(assets/fonts/DancingScript-VariableFont_wght.ttf)
+    src: url(assets/fonts/DancingScript-VariableFont_wght.ttf) format("truetype");
 }
 
 @font-face {
     font-family: Artika;
-    src: url(assets/fonts/Artifika-Regular.ttf)
+    src: url(assets/fonts/Artifika-Regular.ttf) format("truetype");
 }
 
 .btn-primary {
@@ -82,6 +82,10 @@ a {
     text-decoration: none;
 }
 
+.control-label {
+    margin-bottom: 0px;
+}
+
 
 /* IMPUTS */
 
@@ -97,8 +101,8 @@ textarea {
     border-radius: 2px;
     color: rgb(180, 180, 180);
     width: 100%;
-    height: 56px;
-    padding: 7px;
+    height: 2rem;
+    padding: 1px;
 }
 
 
@@ -823,7 +827,7 @@ content.home {}
 .modal input,
 .modal textarea {
     border: rgb(107, 137, 162) solid 1px!important;
-    padding: 20px!important;
+    padding: 5px!important;
 }
 
 .modal button {
