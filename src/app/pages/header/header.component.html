@@ -1,5 +1,4 @@
 <a *ngIf="this.cart?.length && this.getroute() != '/checkout'" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="prepareCart();" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
-
 <header class="header">
     <!-- Itens body -->
     <img src="/assets/img/icon-nuvem-1.png" class="ftl">
@@ -32,7 +31,7 @@
         </div>
         <nav class="navbar navbar-expand-lg navbar-light nav-fill m-0 p-0">
             <button class="navbar-toggler" type="button" (click)="toggleNavbar = !toggleNavbar">
-                 <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse  ps-2" [ngbCollapse]="!toggleNavbar">
                 <ul class="navbar-nav menu-collapse animate__animated animate__fadeInLeft">

@@ -100,7 +100,7 @@
                                         <label ngbButtonLabel [ngClass]="{'btn-primary':!tpPagto}" class="overflow-hidden btn-secondary">
                                           <input ngbButton type="radio" class="h3" [value]=0><i class="fas fa-qrcode mr-1"></i>Pix
                                         </label>
-                                        <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==1}" class="overflow-hidden btn-secondary">
+                                        <label hidden ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==1}" class="overflow-hidden btn-secondary">
                                           <input ngbButton type="radio"  value=1><i class="fas fa-credit-card mr-1"></i>Cartão
                                         </label>
                                         <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==2}" class="overflow-hidden btn-secondary">

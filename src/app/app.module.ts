@@ -29,6 +29,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopService } from './services/shop.service';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AvatarModule } from 'ngx-avatar';
+import { DatePipe } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -59,13 +61,15 @@ import { AvatarModule } from 'ngx-avatar';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     AuthService, AuthGuardService, 
     LoaderService,
     CadfotosService,
     CadMuralService,    
     ItemsService,
     JunoService,
-    ShopService
+    ShopService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

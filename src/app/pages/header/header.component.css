@@ -64,48 +64,6 @@
     z-index: -1;
 }
 
-.ftl {
-    width: 160px;
-    bottom: 420px;
-    left: 5%;
-}
-
-.ft2 {
-    width: 160px;
-    bottom: 450px;
-    right: 0;
-}
-
-.ft3 {
-    width: auto;
-    bottom: 50px;
-    left: 100px;
-}
-
-.ft4 {
-    width: auto;
-    bottom: 104px;
-    right: 52px;
-}
-
-@media screen and (max-width: 860px) {
-    .ftl,
-    .ft2,
-    .ft3,
-    .ft4 {
-        zoom: 0.7
-    }
-}
-
-@media screen and (max-width: 440px) {
-    .ftl,
-    .ft2,
-    .ft3,
-    .ft4 {
-        zoom: 0.5
-    }
-}
-
 .nav-link {
     background-repeat: repeat-x;
     background-position: left top;
@@ -143,7 +101,7 @@
 
 .bebe {
     color: #2e5b83;
-    font-family: AMTW;
+    font-family: MG;
     font-size: 5rem;
     display: block;
     text-shadow: white 2px 2px 3px;
@@ -173,7 +131,7 @@ li:hover {
     }
 }
 
-@media(max-width: 930px) {
+@media(max-width: 991px) {
     .soundicon {
         top: 1.3rem;
         right: 1rem;
@@ -185,8 +143,11 @@ li:hover {
         zoom: 0.7;
     }
     .bebe {
-        zoom: 0.4;
-        top: +80px;
+        zoom: 0.7;
+        top: 0px;
+    }
+    .sub-title {
+        zoom: 0.5;
     }
 }
 
@@ -213,7 +174,7 @@ li:hover {
 .navbar-toggler {
     position: absolute;
     left: 5px;
-    top: -168px;
+    top: -143px;
     font-family: Artika;
 }
 

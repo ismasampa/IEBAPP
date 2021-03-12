@@ -17,13 +17,14 @@ export class CheckoutComponent implements OnInit {
   checkout: any;
   modalRef: BsModalRef;
   items: any =  [
-  { "product": "Fralda RN", "description": "RN 10", "value": 10, "qtd": 0 }, 
-  { "product": "Fralda P", "description": "P 10", "value": 20, "qtd": 0 }, 
-  { "product": "Fralda M", "description": "M 10", "value": 30, "qtd": 0 }, 
-  { "product": "Fralda G", "description": "G 10", "value": 40, "qtd": 0 }, 
-  { "product": "Fralda XG", "description": "XG 10", "value": 50, "qtd": 0 }, 
-  { "product": "Fralda XXG", "description": "XXG 10", "value": 60, "qtd": 0 }, 
-  { "product": "Fralda G30", "description": "G 30", "value": 80, "qtd": 0 }, 
+  { "product": "Shampoo", "description": "Johnson", "value": 10, "qtd": 0 }, 
+  { "product": "Lenços", "description": "Johnson", "value": 9, "qtd": 0 }, 
+  { "product": "Sabonete", "description": "3 unidades", "value": 8, "qtd": 0 }, 
+  { "product": "Fralda P", "description": "P 28", "value": 18.79, "qtd": 0 }, 
+  { "product": "Fralda M", "description": "M 24", "value": 20, "qtd": 0 }, 
+  { "product": "Fralda G", "description": "G 20", "value": 22, "qtd": 0 }, 
+  { "product": "Fralda XG", "description": "XG 30", "value": 50, "qtd": 0 }, 
+  { "product": "Fralda XXG", "description": "XXG 30", "value": 60, "qtd": 0 }, 
   { "product": "Fralda XG30", "description": "XXG 30", "value": 100, "qtd": 0 }, 
   { "product": "Fralda c/ alarme", "description": "Alerta", "value": 200, "qtd": 0 }, 
   { "product": "Fralda Geriátrica", "description": "Geriat.", "value": 300, "qtd": 0 }
@@ -162,7 +163,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   nokPrepCartao(msg){
-    alert(msg);
+    console.log(msg);
   }
 
   sobeStep(){

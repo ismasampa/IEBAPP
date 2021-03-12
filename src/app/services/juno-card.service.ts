@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Crypto} from "@peculiar/webcrypto";
+import { Crypto } from "@peculiar/webcrypto";
 
 import { decode } from "base-64";
 import * as qs from "qs";
@@ -7,97 +7,56 @@ import axios, { AxiosInstance } from "axios";
 import { ChargeContainer } from '../models/Charge';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
 
 export class JunoCardService {
-  constructor(private http: HttpClient){ 
 
+  axios: AxiosInstance;
+
+  constructor(private datePipe: DatePipe) {
+    let baseURL = environment.apiUrl;
+    let instance = axios.create({
+      baseURL,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" }
+    });
+    instance.interceptors.response.use(({ data }) => data);
+    this.axios = instance;
   }
 
+  
+
   cobra(chargeContainer: ChargeContainer, ok: any, nok: any) {
+    let datenow = this.datePipe.transform( Date.now(),"yyyy-MM-dd");
     let request = {
-      "Description": chargeContainer.charge.description,
-      "Reference": "Lista de Presente Martim",
-      "Amount": 1,
-      "TotalAmount": chargeContainer.charge.amount,
-      "DueDate": Date.now,
-      "Installments": chargeContainer.charge.installments,
-      "MaxOverdueDays": 0,
-      "Fine": 0,
-      "Interest": 0,
-      "Discount": {
-        "Amount": 0,
-        "Days": 0
+      "charge": {
+        "description": chargeContainer.charge.description,
+        "amount": chargeContainer.charge.amount,
+        "dueDate": datenow,
+        "installments": chargeContainer.charge.installments,
+        "paymentTypes": chargeContainer.charge.paymentTypes
       },
-      "Payer": {
-        "Name": chargeContainer.billings.name,
-        "CpfCnpj": chargeContainer.billings.document,
-        "BirthDate": chargeContainer.billings.birthDate,
-        "BirthDateString": "",
-        "Email": "",
-        "SecondaryEmail": "",
-        "Phone": ""
-      },
-      "BillingAddress": {
-        "Name": chargeContainer.billings.name,
-        "CpfCnpj": chargeContainer.billings.document,
-        "BirthDate": chargeContainer.billings.birthDate,
-        "BirthDateString": "",
-        "Street": chargeContainer.billings.address,
-        "Number": chargeContainer.billings.address.number,
-        "Complement": chargeContainer.billings.address.complement,
-        "Neighborhood": "",
-        "City": chargeContainer.billings.address.city,
-        "State": chargeContainer.billings.address.state,
-        "Postcode": chargeContainer.billings.address.postCode
-      },
-      "NotifyPayer": true,
-      "NotificationUrl": "",
-      "FeeSchemaToken": "",
-      "SplitRecipient": "",
-      "ReferralToken": "",
-      "PaymentTypes": [
-        0
-      ],
-      "CreditCard": {
-        "Number": "string",
-        "HolderName": "string",
-        "SecurityCode": 0,
-        "ExpirationMonth": 0,
-        "ExpirationYear": 0
-      },
-      "PaymentAdvance": true,
-      "CreditCardHash": chargeContainer.charge.CreditCardHash,
-      "CreditCardStore": false,
-      "CreditCardId": "",
-      "Code": "",
-      "Link": "",
-      "PayNumber": "",
-      "CheckoutUrl": "",
-      "BilletDetails": {
-        "BankAccount": "",
-        "OurNumber": "",
-        "BarcodeNumber": "",
-        "Portfolio": ""
-      },
-      "Payments": [
-        {
-          "Id": 0,
-          "CreditCardId": "",
-          "Amount": 0,
-          "Date": "",
-          "Fee": 0,
-          "Type": 0,
-          "Status": 0,
-          "DateString": ""
-        }
-      ],
-      "DueDateString": ""
+      "billing": {
+        "name": chargeContainer.billings.name,
+        "document": chargeContainer.billings.document,
+        "address": {
+          "street": chargeContainer.billings.address.street,
+          "number": chargeContainer.billings.address.number,
+          "complement": chargeContainer.billings.address.complement,
+          "city": chargeContainer.billings.address.city,
+          "state": chargeContainer.billings.address.state,
+          "postCode": chargeContainer.billings.address.postCode
+        },
+        "notify": false
+      }
     }
-    console.log(request);
-    return this.http.post(environment.apiUrl + 'cartao/', request );
+    
+    
+    return this.axios.post(environment.apiUrl + 'cartao/', request)
+    .then((data) => ok(data))
+    .catch((err) => nok(err));
   }
 
   cript(cardData, ok: Function, nok: Function) {
@@ -116,8 +75,8 @@ export class JunoCardService {
     const junoService = new JunoCardHash(publicToken, environment);
 
     return junoService.getCardHash(cardData)
-    .then((data) => ok(data))
-    .catch(err => nok(err)); // Hash
+      .then((data) => ok(data))
+      .catch(err => nok(err)); // Hash
   }
 
 }
