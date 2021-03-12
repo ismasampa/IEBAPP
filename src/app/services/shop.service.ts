@@ -55,5 +55,9 @@ export class ShopService {
     localStorage.setItem("cart", JSON.stringify(this._cart.value));
   }
 
+  cleanCart(){
+    this._cart.next([]);
+    localStorage.setItem("cart", JSON.stringify(this._cart.value));
+  }
 }
 

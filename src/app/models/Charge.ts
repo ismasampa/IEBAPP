@@ -1,6 +1,6 @@
 export class ChargeContainer{
     charge: Charge;
-    billings: Billing;
+    billing: Billing;
 }
 
 export class Charge{
@@ -8,7 +8,7 @@ export class Charge{
     amount: number;
     installments: number;
     paymentTypes: [string];
-    CreditCardHash: string;
+    dueDate: string;
 }
 
 export class Billing{
@@ -19,6 +19,10 @@ export class Billing{
     address: Address;
     birthDate: string;
     notify: boolean
+}
+export class PayFullContainer{
+    charge: ChargeContainer;
+    creditCardHash: string;
 }
 
 export class Address{

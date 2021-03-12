@@ -6,7 +6,7 @@
                 <div class="card product_item">
                     <div class="body">
                         <div class="cp_img">
-                            <img src="assets/img/fralda.png" alt="Product" class="img-fluid" style="cursor: pointer;">
+                            <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer;">
                             <div _ngcontent-aur-c3="" class="hover"></div>
                             <div _ngcontent-aur-c3="" class="fraldatipo zoom-50">{{item.description}}</div>
                         </div>
@@ -78,7 +78,7 @@
                         <tr *ngFor="let item of this.cart; let i = index;">
                             <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{item.product}}</td>
                             <td [ngClass]="{'bg-light':i%2==1}">{{ item.qtd | number }}</td>
-                            <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ item.value | number }}</td>
+                            <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ item.value * item.qtd | number }}</td>
                         </tr>
                     </table>
                     <div class="row m-0 p-0 form-inline">
@@ -100,11 +100,11 @@
                                         <label ngbButtonLabel [ngClass]="{'btn-primary':!tpPagto}" class="overflow-hidden btn-secondary">
                                           <input ngbButton type="radio" class="h3" [value]=0><i class="fas fa-qrcode mr-1"></i>Pix
                                         </label>
-                                        <label hidden ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==1}" class="overflow-hidden btn-secondary">
+                                        <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==1}" class="overflow-hidden btn-secondary">
                                           <input ngbButton type="radio"  value=1><i class="fas fa-credit-card mr-1"></i>Cartão
                                         </label>
                                         <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==2}" class="overflow-hidden btn-secondary">
-                                          <input ngbButton type="radio" [value]=2><i class="fas fa-money-bill mr-1"></i>Depósito
+                                          <input ngbButton type="radio" [value]=2><i class="fas fa-money-bill mr-1"></i>Transferir
                                         </label>
                                     </div>
                                     <div *ngIf="!tpPagto" class="text-center m-auto w-100">
@@ -138,6 +138,12 @@
                                                 <label class="col-sm-12 control-label">Nome</label>
                                                 <div class="col-sm-12">
                                                     <input type="text" formControlName="nome" class="form-control" placeholder="Nome como consta no cartão" data-bs-toggle="tooltip" title="Como aparece no cartão">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label">Email</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" formControlName="email" class="form-control" placeholder="Email@mail" data-bs-toggle="tooltip" title="Email">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -205,21 +211,24 @@
                                                 </div>
                                                 <div class="form-group form-horizontal">
                                                     <div class="row m-0 p-0">
-                                                        <div class="col-sm-6 mb-4">
-                                                            <input type="text" formControlName="cidade" class="form-control" placeholder="Cidade">
+                                                        <div class="col-sm-4 mb-4">
+                                                            <input type="text" formControlName="num" class="form-control" placeholder="Número">
                                                         </div>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" formControlName="cep" class="form-control" placeholder="CEP">
+                                                        <div class="col-sm-4">
+                                                            <input type="text" formControlName="complement" class="form-control" placeholder="Compl">
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group form-horizontal">
                                                     <div class="row m-0 p-0">
-                                                        <div class="col-sm-7">
-                                                            <input type="text" formControlName="pais" class="form-control mb-4" placeholder="Pais">
+                                                        <div class="col-sm-6 mb-4">
+                                                            <input type="text" formControlName="cidade" class="form-control" placeholder="Cidade">
                                                         </div>
-                                                        <div class="col-sm-5">
-                                                            <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
+                                                        <div class="col-sm-6">
+                                                            <input type="text" formControlName="cep" class="form-control" placeholder="CEP">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -274,6 +283,8 @@
                         <div class="msgconfirmacao" *ngIf="!tpPagto">Código PIX foi copiado e pode ser colado no banco na área de transferencia Pix. Muito obrigado a família agradece.</div>
                         <div class="msgconfirmacao" *ngIf="tpPagto==1">Dados preparados para envio para sua operadora. Confirma?</div>
                         <div class="msgconfirmacao" *ngIf="tpPagto==2">Muito obrigado a família agradece.</div>
+
+                        <div class="msgconfirmacaoerro animate__animated animate__headShake" *ngIf="tpPagto==1 && this.cardError">Falha no envio verifique;<br>{{this.cardError}}</div>
 
                         <div class="row m-0 p-0 form-inline">
                             <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">

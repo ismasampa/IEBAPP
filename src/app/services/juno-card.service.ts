@@ -4,7 +4,7 @@ import { Crypto } from "@peculiar/webcrypto";
 import { decode } from "base-64";
 import * as qs from "qs";
 import axios, { AxiosInstance } from "axios";
-import { ChargeContainer } from '../models/Charge';
+import { ChargeContainer, PayFullContainer } from '../models/Charge';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
@@ -28,39 +28,21 @@ export class JunoCardService {
 
   
 
-  cobra(chargeContainer: ChargeContainer, ok: any, nok: any) {
-    let datenow = this.datePipe.transform( Date.now(),"yyyy-MM-dd");
-    let request = {
-      "charge": {
-        "description": chargeContainer.charge.description,
-        "amount": chargeContainer.charge.amount,
-        "dueDate": datenow,
-        "installments": chargeContainer.charge.installments,
-        "paymentTypes": chargeContainer.charge.paymentTypes
-      },
-      "billing": {
-        "name": chargeContainer.billings.name,
-        "document": chargeContainer.billings.document,
-        "address": {
-          "street": chargeContainer.billings.address.street,
-          "number": chargeContainer.billings.address.number,
-          "complement": chargeContainer.billings.address.complement,
-          "city": chargeContainer.billings.address.city,
-          "state": chargeContainer.billings.address.state,
-          "postCode": chargeContainer.billings.address.postCode
-        },
-        "notify": false
-      }
+  cobra(payfullContainer: PayFullContainer, ok: any, nok: any) {
+    const headers = {
+      'Content-Type': 'application/json'
     }
     
-    
-    return this.axios.post(environment.apiUrl + 'cartao/', request)
+    return this.axios.post(environment.apiUrl + '/cartao', payfullContainer, {
+      headers: headers
+    })
     .then((data) => ok(data))
     .catch((err) => nok(err));
   }
 
   cript(cardData, ok: Function, nok: Function) {
 
+    console.log(cardData);
     const publicToken = '970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D'; // Token público da api da JUNO
     const environment = 'sandbox'; // 'sandbox' || 'production'
 

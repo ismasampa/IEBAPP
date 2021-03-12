@@ -1035,3 +1035,10 @@ body {
     background: aliceblue;
     margin-bottom: 20px;
 }
+
+.msgconfirmacaoerro {
+    padding: 10px;
+    font-family: monospace;
+    background: rgb(255, 180, 180);
+    margin-bottom: 20px;
+}

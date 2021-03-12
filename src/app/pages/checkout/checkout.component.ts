@@ -3,9 +3,10 @@ import { JunoCardService } from 'src/app/services/juno-card.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ShopService } from 'src/app/services/shop.service';
 import { Item } from 'src/app/models/Item';
-import { Billing, Charge, ChargeContainer } from 'src/app/models/Charge';
+import { Billing, Charge, ChargeContainer, PayFullContainer } from 'src/app/models/Charge';
 import { ClipboardService } from 'ngx-clipboard';
 import { FormBuilder } from '@angular/forms';
+import { PaymentContainer } from 'src/app/models/Payment';
 
 @Component({
 
@@ -17,39 +18,37 @@ export class CheckoutComponent implements OnInit {
   checkout: any;
   modalRef: BsModalRef;
   items: any =  [
-  { "product": "Shampoo", "description": "Johnson", "value": 10, "qtd": 0 }, 
-  { "product": "Lenços", "description": "Johnson", "value": 9, "qtd": 0 }, 
-  { "product": "Sabonete", "description": "3 unidades", "value": 8, "qtd": 0 }, 
-  { "product": "Fralda P", "description": "P 28", "value": 18.79, "qtd": 0 }, 
-  { "product": "Fralda M", "description": "M 24", "value": 20, "qtd": 0 }, 
-  { "product": "Fralda G", "description": "G 20", "value": 22, "qtd": 0 }, 
-  { "product": "Fralda XG", "description": "XG 30", "value": 50, "qtd": 0 }, 
-  { "product": "Fralda XXG", "description": "XXG 30", "value": 60, "qtd": 0 }, 
-  { "product": "Fralda XG30", "description": "XXG 30", "value": 100, "qtd": 0 }, 
-  { "product": "Fralda c/ alarme", "description": "Alerta", "value": 200, "qtd": 0 }, 
-  { "product": "Fralda Geriátrica", "description": "Geriat.", "value": 300, "qtd": 0 }
-  ];
+    { "product": "Sabonete", "img" : "assets/img/sabonete.png", "description": "3un", "value": 10, "qtd": 0 }, 
+    { "product": "Lenços", "img" : "assets/img/lenco.png", "description": "10un", "value": 20, "qtd": 0 }, 
+    { "product": "Shampoo", "img" : "assets/img/shampoo.png", "description": "300ml", "value": 30, "qtd": 0 }, 
+    { "product": "Fralda P", "img" : "assets/img/fralda.png", "description": "P30", "value": 40, "qtd": 0 }, 
+    { "product": "Fralda M", "img" : "assets/img/fralda.png", "description": "M30", "value": 50, "qtd": 0 }, 
+    { "product": "Fralda G", "img" : "assets/img/fralda.png", "description": "G30", "value": 60, "qtd": 0 }, 
+    ];
   tpPagto: any="";
   cart: Item[];
   step: number;
   cardHash: any;
   chargeContainer: ChargeContainer;
+  payfullContainer: PayFullContainer;
 
   @ViewChild('bscheckout') modalPayment: TemplateRef<any>;  
 
   checkoutForm = this.formBuilder.group({
     nome: '',
+    email: '',
     cpf:'',
     cartao: '',
     mesvencto: '03',
     anovencto: '2030',
     cvc: '',
     endereco: '',
+    num: '',
+    complement: '',
     cep:'',
     cidade: '',
-    estado: '',
-    pais: ''
-  });
+    estado: ''});
+  cardError: any;
 
   constructor(private junoCardService: JunoCardService, 
     private modalService: BsModalService, 
@@ -66,9 +65,13 @@ export class CheckoutComponent implements OnInit {
 
   initCart() {
     this.cart.forEach( x=>{
+      if(!this.items.filter(z=>z.product==x.product)){
+        this.shopService.delItem(x);
+      }else{
       if(x.qtd){
         this.items.filter(z=>z.product==x.product)[0].qtd = x.qtd;
       }
+    }
     });
     setTimeout(() => 
     {
@@ -100,6 +103,11 @@ export class CheckoutComponent implements OnInit {
       this.shopService.delItem(del);
   }
 
+  cleanCart(){
+    this.items.map(x=> x.qtd=0);
+    this.shopService.cleanCart();
+}
+
   preparaCartao() {
     const cardData = {
       holderName: this.checkoutForm.get("nome").value,
@@ -108,6 +116,7 @@ export class CheckoutComponent implements OnInit {
       expirationMonth: this.checkoutForm.get("mesvencto").value,
       expirationYear: this.checkoutForm.get("anovencto").value,
     };
+    this.cardError = "";
     this.junoCardService.cript(cardData, this.okPrepCartao.bind(this), this.nokPrepCartao.bind(this));
   }
 
@@ -120,22 +129,30 @@ export class CheckoutComponent implements OnInit {
   }
 
   cobraCartao() {
+    let valor = this.cart.reduce((acc, x) => {
+      return acc += x.value * x.qtd;
+    }, 0);
+    let num = this.checkoutForm.get("num")?.value ?? "N/A";
+    if(!num){
+      num = "N/A";
+    }
+
     this.chargeContainer = {
                 charge: {
-                    description : "Descrição da cobranca",
-                    amount : 2.23,
+                    description : "Martim - Lista de Presentes",
+                    amount : valor,
+                    dueDate : null,
                     installments : 1,
-                    paymentTypes: ["CREDIT_CARD"],
-                    CreditCardHash: this.cardHash
+                    paymentTypes: ["CREDIT_CARD"]
                 },
-                billings: {
+                billing: {
                     name : this.checkoutForm.get("nome").value,
                     document : this.checkoutForm.get("cpf").value,
-                    email : "",
+                    email : this.checkoutForm.get("email").value,
                     address: {
                         street : this.checkoutForm.get("endereco").value,
-                        number : "",
-                        complement : "",
+                        number : this.checkoutForm.get("num")?.value ?? "N/A",
+                        complement : this.checkoutForm.get("complement").value,
                         city : this.checkoutForm.get("cidade").value,
                         state : this.checkoutForm.get("estado").value,
                         postCode : this.checkoutForm.get("cep").value},
@@ -144,16 +161,48 @@ export class CheckoutComponent implements OnInit {
                     notify : false
                 }
               };
-
-    this.junoCardService.cobra(this.chargeContainer, this.okCobraCartao.bind(this), this.nokCobraCartao.bind(this));
+    this.payfullContainer = {
+      creditCardHash: this.cardHash,
+      charge : this.chargeContainer
+    };
+    
+    this.cardError = "";            
+    this.junoCardService.cobra(this.payfullContainer, this.okCobraCartao.bind(this), this.nokCobraCartao.bind(this));
   }
 
   okCobraCartao(msg){
     console.log(msg);
+    if(msg?.status){
+      switch(msg.status){
+        case 200:{
+          this.cleanCart();
+          break
+        }
+        case 400:{
+          this.cardError = msg.details.map(x=>x.message);
+          break
+        }
+        case 500:{
+          this.cardError = msg.details.map(x=>x.message);
+          break
+        }
+        default:{
+          this.cardError = msg.status + ' ' + msg.error;
+          ;
+          break
+        }
+      }
+    }else{
+      if(msg?.payments?.length>0){
+        this.cleanCart();
+        this.modalRef.hide();        
+      }else{this.cardError = msg.status + ' ' + msg.error;}
+    }
   }
 
   nokCobraCartao(msg){
-    console.log(msg);
+      console.log(msg);
+      this.cardError = msg;
   }
 
   okPrepCartao(msg){

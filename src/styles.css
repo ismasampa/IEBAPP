@@ -388,7 +388,7 @@
         background-color: rgb(107, 137, 162);
         border-radius: 4px;
         color: rgb(255, 255, 255);
-        font-family: "OPSB";
+        font-family: "OPS";
         padding: 9px 35px;
         position: absolute;
         left: 50%;
@@ -810,7 +810,7 @@
     }
     
     .modal {
-        font-family: 'OPSB';
+        font-family: 'OPS';
         padding: 15px!important;
     }
     
