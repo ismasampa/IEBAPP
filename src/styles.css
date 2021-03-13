@@ -902,25 +902,25 @@ content.home {}
 }
 
 .ftl {
-    width: 10vw;
+    width: 20vw;
     bottom: 55vh;
     left: 1vw;
 }
 
 .ft2 {
-    width: 10vw;
+    width: 20vw;
     bottom: 55vh;
     right: 1vw;
 }
 
 .ft3 {
-    width: 10vw;
+    width: 20vw;
     bottom: 10vh;
     left: 1vw;
 }
 
 .ft4 {
-    width: 10vw;
+    width: 20vw;
     bottom: 10vh;
     right: 1vw;
 }
@@ -937,7 +937,7 @@ content.home {}
     background-color: rgb(216 116 57);
     border-radius: 16px;
     color: black;
-    min-height: 30vh;
+    min-height: 25vh;
 }
 
 @media screen and (max-width: 992px) {

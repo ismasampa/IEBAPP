@@ -276,10 +276,9 @@ export class CheckoutComponent implements OnInit {
 
   showCartao(){
     Swal.fire({
-      html: '<div class="text-light zoom-70"><div class="row w-100 h-100 mt-0"><div class="col-3 m-0 pt-2"><img src="/assets/img/itaulogo.png" width=100% class="img-rounded ml-2" /></div><div class="col-8 ml-2 mt-2 mb-2 text-left"><span class="h5 mb-1">Ismael Ribeiro dos Santos</span><br>253.540.508-39<br ><i class="fas fa-university mr-3"></i>Banco Itaú<br ><i  class="fas fa-home mr-3"></i>ag: 7068<br ><i  class="fas fa-file-invoice-dollar mr-3"></i>cc: 10376-6</div></div></div>',
+      html: '<div class="text-light"><div class="row w-100 h-100 mt-0"><div class="col-3 m-0 pt-2"><img src="/assets/img/itaulogo.png" width=100% class="img-rounded ml-2" /></div><div class="col-8 ml-2 mt-2 mb-2 text-left small"><span class="h5 mb-2">Ismael Ribeiro dos Santos</span><br>253.540.508-39<br ><i class="fas fa-university mr-3"></i>Banco Itaú<br ><i  class="fas fa-home mr-3"></i>ag: 7068<br ><i  class="fas fa-file-invoice-dollar mr-3"></i>cc: 10376-6</div></div></div>',
       customClass: {
         htmlContainer: 'bg-color-itau',
-        container: 'zoom-50'
       } 
       });
   }

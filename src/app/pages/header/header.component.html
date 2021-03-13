@@ -1,4 +1,4 @@
-<div id="menu" class="collapsedTitle"><i class="small fas fa-caret-right mr-1"></i>{{this.actualroute}}<i class="small fas fa-caret-left ml-1"></i></div>
+<div id="menu" class="collapsedTitle"><i class="fas fa-caret-right mr-1"></i>{{this.actualroute}}<i class="small fas fa-caret-left ml-1"></i></div>
 <a *ngIf="this.cart?.length && this.getroute() != '/checkout'" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="prepareCart();this.setroute('/checkout')" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
 <header class="header">
     <!-- Itens body -->
