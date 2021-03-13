@@ -101,7 +101,7 @@
 
 .bebe {
     color: #2e5b83;
-    font-family: MG;
+    font-family: MR;
     font-size: 5rem;
     display: block;
     text-shadow: white 2px 2px 3px;
@@ -117,11 +117,11 @@ li:hover {
 @media(min-width: 931px) {
     .soundicon {
         top: .5rem;
-        right: 10px;
+        right: 1.8vw;
     }
     .adminicon {
         top: 3rem;
-        right: 10px;
+        right: 1.8vw;
     }
     .nav-item:first-child {
         border: 0;
@@ -149,8 +149,8 @@ li:hover {
         right: 25vw;
         text-align: center;
         justify-content: center;
-        height: 30px;
-        font-size: 4vw;
+        height: 25px;
+        font-size: 90%;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         color: white;
         background-color: #8badd6;
@@ -183,6 +183,7 @@ li:hover {
     font-size: 2rem;
     width: 20px;
     color: #4a81b0;
+    z-index: 99;
 }
 
 .adminicon {
@@ -190,6 +191,7 @@ li:hover {
     font-size: 1.5rem;
     width: 20px;
     color: #4a81b0;
+    z-index: 99;
 }
 
 .componentbg {

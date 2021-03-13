@@ -73,6 +73,10 @@
     background: #8badd6!important;
 }
 
+.btn-primary:hover {
+    background: #627a97!important;
+}
+
 .bg-linho {
     background: rgb(248, 250, 252);
 }
@@ -947,7 +951,7 @@ content.home {}
     }
 }
 
-.modal-header {
+.modal-content .modal-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;

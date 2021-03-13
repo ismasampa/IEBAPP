@@ -2,9 +2,7 @@
     <div class="auto-invert line-b-4 align-center">
         <!-- <h4 class="font-cond-l fg-accent lts-md mgb-10" contenteditable="false">Not Yet Convinced?</h4>
       <h1 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Read Customer Reviews</h1> -->
-        <div class="h6 text-uppercase">Deixe sua mensagem para o Martim</div>
-        <p class="m-0 p-0">É possível deixar mensagem privada. As mensagem serão censuradas e não devem conter teor político ...</p>
-        <button class="btn btn-sm small btn-primary mt-3" (click)="open(mymodal)"><i class="fas fa-comments mr-2" ></i>Deixar mensagem</button>
+        <button class="btn btn-sm small btn-primary mt-2 mb-2 " (click)="open(mymodal)"><i class="fas fa-comments mr-2" ></i>Nova mensagem</button>
     </div>
     <ul class="hash-list cols-12 cols-12-xs m-0 p-0 align-center text-sm" *ngIf="Items">
         <li *ngFor="let item of Items; ; let i= index" class="col-sm-3 col-6 m-0 p-0  text-center zoom-50">
@@ -47,22 +45,23 @@
             </div>
         </div>
     </section-->
+
     <ng-template id="modal" #mymodal let-modal>
         <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">{{this.title}}</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            <h5 class="modal-title" id="modal-basic-title">{{this.title}}</h5>
+            <div class="btn pull-right" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <i class="h4 defaultColor fas fa-times"></i>
+            </div>
         </div>
         <div class="modal-body">
             <form [formGroup]="cadmuralForm" (ngSubmit)="registrar()">
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Nome(s)</span>
+                    <label class="col-sm-12 control-label">Nome</label>
                     <input type="text" class="form-control" formControlName="Nome" placeholder="Nome(s)">
                 </div>
                 <div *ngIf="Nome.touched && Nome.errors?.required" class="alert alert-danger">Campo Obrigatório</div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Mensagem</span>
+                    <label class="col-sm-12 control-label">Mensagem</label>
                     <input type="text" class="form-control animated fadeIn infinite" formControlName="Nota" placeholder="Mensagem">
                 </div>
                 <div *ngIf="Nota.touched && Nota.errors?.required" class="alert alert-danger">Campo Obrigatório
@@ -74,8 +73,8 @@
                     </label>
                 </div>
                 <div class="modal-footer form-inline">
-                    <button type="submit" class="btn btn-primary col login_btn" (click)="modal.close('Adicionar');">Adicionar</button>
-                    <button type="button" class="btn btn-outline-dark col " (click)="modal.close('Cancelar')">Cancelar</button>
+                    <div class="btn btn-primary col login_btn" (click)="registrar();modal.close('Adicionar');">Adicionar</div>
+                    <div class="btn btn-primary col " (click)="modal.close('Cancelar')">Cancelar</div>
                 </div>
             </form>
         </div>

@@ -1,6 +1,7 @@
 body {
     margin-top: 20px;
     background-color: #f4f7f6;
+    font-family: "OPS";
 }
 
 .c_review {
@@ -352,9 +353,11 @@ body {
     margin-left: 2px;
     margin-right: 2px;
     overflow-x: hidden;
+    font-family: "OPS";
 }
 
 .productname {
+    font-family: "OPS";
     overflow-x: hidden;
 }
 
@@ -614,7 +617,7 @@ body {
 
 .fraldatipo {
     position: relative;
-    font-family: fantasy;
+    font-family: OPS;
     font-size: xx-large;
     text-align: center;
     top: -100px;

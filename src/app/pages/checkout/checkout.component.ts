@@ -3,11 +3,10 @@ import { JunoCardService } from 'src/app/services/juno-card.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ShopService } from 'src/app/services/shop.service';
 import { Item } from 'src/app/models/Item';
-import { Billing, Charge, ChargeContainer, PayFullContainer } from 'src/app/models/Charge';
+import { ChargeContainer, PayFullContainer } from 'src/app/models/Charge';
 import { ClipboardService } from 'ngx-clipboard';
 import { FormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2';
-
 
 
 @Component({
@@ -50,8 +49,9 @@ export class CheckoutComponent implements OnInit {
     complement: '',
     cep:'',
     cidade: '',
-    estado: ''});
+    uf: 'SP'});
   cardError: any;
+  itemTotal: number;
 
   constructor(private junoCardService: JunoCardService, 
     private modalService: BsModalService, 
@@ -88,6 +88,14 @@ export class CheckoutComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  getItemTotal(){
+    let total: number;
+    this.itemTotal = 0;
+    this.cart.forEach(x=>{
+      this.itemTotal = this.itemTotal + (x.qtd>0?(x.value * x.qtd):0);});
+    return this.itemTotal;
+  };
+
   addItem(item){
     let add = this.items.filter(x => x.product == item.product)[0];
     add.qtd++;
@@ -104,10 +112,31 @@ export class CheckoutComponent implements OnInit {
       }
       this.shopService.delItem(del);
   }
+  
+  removeItem(item){
+    Swal.fire({
+      title: 'Retirar item',
+      icon: 'warning',
+      text: 'Comfirma retirada do item?',
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonText: `Sim`,
+      cancelButtonText: `Não`
+    }).then((result) => {
+   if(result.isConfirmed){
+        let del = this.items.filter(x => x.product == item.product)[0];
+      if(del.qtd){
+        del.qtd = 0;
+      }
+      this.shopService.removeItem(del);
+      } 
+   });    
+  }
 
   cleanCart(){
     this.items.map(x=> x.qtd=0);
     this.shopService.cleanCart();
+    this.checkoutForm.reset();
 }
 
   preparaCartao() {
@@ -134,7 +163,7 @@ export class CheckoutComponent implements OnInit {
     if(!num){
       num = "N/A";
     }
-    let uf:string = this.checkoutForm.get("estado").value;
+    let uf:string = this.checkoutForm.get("uf").value;
     uf = uf.toUpperCase();
     let cep:string = this.checkoutForm.get("cep").value;
     cep = cep.replace(/\D+/g,'');
@@ -176,10 +205,6 @@ export class CheckoutComponent implements OnInit {
     console.log(msg);
     if(msg?.status){
       switch(msg.status){
-        case 200:{
-          this.cleanCart();
-          break
-        }
         case 400:{
           this.cardError = msg.details.map(x=>x.message);
           break

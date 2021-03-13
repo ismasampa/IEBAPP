@@ -1,52 +1,53 @@
-ngb-carousel{
+ngb-carousel {
     padding: 5px;
     width: 100%;
     margin: auto;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     color: white;
     text-shadow: rgb(0 0 0) 1px 1px 2px;
     position: relative;
     height: auto;
 }
-.carousel-control-prev,.carousel-control-next{
-width: 15vw;
-text-align: center;
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 15vw;
+    text-align: center;
 }
 
-.carousel-control-prev-icon,.carousel-control-next-icon{
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
     background-image: none;
     font-family: "Font Awesome 5 Free";
-    font-weight: 900; 
+    font-weight: 900;
     font-size: 3rem;
     width: 15vw;
     color: rgb(250, 250, 250);
     text-shadow: black 3px 3px 3px;
- }
+}
 
- .carousel-control-prev-icon::before{
+.carousel-control-prev-icon::before {
     content: "\f060";
- }
+}
 
- .carousel-control-next-icon::before{
+.carousel-control-next-icon::before {
     content: "\f061";
- }
-.picsum-img-wrapper>img{
+}
+
+.picsum-img-wrapper>img {
     max-height: 70vh;
     max-width: 90vw;
 }
 
-.carousel-item{
+.carousel-item {
     height: 100%;
     width: 100%;
 }
 
-.carousel-caption{
-    top: 70%;
-    font-size: auto;
-    position: fixed;
+.carousel-caption {
+    font-size: 90%;
+    position: absolute;
     width: auto;
     font-size: larger;
 }
-
-

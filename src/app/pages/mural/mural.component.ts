@@ -10,9 +10,7 @@ import { CadMuralService } from './cad-mural.service';
   styleUrls: ['./mural.component.css']
 })
 export class MuralComponent implements OnInit {
-
-
-  title='Adicionar mensagem ...';
+  title='Adicionar mensagem';
   closeResult: string;
   modalOptions: NgbModalOptions;
   Items:any;
@@ -81,6 +79,7 @@ export class MuralComponent implements OnInit {
     return (await this.cadmuralService.create(novo)).subscribe(data=>
       {this.cadmuralService.read().subscribe(data=>{     
         this.Items = data;
+        this.cadmuralForm.reset();
       })
     });
   }

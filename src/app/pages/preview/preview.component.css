@@ -1,18 +1,19 @@
-.card{
+.card {
     box-shadow: grey 2px 2px 1px;
 }
 
-.card-title{
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif ;
+.card-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
     color: #1e3447;
-    text-shadow: white  1px 2px 2px;
+    text-shadow: white 1px 2px 2px;
     text-align: center;
 }
 
-.card-img{
+.card-img {
     height: 35vh;
 }
-.imgcss{
+
+.imgcss {
     position: absolute;
     height: auto;
     width: auto;
@@ -24,16 +25,16 @@
     right: -28px;
 }
 
-.bgtransp{
-background: rgba(255,255,255,0.6);
+.bgtransp {
+    background: rgba(255, 255, 255, 0.6);
 }
 
-.card-text{
+.card-text {
     position: relative;
-    font-size: auto;
+    font-size: 90%;
 }
 
-.bebevideo{
+.bebevideo {
     width: auto;
     height: auto;
     max-height: 60%;

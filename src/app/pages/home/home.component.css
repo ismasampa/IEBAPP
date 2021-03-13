@@ -10,8 +10,8 @@
 
 .fontDefault {
     margin: 2% 2% 2% 2%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
-    font-size: auto;
+    font-family: "OPS";
+    font-size: 90%;
     font-weight: normal;
     color: rgb(82, 67, 49);
 }

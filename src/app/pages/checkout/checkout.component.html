@@ -4,7 +4,7 @@
         <div class="row clearfix">
             <div class="col-lg-3 col-md-3 col-6 pl-1vw pr-1vw" *ngFor="let item of this.items; index">
                 <div *ngIf="item.tp=='x'" class="card product_item">
-                    <div class="body" [swal]="{ title: 'Faça um Pix...', text:'Clique em Confirmar para copiar o codigo Pix para a memoria do device, ou retorne para scanear o QRCode na lista de produtos. Obrigado', showCancelButton: true, cancelButtonText:'Voltar', confirmButtonText:'Confirmar' }"
+                    <div class="body" [swal]="{ title: 'Faça um Pix...', text:'Clique em Confirmar para copiar o codigo Pix para a memoria do device ou retorne à lista e escaneie(foto) o QRCode. Obrigado', showCancelButton: true, cancelButtonText:'Voltar', confirmButtonText:'Confirmar' }"
                         (confirm)="this.copyContent()">
                         <div class="cp_img">
                             <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer;">
@@ -31,16 +31,16 @@
                     </div>
                 </div>
                 <div *ngIf="item.tp=='p'" class="card product_item">
-                    <div class="body">
-                        <div class="cp_img">
+                    <div class="body btn">
+                        <div class="cp_img" (click)="addItem(item)">
                             <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer;">
                             <div class="hover zoom-50">{{item.description}}</div>
                             <div class="fraldatipo zoom-50">{{item.description}}</div>
                         </div>
                         <div class="product_details">
                             <div class="row align-items-center">
-                                <div class="col-lg-6 col-md-6 col-12 m-0 p-0">
-                                    <a class="h6 productname" href="javascript:void(0)" (click)="addItem(item)">{{item.product}}</a>
+                                <div class="col-lg-6 col-md-6 col-12 m-0 p-0 btn" (click)="addItem(item)">
+                                    <div class="h6 productname">{{item.product}}</div>
                                     <ul class="product_price list-unstyled">
                                         <li class="old_price">R$ {{item.value}}</li>
                                     </ul>
@@ -63,10 +63,10 @@
 </div>
 <ng-template #bscheckout>
     <div class="modal-header">
-        <div class="modal-title h4 pull-left" id="my-modal-title">Checkout da lista</div>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-title h4 pull-left" id="my-modal-title">Pagamento</div>
+        <div class="btn pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <i class="h4 defaultColor fas fa-times"></i>
+        </div>
     </div>
     <div class="modal-body m-0 p-0">
         <div class="row">
@@ -96,17 +96,23 @@
         </div>
         <div id="my-modal-description">
             <div *ngIf="this.step==0" class="container table-responsive">
-                <table class="table table-striped defaultColor">
+                <table class="table table-sm table-striped defaultColor">
                     <tr class="defaultBgColor text-light">
                         <td class="overflow-hidden">Produto</td>
                         <td class="overflow-hidden">Qtd</td>
                         <td class="overflow-hidden">Total</td>
                     </tr>
                     <tr *ngFor="let item of this.cart; let i = index;">
-                        <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{item.product}}</td>
+                        <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}"><i (click)="this.removeItem(item)" class="warning fas fa-window-close mr-1"></i>{{item.product}}</td>
                         <td [ngClass]="{'bg-light':i%2==1}">{{ item.qtd | number }}</td>
                         <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ item.value * item.qtd | number: '1.2-2' }}</td>
                     </tr>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Total R$</td>
+                            <td>{{this.getItemTotal() | number: '1.2-2'}}</td>
+                        </tr>
+                    </tfoot>
                 </table>
                 <div class="row m-0 p-0 form-inline">
                     <div class="btn btn-primary col h5 mr-3" (click)="modalRef.hide()">
@@ -157,7 +163,6 @@
                                             <label class="col-sm-12 control-label">Número do Cartão </label>
                                             <div class="col-sm-12">
                                                 <input type="text" formControlName="cartao" data-bs-toggle="tooltip" title="Os 16 digitos da frente do seu cartão de credito sem espaços" class="form-control" placeholder="••••••••••••••••">
-
                                             </div>
                                         </div>
                                         <div class="form-group mb-1" data-bs-toggle="tooltip" title="Procure o vencto na frente do seu cartão.">
@@ -218,7 +223,7 @@
                                                     <input type="text" formControlName="complement" class="form-control" placeholder="Complemento">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
+                                                    <input type="text" class="form-control" formControlName="uf" placeholder="Estado">
                                                 </div>
                                             </div>
                                         </div>
@@ -252,7 +257,7 @@
                 <div class="content-panel w-100">
                     <h2 class="title">Confirmação</h2>
 
-                    <div class="msgconfirmacao">Dados preparados para envio para sua operadora. Confirma?</div>
+                    <div class="msgconfirmacao">Dados preparados para envio para sua operadora. <br> Confirma o pagamento dos {{this.getItemTotal() | number: '1.2-2'}} R$?</div>
 
                     <div class="msgconfirmacaoerro animate__animated animate__headShake" *ngIf="this.cardError">Falha no envio verifique;<br>{{this.cardError}}</div>
 
