@@ -1,17 +1,19 @@
-<div class="container mt-5">
-    <div class="mgb-40 padb-30 auto-invert line-b-4 align-center">
+<div class="container mt-2">
+    <div class="auto-invert line-b-4 align-center">
         <!-- <h4 class="font-cond-l fg-accent lts-md mgb-10" contenteditable="false">Not Yet Convinced?</h4>
       <h1 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Read Customer Reviews</h1> -->
-        <h5 class="text-uppercase">Deixe sua mensagem para o Martim</h5>
+        <div class="h6 text-uppercase">Deixe sua mensagem para o Martim</div>
         <p class="m-0 p-0">É possível deixar mensagem privada. As mensagem serão censuradas e não devem conter teor político ...</p>
-        <button class="btn btn-sm btn-primary mt-3" (click)="open(mymodal)"><i class="fas fa-comments mr-2" ></i>Deixar mensagem</button>
+        <button class="btn btn-sm small btn-primary mt-3" (click)="open(mymodal)"><i class="fas fa-comments mr-2" ></i>Deixar mensagem</button>
     </div>
-    <ul class="hash-list cols-3 cols-1-xs pad-30-all align-center text-sm" *ngIf="Items">
-        <li *ngFor="let item of Items; ; let i= index">
-            <img src="https://bootdey.com/img/Content/avatar/avatar{{i+1}}.png" class="wpx-100 img-round mgb-20" title="" alt="" data-edit="false" data-editor="field" data-field="src[Image Path]; title[Image Title]; alt[Image Alternate Text]">
-            <!--p class="fs-110 font-cond-l" contenteditable="false">" {{item.ip}} "</p-->
-            <h5 class="font-cond mgb-5 fg-text-d fs-130" contenteditable="false">{{item.nome}}</h5>
-            <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false" [innerHTML]="item.nota"></small>
+    <ul class="hash-list cols-12 cols-12-xs m-0 p-0 align-center text-sm" *ngIf="Items">
+        <li *ngFor="let item of Items; ; let i= index" class="col-sm-3 col-6 m-0 p-0  text-center zoom-50">
+            <div class="mr-1 mb-1 p-2 muraltransp">
+                <ngx-avatar size="70" name="{{item.nome}}" class="flex text-center"></ngx-avatar>
+                <!--p class="fs-110 font-cond-l" contenteditable="false">" {{item.ip}} "</p-->
+                <h5 class="pt-2 font-cond mgb-5 fg-text-d fs-130" contenteditable="false">{{item.nome}}</h5>
+                <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false" [innerHTML]="item.nota"></small>
+            </div>
         </li>
     </ul>
 </div>

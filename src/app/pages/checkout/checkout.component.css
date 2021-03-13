@@ -49,7 +49,15 @@ body {
 }
 
 .product_item:hover .cp_img .hover {
-    display: block
+    display: block;
+}
+
+.product_item:hover .cp_img .hover {
+    display: block;
+}
+
+.product_item:hover .cp_img .fraldatipo {
+    top: -132px;
 }
 
 .product_item .cp_img {

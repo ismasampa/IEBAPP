@@ -1,14 +1,14 @@
 <div class="container-fluid">
-    <div class="col text-center pt-5">
+    <div class="col text-center pt-2">
         <ngb-carousel *ngIf="Items">
             <ng-template ngbSlide *ngFor="let image of Items; index">
-              <div class="picsum-img-wrapper vertical-align-center">
-                <img src="{{image.imageUrl}}" alt="Random slide">
-              </div>
-              <div class="carousel-caption">
-                {{image.description}}
-              </div>
+                <div class="picsum-img-wrapper vertical-align-center">
+                    <img src="{{image.imageUrl}}" alt="Random slide">
+                </div>
+                <div class="carousel-caption">
+                    {{image.description}}
+                </div>
             </ng-template>
-          </ngb-carousel>   
+        </ngb-carousel>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <a *ngIf="this.cart?.length" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="this.step = 0;this.openModal(bscheckout);" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="container pl-1vw pr-1vw">
         <div class="row clearfix">
             <div class="col-lg-3 col-md-3 col-6 pl-1vw pr-1vw" *ngFor="let item of this.items; index">
@@ -8,10 +8,11 @@
                         (confirm)="this.copyContent()">
                         <div class="cp_img">
                             <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer;">
+                            <div class="hover">{{item.description}}</div>
                         </div>
                         <div class="product_details">
                             <div class="col-lg-12 col-md-12 col-12 m-0 mt-2 p-0 pb-1 h6 productname">
-                                Pix QrCode
+                                Pix QRCode
                             </div>
                         </div>
                     </div>
@@ -20,6 +21,7 @@
                     <div class="body" (click)="this.showCartao()">
                         <div class="cp_img">
                             <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer; border-radius:35px">
+                            <div class="hover">{{item.description}}</div>
                         </div>
                         <div class="product_details">
                             <div class="col-lg-12 col-md-12 col-12 m-0 mt-2 p-0 pb-1 h6 productname">
@@ -32,8 +34,8 @@
                     <div class="body">
                         <div class="cp_img">
                             <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer;">
-                            <div _ngcontent-aur-c3="" class="hover"></div>
-                            <div _ngcontent-aur-c3="" class="fraldatipo zoom-50">{{item.description}}</div>
+                            <div class="hover zoom-50">{{item.description}}</div>
+                            <div class="fraldatipo zoom-50">{{item.description}}</div>
                         </div>
                         <div class="product_details">
                             <div class="row align-items-center">
@@ -103,16 +105,15 @@
                     <tr *ngFor="let item of this.cart; let i = index;">
                         <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{item.product}}</td>
                         <td [ngClass]="{'bg-light':i%2==1}">{{ item.qtd | number }}</td>
-                        <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ (item.value * item.qtd).toFixed(2) | number }}</td>
+                        <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ item.value * item.qtd | number: '1.2-2' }}</td>
                     </tr>
                 </table>
                 <div class="row m-0 p-0 form-inline">
                     <div class="btn btn-primary col h5 mr-3" (click)="modalRef.hide()">
-                        <i class="fa fa-chevron-left mr-1"></i> Voltar
+                        <i class="fa fa-chevron-left mr-1"></i>Voltar
                     </div>
                     <div class="btn btn-primary col h5" (click)="this.sobeStep()">
-                        Proximo
-                        <i class="fa fa-chevron- ml-1"></i>
+                        Próximo<i class="fa fa-chevron-right ml-1"></i>
                     </div>
                 </div>
             </div>
@@ -134,32 +135,32 @@
                                         </div>
                                     </div>
                                     <form id="billing" [formGroup]="checkoutForm" (ngSubmit)="preparaCartao();" class="form-horizontal" method="preparaCartao()" action="#" role="form">
-                                        <div class="form-group">
+                                        <div class="form-group mb-1">
                                             <label class="col-sm-12 control-label">Nome</label>
                                             <div class="col-sm-12">
                                                 <input type="text" formControlName="nome" class="form-control" placeholder="Nome como consta no cartão" data-bs-toggle="tooltip" title="Como aparece no cartão">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-1">
                                             <label class="col-sm-12 control-label">Email</label>
                                             <div class="col-sm-12">
                                                 <input type="text" formControlName="email" class="form-control" placeholder="email" data-bs-toggle="tooltip" title="Email">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-1">
                                             <label class="col-sm-12 control-label">C.P.F</label>
                                             <div class="col-sm-12">
                                                 <input type="text" formControlName="cpf" class="form-control" placeholder="CPF" data-bs-toggle="tooltip" title="CPF">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-1">
                                             <label class="col-sm-12 control-label">Número do Cartão </label>
                                             <div class="col-sm-12">
                                                 <input type="text" formControlName="cartao" data-bs-toggle="tooltip" title="Os 16 digitos da frente do seu cartão de credito sem espaços" class="form-control" placeholder="••••••••••••••••">
 
                                             </div>
                                         </div>
-                                        <div class="form-group" data-bs-toggle="tooltip" title="Procure o vencto na frente do seu cartão.">
+                                        <div class="form-group mb-1" data-bs-toggle="tooltip" title="Procure o vencto na frente do seu cartão.">
                                             <label class="col-sm-12 control-label">Vencimento</label>
                                             <div class=" col-sm-12 form-inline">
                                                 <select formControlName="mesvencto" class="col-3 form-control">
@@ -196,40 +197,38 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group mb-1">
                                             <label class="col-sm-12 control-label">Código de Segurança(CVC)</label>
                                             <div class="col-sm-12">
                                                 <input formControlName="cvc" type="password" class="form-control" style="width: 120px;" placeholder="CVC" data-bs-toggle="tooltip" title="São 3 digitos que ficam nas costas do seu cartão de crédito.">
                                             </div>
                                         </div>
-                                        <div class="address">
-                                            <div class="form-group">
-                                                <label class="col-sm-12 control-label">Endereço</label>
-                                                <div class="col-sm-12">
-                                                    <input formControlName="endereco" type="text" class="form-control" placeholder="Endereço">
+                                        <div class="form-group mb-2">
+                                            <label class="col-sm-12 control-label">Endereço</label>
+                                            <div class="col-sm-12">
+                                                <input formControlName="endereco" type="text" class="form-control" placeholder="Endereço">
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-horizontal mb-2">
+                                            <div class="row m-0 p-0">
+                                                <div class="col-sm-4 mb-2">
+                                                    <input type="text" formControlName="num" class="form-control" placeholder="Número">
+                                                </div>
+                                                <div class="col-sm-4 mb-2">
+                                                    <input type="text" formControlName="complement" class="form-control" placeholder="Complemento">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
                                                 </div>
                                             </div>
-                                            <div class="form-group form-horizontal">
-                                                <div class="row m-0 p-0">
-                                                    <div class="col-sm-4 mb-4">
-                                                        <input type="text" formControlName="num" class="form-control" placeholder="Número">
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" formControlName="complement" class="form-control" placeholder="Compl">
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
-                                                    </div>
+                                        </div>
+                                        <div class="form-group form-horizontal">
+                                            <div class="row m-0 p-0">
+                                                <div class="col-sm-6 mb-2">
+                                                    <input type="text" formControlName="cidade" class="form-control" placeholder="Cidade">
                                                 </div>
-                                            </div>
-                                            <div class="form-group form-horizontal">
-                                                <div class="row m-0 p-0">
-                                                    <div class="col-sm-6 mb-4">
-                                                        <input type="text" formControlName="cidade" class="form-control" placeholder="Cidade">
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" formControlName="cep" class="form-control" placeholder="CEP">
-                                                    </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" formControlName="cep" class="form-control" placeholder="CEP">
                                                 </div>
                                             </div>
                                         </div>
@@ -237,10 +236,10 @@
 
                                         <div class="row m-0 p-0 form-inline">
                                             <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">
-                                                <i class="fa fa-chevron-left"></i> Voltar
+                                                <i class="fa fa-chevron-left mr-1"></i>Voltar
                                             </div>
                                             <div class="btn btn-primary col h5 mr-3" (click)="preparaCartao();">
-                                                Proximo<i class="fa fa-chevron-right"></i></div>
+                                                Próximo<i class="fa fa-chevron-right ml-1"></i></div>
                                         </div>
                                     </form>
                                 </div>

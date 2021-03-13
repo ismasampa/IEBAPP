@@ -1,4 +1,5 @@
-<a *ngIf="this.cart?.length && this.getroute() != '/checkout'" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="prepareCart();" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
+<div id="menu" class="collapsedTitle"><i class="small fas fa-caret-right mr-1"></i>{{this.actualroute}}<i class="small fas fa-caret-left ml-1"></i></div>
+<a *ngIf="this.cart?.length && this.getroute() != '/checkout'" class="cart animate__animated animate__headShake animate__slow animate__repeat-3" (click)="prepareCart();this.setroute('/checkout')" routerLink="/checkout" href="#"><img class="" src="/assets/img/cart.png"></a>
 <header class="header">
     <!-- Itens body -->
     <img src="/assets/img/icon-nuvem-1.png" class="ftl">
@@ -36,22 +37,22 @@
             <div class="collapse navbar-collapse  ps-2" [ngbCollapse]="!toggleNavbar">
                 <ul class="navbar-nav menu-collapse animate__animated animate__fadeInLeft">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/home">Home</a>
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/home" (click)="this.setroute('/home')">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/preview">Previsão</a>
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/preview" (click)="this.setroute('/preview')">Previsão</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/gallery">Imagens</a>
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/gallery" (click)="this.setroute('/gallery')">Imagens</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/event">Chá de Fralda</a>
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/event" (click)="this.setroute('/event')">Chá de Fralda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/mural">Mural</a>
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/mural" (click)="this.setroute('/mural')">Mural</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/checkout">Lista de Presentes</a>
+                        <a class="nav-link" href="#" (click)="toggleNavbar = false" routerLinkActive="active" routerLink="/checkout" (click)="this.setroute('/checkout')">Lista de Presentes</a>
                     </li>
                 </ul>
             </div>

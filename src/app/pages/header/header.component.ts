@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { ShopService } from 'src/app/services/shop.service';
 import { AuthService } from '../../services/auth.service';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,19 +11,19 @@ export class HeaderComponent implements OnInit {
   audio: any;
   toggleNavbar: any;
   cart: any;
-  unsubscribe$: Subject<boolean> = new Subject();
+  actualroute: any;
 
-  constructor(private authService: AuthService, private router : Router, private shopService : ShopService) { 
+  constructor(private authService: AuthService, private router : Router, private arouter : ActivatedRoute , private shopService : ShopService) { 
+        
   }  
 
   ngOnInit() {    
     this.audio = null;
     this.shopService.getcart().subscribe(rcart => {this.cart = rcart;});
+    this.setroute(window.location.hash.substr(1));
   }
   
   ngOnDestroy() {
-    this.unsubscribe$.next(true);
-    this.unsubscribe$.complete();
   }
 
 
@@ -57,6 +54,43 @@ export class HeaderComponent implements OnInit {
   
   prepareCart(){
     this.shopService.setopencart(true);
+  }
+
+  setroute(parm){
+    switch(parm){
+      case "/":{
+        this.actualroute = "Home"
+        break
+      }
+      case "/home":{
+        this.actualroute = "Home"
+        break
+      }
+      case "/gallery":{
+        this.actualroute = "Imagens"
+        break
+      }
+      case "/preview":{
+        this.actualroute = "Previsão"
+        break
+      }
+      case "/event":{
+        this.actualroute = "Chá de Fraldas"
+        break
+      }
+      case "/mural":{
+        this.actualroute = "Mural"
+        break
+      }
+      case "/checkout":{
+        this.actualroute = "Lista de Presentes"
+        break
+      }
+      default :{
+        this.actualroute = "Home"
+        break
+      }
+    }
   }
 
   getroute(){

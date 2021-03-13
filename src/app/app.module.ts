@@ -28,11 +28,12 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShopService } from './services/shop.service';
 import { ClipboardModule } from 'ngx-clipboard';
-import { AvatarModule } from 'ngx-avatar';
+import { AvatarModule, AvatarSource } from 'ngx-avatar';
 import { DatePipe } from '@angular/common';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
+const avatarSourcesOrder = [AvatarSource.CUSTOM, AvatarSource.INITIALS];
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     FormsModule,
     ModalModule.forRoot(),
     ClipboardModule,
-    AvatarModule,
+    AvatarModule.forRoot({
+      sourcePriorityOrder: avatarSourcesOrder
+    }),
     [SweetAlert2Module.forRoot()],
   ],
   providers: [
