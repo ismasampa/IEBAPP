@@ -31,6 +31,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { AvatarModule } from 'ngx-avatar';
 import { DatePipe } from '@angular/common';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FormsModule,
     ModalModule.forRoot(),
     ClipboardModule,
-    AvatarModule 
+    AvatarModule,
+    [SweetAlert2Module.forRoot()],
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi:true},

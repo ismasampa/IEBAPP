@@ -25,6 +25,7 @@
     "@angular/router": "~9.1.0",
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@ng-bootstrap/ng-bootstrap": "^9.0.0",
+    "@sweetalert2/ngx-sweetalert2": "^9.0.0",
     "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
@@ -40,6 +41,7 @@
     "popper.js": "^1.16.1",
     "react-credit-cards": "^0.8.3",
     "rxjs": "~6.5.5",
+    "sweetalert2": "^10.15.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.3"
   },

@@ -1008,15 +1008,8 @@ body {
 }
 
 .imgbank {
+    width: 69%;
     height: auto;
-    max-width: 20vw;
-    width: 6rem;
-}
-
-.itaucard {
-    background-color: rgb(216 116 57);
-    margin: 20px;
-    padding: 10px;
 }
 
 .pixmsg {
@@ -1041,4 +1034,8 @@ body {
     font-family: monospace;
     background: rgb(255, 180, 180);
     margin-bottom: 20px;
+}
+
+.product_item: .cp_imgnotp {
+    top: 0
 }

@@ -45,15 +45,13 @@
     
     @font-face {
         font-family: "OPS";
-        src: url('assets/fonts/OpenSans-Regular.ttf') format('truetype');
-        font-weight: 400;
+        src: url('assets/fonts/UbuntuMono-Regular.ttf') format('truetype');
         font-style: normal;
     }
     
     @font-face {
         font-family: "OPSB";
-        src: url('assets/fonts/OpenSans-Bold.ttf') format('truetype');
-        font-weight: 600;
+        src: url('assets/fonts/UbuntuMono-Bold.ttf') format('truetype');
         font-style: normal;
     }
     
@@ -887,4 +885,10 @@
             position: relative;
             top: -30px;
         }
+    }
+    
+    .bg-color-itau {
+        background-color: rgb(216 116 57);
+        border-radius: 16px;
+        color: black;
     }

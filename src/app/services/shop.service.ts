@@ -55,6 +55,15 @@ export class ShopService {
     localStorage.setItem("cart", JSON.stringify(this._cart.value));
   }
 
+  removeItem(item) {
+    let del = this._cart.value.filter(x => x.product == item.product)[0];
+    if (del) {
+      this._cart.value.splice(this._cart.value.indexOf(del),1);
+    }
+    this._cart.next(this._cart.value);
+    localStorage.setItem("cart", JSON.stringify(this._cart.value));
+  }
+
   cleanCart(){
     this._cart.next([]);
     localStorage.setItem("cart", JSON.stringify(this._cart.value));

@@ -3,7 +3,32 @@
     <div class="container pl-1vw pr-1vw">
         <div class="row clearfix">
             <div class="col-lg-3 col-md-3 col-6 pl-1vw pr-1vw" *ngFor="let item of this.items; index">
-                <div class="card product_item">
+                <div *ngIf="item.tp=='x'" class="card product_item">
+                    <div class="body" [swal]="{ title: 'Faça um Pix...', text:'Clique em Confirmar para copiar o codigo Pix para a memoria do device, ou retorne para scanear o QRCode na lista de produtos. Obrigado', showCancelButton: true, cancelButtonText:'Voltar', confirmButtonText:'Confirmar' }"
+                        (confirm)="this.copyContent()">
+                        <div class="cp_img">
+                            <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer;">
+                        </div>
+                        <div class="product_details">
+                            <div class="col-lg-12 col-md-12 col-12 m-0 mt-2 p-0 pb-1 h6 productname">
+                                Pix QrCode
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="item.tp=='t'" class="card product_item">
+                    <div class="body" (click)="this.showCartao()">
+                        <div class="cp_img">
+                            <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer; border-radius:35px">
+                        </div>
+                        <div class="product_details">
+                            <div class="col-lg-12 col-md-12 col-12 m-0 mt-2 p-0 pb-1 h6 productname">
+                                Transferência
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="item.tp=='p'" class="card product_item">
                     <div class="body">
                         <div class="cp_img">
                             <img src="{{item.img}}" alt="Product" class="img-fluid" style="cursor: pointer;">
@@ -27,142 +52,117 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <ng-template #bscheckout>
-        <div class="modal-header">
-            <div class="modal-title h4 pull-left" id="my-modal-title">Finalizar presente(s)</div>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+</div>
+<ng-template #bscheckout>
+    <div class="modal-header">
+        <div class="modal-title h4 pull-left" id="my-modal-title">Checkout da lista</div>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body m-0 p-0">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="steps d-flex flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
-                        <div class="step" [ngClass]="{completed: step>-1, actived: step==0}">
-                            <div class="step-icon-wrap">
-                                <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
-                            </div>
-                            <h4 class="step-title">Resumo</h4>
+    </div>
+    <div class="modal-body m-0 p-0">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="steps d-flex flex-sm-nowrap justify-content-between padding-top-2x padding-bottom-1x">
+                    <div class="step" [ngClass]="{completed: step>-1, actived: step==0}">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
                         </div>
-                        <div class="step" [ngClass]="{completed: step>0,actived: step==1}">
-                            <div class="step-icon-wrap">
-                                <div class="step-icon"><i class="fas fa-money-check-alt"></i></div>
-                            </div>
-                            <h4 class="step-title">Pagamento</h4>
-                        </div>
-                        <div class="step" [ngClass]="{completed: step>1, actived: step==2}">
-                            <div class="step-icon-wrap">
-                                <div class="step-icon"><i class="fas fa-check"></i></div>
-                            </div>
-                            <h4 class="step-title">Confirmação</h4>
-                        </div>
+                        <h4 class="step-title">Resumo</h4>
                     </div>
+                    <div class="step" [ngClass]="{completed: step>0,actived: step==1}">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon"><i class="fas fa-money-check-alt"></i></div>
+                        </div>
+                        <h4 class="step-title">Pagamento</h4>
+                    </div>
+                    <div class="step" [ngClass]="{completed: step>1, actived: step==2}">
+                        <div class="step-icon-wrap">
+                            <div class="step-icon"><i class="fas fa-check"></i></div>
+                        </div>
+                        <h4 class="step-title">Confirmação</h4>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        <div id="my-modal-description">
+            <div *ngIf="this.step==0" class="container table-responsive">
+                <table class="table table-striped defaultColor">
+                    <tr class="defaultBgColor text-light">
+                        <td class="overflow-hidden">Produto</td>
+                        <td class="overflow-hidden">Qtd</td>
+                        <td class="overflow-hidden">Total</td>
+                    </tr>
+                    <tr *ngFor="let item of this.cart; let i = index;">
+                        <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{item.product}}</td>
+                        <td [ngClass]="{'bg-light':i%2==1}">{{ item.qtd | number }}</td>
+                        <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ (item.value * item.qtd).toFixed(2) | number }}</td>
+                    </tr>
+                </table>
+                <div class="row m-0 p-0 form-inline">
+                    <div class="btn btn-primary col h5 mr-3" (click)="modalRef.hide()">
+                        <i class="fa fa-chevron-left mr-1"></i> Voltar
+                    </div>
+                    <div class="btn btn-primary col h5" (click)="this.sobeStep()">
+                        Proximo
+                        <i class="fa fa-chevron- ml-1"></i>
+                    </div>
                 </div>
             </div>
-            <div id="my-modal-description">
-                <div *ngIf="this.step==0" class="container table-responsive">
-                    <table class="table table-striped defaultColor">
-                        <tr class="defaultBgColor text-light">
-                            <td class="overflow-hidden">Produto</td>
-                            <td class="overflow-hidden">Quantidade</td>
-                            <td class="overflow-hidden">Total(R$)</td>
-                        </tr>
-                        <tr *ngFor="let item of this.cart; let i = index;">
-                            <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{item.product}}</td>
-                            <td [ngClass]="{'bg-light':i%2==1}">{{ item.qtd | number }}</td>
-                            <td class="overflow-hidden" [ngClass]="{'bg-light':i%2==1}">{{ item.value * item.qtd | number }}</td>
-                        </tr>
-                    </table>
-                    <div class="row m-0 p-0 form-inline">
-                        <div class="btn btn-primary col h5 mr-3" (click)="modalRef.hide()">
-                            <i class="fa fa-chevron-left"></i> Voltar
-                        </div>
-                        <div class="btn btn-primary col h5" (click)="this.sobeStep()">
-                            Proximo
-                            <i class="fa fa-chevron-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <div *ngIf="this.step==1" class="container">
-                    <div class="view-account">
-                        <section class="module">
-                            <div class="module-inner">
-                                <div class="content-panel m-0 p-0">
-                                    <div class="btn-group btn-group-toggle text-center w-100" ngbRadioGroup name="radioBasic" [(ngModel)]="tpPagto">
-                                        <label ngbButtonLabel [ngClass]="{'btn-primary':!tpPagto}" class="overflow-hidden btn-secondary">
-                                          <input ngbButton type="radio" class="h3" [value]=0><i class="fas fa-qrcode mr-1"></i>Pix
-                                        </label>
-                                        <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==1}" class="overflow-hidden btn-secondary">
-                                          <input ngbButton type="radio"  value=1><i class="fas fa-credit-card mr-1"></i>Cartão
-                                        </label>
-                                        <label ngbButtonLabel [ngClass]="{'btn-primary':tpPagto==2}" class="overflow-hidden btn-secondary">
-                                          <input ngbButton type="radio" [value]=2><i class="fas fa-money-bill mr-1"></i>Transferir
-                                        </label>
-                                    </div>
-                                    <div *ngIf="!tpPagto" class="text-center m-auto w-100">
-                                        <span class="pixmsg">Vc pode scanear o qrcode ou continuar para copiar o Pix</span>
-                                        <img class="pixqr m-2" src="/assets/img/pixqr.png" />
-                                        <div class="row m-0 p-0 form-inline mt-2">
-                                            <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep();">
-                                                <i class="fa fa-chevron-left"></i> Voltar
-                                            </div>
-                                            <div class="btn btn-primary col h5" (click)="this.copyContent();this.sobeStep();">
-                                                Proximo
-                                                <i class="fa fa-chevron-right"></i>
-                                            </div>
+            <div *ngIf="this.step==1" class="container">
+                <div class="view-account">
+                    <section class="module">
+                        <div class="module-inner">
+                            <div class="content-panel m-0 p-0">
+                                <div class="billing">
+                                    <div class="secure text-center margin-bottom-md">
+                                        <div class="h5 mb-1 p-0 mt-2 text-primary pixmsg">
+                                            Ambiente seguro 256-bit SSL - trafego criptografado
+                                        </div>
+                                        <div class="m-auto mt-1">
+                                            <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/visa-curved-32px.png" alt="Visa">
+                                            <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/mastercard-curved-32px.png" alt="MasterCard">
+                                            <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/maestro-curved-32px.png" alt="Maestro">
+                                            <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/american-express-curved-32px.png" alt="American Express">
                                         </div>
                                     </div>
-
-                                    <div *ngIf="tpPagto=='1'" class="billing">
-                                        <div class="secure text-center margin-bottom-md">
-                                            <div class="h5 mb-1 p-0 mt-2 text-primary pixmsg">
-                                                Ambiente seguro 256-bit SSL - trafego criptografado
-                                            </div>
-                                            <div class="m-auto mt-1">
-                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/visa-curved-32px.png" alt="Visa">
-                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/mastercard-curved-32px.png" alt="MasterCard">
-                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/maestro-curved-32px.png" alt="Maestro">
-                                                <img src="https://www.uxfordev.com/demo/1.0.6/assets/images/payment-icon-set/icons/american-express-curved-32px.png" alt="American Express">
+                                    <form id="billing" [formGroup]="checkoutForm" (ngSubmit)="preparaCartao();" class="form-horizontal" method="preparaCartao()" action="#" role="form">
+                                        <div class="form-group">
+                                            <label class="col-sm-12 control-label">Nome</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" formControlName="nome" class="form-control" placeholder="Nome como consta no cartão" data-bs-toggle="tooltip" title="Como aparece no cartão">
                                             </div>
                                         </div>
-                                        <form id="billing" [formGroup]="checkoutForm" (ngSubmit)="preparaCartao();" class="form-horizontal" method="preparaCartao()" action="#" role="form">
-                                            <div class="form-group">
-                                                <label class="col-sm-12 control-label">Nome</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" formControlName="nome" class="form-control" placeholder="Nome como consta no cartão" data-bs-toggle="tooltip" title="Como aparece no cartão">
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12 control-label">Email</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" formControlName="email" class="form-control" placeholder="email" data-bs-toggle="tooltip" title="Email">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12 control-label">Email</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" formControlName="email" class="form-control" placeholder="Email@mail" data-bs-toggle="tooltip" title="Email">
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12 control-label">C.P.F</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" formControlName="cpf" class="form-control" placeholder="CPF" data-bs-toggle="tooltip" title="CPF">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12 control-label">C.P.F</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" formControlName="cpf" class="form-control" placeholder="CPF" data-bs-toggle="tooltip" title="Como aparece no cartão">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12 control-label">Número do Cartão </label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" formControlName="cartao" data-bs-toggle="tooltip" title="Os 16 digitos da frente do seu cartão de credito" class="form-control" placeholder="•••• •••• •••• ••••">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12 control-label">Número do Cartão </label>
+                                            <div class="col-sm-12">
+                                                <input type="text" formControlName="cartao" data-bs-toggle="tooltip" title="Os 16 digitos da frente do seu cartão de credito sem espaços" class="form-control" placeholder="••••••••••••••••">
 
-                                                </div>
                                             </div>
-                                            <div class="form-group" data-bs-toggle="tooltip" title="Procure o vencto na frente do seu cartão.">
-                                                <label class="col-sm-12 control-label">Vencimento</label>
-                                                <div class=" col-sm-12 form-inline">
-                                                    <select formControlName="mesvencto" class="col-3 form-control">
+                                        </div>
+                                        <div class="form-group" data-bs-toggle="tooltip" title="Procure o vencto na frente do seu cartão.">
+                                            <label class="col-sm-12 control-label">Vencimento</label>
+                                            <div class=" col-sm-12 form-inline">
+                                                <select formControlName="mesvencto" class="col-3 form-control">
                                                         <option value="01">01</option>
                                                         <option value="02">02</option>
                                                         <option value="03">03</option>
@@ -176,8 +176,8 @@
                                                         <option value="11">11</option>
                                                         <option value="12">12</option>
                                                     </select>
-                                                    <span class="divider mx-1">/</span>
-                                                    <select formControlName="anovencto" class="col-4 form-control">
+                                                <span class="divider mx-1">/</span>
+                                                <select formControlName="anovencto" class="col-4 form-control">
                                                         <option value="2021">2021</option>
                                                         <option value="2022">2022</option>
                                                         <option value="2023">2023</option>
@@ -194,175 +194,146 @@
                                                         <option value="2034">2034</option>
                                                         <option value="2035">2035</option>
                                                     </select>
-                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12 control-label">Código de Segurança(CVC)</label>
+                                            <div class="col-sm-12">
+                                                <input formControlName="cvc" type="password" class="form-control" style="width: 120px;" placeholder="CVC" data-bs-toggle="tooltip" title="São 3 digitos que ficam nas costas do seu cartão de crédito.">
+                                            </div>
+                                        </div>
+                                        <div class="address">
                                             <div class="form-group">
-                                                <label class="col-sm-12 control-label">Código de Segurança(CVC)</label>
+                                                <label class="col-sm-12 control-label">Endereço</label>
                                                 <div class="col-sm-12">
-                                                    <input formControlName="cvc" type="password" class="form-control" style="width: 120px;" placeholder="CVC" data-bs-toggle="tooltip" title="São 3 digitos que ficam nas costas do seu cartão de crédito.">
+                                                    <input formControlName="endereco" type="text" class="form-control" placeholder="Endereço">
                                                 </div>
                                             </div>
-                                            <div class="address">
-                                                <div class="form-group">
-                                                    <label class="col-sm-12 control-label">Endereço</label>
-                                                    <div class="col-sm-12">
-                                                        <input formControlName="endereco" type="text" class="form-control" placeholder="Endereço">
+                                            <div class="form-group form-horizontal">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col-sm-4 mb-4">
+                                                        <input type="text" formControlName="num" class="form-control" placeholder="Número">
                                                     </div>
-                                                </div>
-                                                <div class="form-group form-horizontal">
-                                                    <div class="row m-0 p-0">
-                                                        <div class="col-sm-4 mb-4">
-                                                            <input type="text" formControlName="num" class="form-control" placeholder="Número">
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <input type="text" formControlName="complement" class="form-control" placeholder="Compl">
-                                                        </div>
-                                                        <div class="col-sm-4">
-                                                            <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
-                                                        </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" formControlName="complement" class="form-control" placeholder="Compl">
                                                     </div>
-                                                </div>
-                                                <div class="form-group form-horizontal">
-                                                    <div class="row m-0 p-0">
-                                                        <div class="col-sm-6 mb-4">
-                                                            <input type="text" formControlName="cidade" class="form-control" placeholder="Cidade">
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" formControlName="cep" class="form-control" placeholder="CEP">
-                                                        </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr>
-
-                                            <div class="row m-0 p-0 form-inline">
-                                                <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">
-                                                    <i class="fa fa-chevron-left"></i> Voltar
-                                                </div>
-                                                <div class="btn btn-primary col h5 mr-3" (click)="preparaCartao();">
-                                                    Proximo<i class="fa fa-chevron-right"></i></div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <div *ngIf="tpPagto=='2'" class="row">
-                                        <div class="card itaucard text-dark zoom-70">
-                                            <div class=" row w-100 h-50 mt-0">
-                                                <div class="col-3 m-0 p-2">
-                                                    <img src="/assets/img/itaulogo.png" alt="" class="img-rounded imgbank mx-3" />
-                                                </div>
-                                                <div class="col-8 m-2">
-                                                    <span class="h4">Ismael Ribeiro dos Santos</span><br>
-                                                    <i class="fas fa-address-card mr-3"></i>CPF: 253.540.508-39<br>
-                                                    <i class="fas fa-university mr-3"></i>Banco Itaú<br>
-                                                    <i class="fas fa-home mr-3"></i>ag: 7068<br>
-                                                    <i class="fas fa-file-invoice-dollar mr-3"></i>cc: 10376-6
+                                            <div class="form-group form-horizontal">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col-sm-6 mb-4">
+                                                        <input type="text" formControlName="cidade" class="form-control" placeholder="Cidade">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" formControlName="cep" class="form-control" placeholder="CEP">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row m-2 p-2 w-100 form-inline">
-                                            <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep();">
+                                        <hr>
+
+                                        <div class="row m-0 p-0 form-inline">
+                                            <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">
                                                 <i class="fa fa-chevron-left"></i> Voltar
                                             </div>
-                                            <div class="btn btn-primary col h5" (click)="this.sobeStep();">
-                                                Proximo
-                                                <i class="fa fa-chevron-right"></i>
-                                            </div>
+                                            <div class="btn btn-primary col h5 mr-3" (click)="preparaCartao();">
+                                                Proximo<i class="fa fa-chevron-right"></i></div>
                                         </div>
-
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
                 </div>
-                <div *ngIf="this.step==2" class="container">
-                    <div class="content-panel w-100">
-                        <h2 class="title">Confirmação</h2>
+            </div>
+            <div *ngIf="this.step==2" class="container">
+                <div class="content-panel w-100">
+                    <h2 class="title">Confirmação</h2>
 
-                        <div class="msgconfirmacao" *ngIf="!tpPagto">Código PIX foi copiado e pode ser colado no banco na área de transferencia Pix. Muito obrigado a família agradece.</div>
-                        <div class="msgconfirmacao" *ngIf="tpPagto==1">Dados preparados para envio para sua operadora. Confirma?</div>
-                        <div class="msgconfirmacao" *ngIf="tpPagto==2">Muito obrigado a família agradece.</div>
+                    <div class="msgconfirmacao">Dados preparados para envio para sua operadora. Confirma?</div>
 
-                        <div class="msgconfirmacaoerro animate__animated animate__headShake" *ngIf="tpPagto==1 && this.cardError">Falha no envio verifique;<br>{{this.cardError}}</div>
+                    <div class="msgconfirmacaoerro animate__animated animate__headShake" *ngIf="this.cardError">Falha no envio verifique;<br>{{this.cardError}}</div>
 
-                        <div class="row m-0 p-0 form-inline">
-                            <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">
-                                <i class="fa fa-chevron-left"></i> Voltar
-                            </div>
-                            <div class="btn btn-primary col h5" (click)="this.finalizar(tpPagto,modalRef.hide)">
-                                Finalizar
-                                <i class="fa fa-chevron-right"></i>
-                            </div>
+                    <div class="row m-0 p-0 form-inline">
+                        <div class="btn btn-primary col h5 mr-3" (click)="this.desceStep()">
+                            <i class="fa fa-chevron-left mr-1"></i> Voltar
+                        </div>
+                        <div class="btn btn-primary col h5" (click)="this.finalizar(modalRef.hide)">
+                            Finalizar
+                            <i class="fa fa-chevron-right ml-1"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div width=100px height=100px>.</div>
         </div>
-    </ng-template>
-    <script type="text/javascript">
-        /*jslint browser: true*/
-        /*global $, jQuery, alert*/
-        (function($) {
-            'use strict';
+        <div width=100px height=100px>.</div>
+    </div>
+</ng-template>
+<script type="text/javascript">
+    /*jslint browser: true*/
+    /*global $, jQuery, alert*/
+    (function($) {
+        'use strict';
 
-            $(function() {
+        $(function() {
 
-                $(document).ready(function() {
-                    function triggerClick(elem) {
-                        $(elem).click();
+            $(document).ready(function() {
+                function triggerClick(elem) {
+                    $(elem).click();
+                }
+                var $progressWizard = $('.stepper'),
+                    $tab_active,
+                    $tab_prev,
+                    $tab_next,
+                    $btn_prev = $progressWizard.find('.prev-step'),
+                    $btn_next = $progressWizard.find('.next-step'),
+                    $tab_toggle = $progressWizard.find('[data-toggle="tab"]'),
+                    $tooltips = $progressWizard.find('[data-toggle="tab"][title]');
+
+                // To do:
+                // Disable User select drop-down after first step.
+                // Add support for payment type switching.
+
+                //Initialize tooltips
+                $tooltips.tooltip();
+
+                //Wizard
+                $tab_toggle.on('show.bs.tab', function(e) {
+                    var $target = $(e.target);
+
+                    if (!$target.parent().hasClass('active, disabled')) {
+                        $target.parent().prev().addClass('completed');
                     }
-                    var $progressWizard = $('.stepper'),
-                        $tab_active,
-                        $tab_prev,
-                        $tab_next,
-                        $btn_prev = $progressWizard.find('.prev-step'),
-                        $btn_next = $progressWizard.find('.next-step'),
-                        $tab_toggle = $progressWizard.find('[data-toggle="tab"]'),
-                        $tooltips = $progressWizard.find('[data-toggle="tab"][title]');
+                    if ($target.parent().hasClass('disabled')) {
+                        return false;
+                    }
+                });
 
-                    // To do:
-                    // Disable User select drop-down after first step.
-                    // Add support for payment type switching.
+                // $tab_toggle.on('click', function(event) {
+                //     event.preventDefault();
+                //     event.stopPropagation();
+                //     return false;
+                // });
 
-                    //Initialize tooltips
-                    $tooltips.tooltip();
+                $btn_next.on('click', function() {
+                    $tab_active = $progressWizard.find('.active');
 
-                    //Wizard
-                    $tab_toggle.on('show.bs.tab', function(e) {
-                        var $target = $(e.target);
+                    $tab_active.next().removeClass('disabled');
 
-                        if (!$target.parent().hasClass('active, disabled')) {
-                            $target.parent().prev().addClass('completed');
-                        }
-                        if ($target.parent().hasClass('disabled')) {
-                            return false;
-                        }
-                    });
+                    $tab_next = $tab_active.next().find('a[data-toggle="tab"]');
+                    triggerClick($tab_next);
 
-                    // $tab_toggle.on('click', function(event) {
-                    //     event.preventDefault();
-                    //     event.stopPropagation();
-                    //     return false;
-                    // });
-
-                    $btn_next.on('click', function() {
-                        $tab_active = $progressWizard.find('.active');
-
-                        $tab_active.next().removeClass('disabled');
-
-                        $tab_next = $tab_active.next().find('a[data-toggle="tab"]');
-                        triggerClick($tab_next);
-
-                    });
-                    $btn_prev.click(function() {
-                        $tab_active = $progressWizard.find('.active');
-                        $tab_prev = $tab_active.prev().find('a[data-toggle="tab"]');
-                        triggerClick($tab_prev);
-                    });
+                });
+                $btn_prev.click(function() {
+                    $tab_active = $progressWizard.find('.active');
+                    $tab_prev = $tab_active.prev().find('a[data-toggle="tab"]');
+                    triggerClick($tab_prev);
                 });
             });
+        });
 
-        }(jQuery, this));
-    </script>
+    }(jQuery, this));
+</script>

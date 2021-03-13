@@ -6,7 +6,9 @@ import { Item } from 'src/app/models/Item';
 import { Billing, Charge, ChargeContainer, PayFullContainer } from 'src/app/models/Charge';
 import { ClipboardService } from 'ngx-clipboard';
 import { FormBuilder } from '@angular/forms';
-import { PaymentContainer } from 'src/app/models/Payment';
+import Swal from 'sweetalert2';
+
+
 
 @Component({
 
@@ -18,14 +20,15 @@ export class CheckoutComponent implements OnInit {
   checkout: any;
   modalRef: BsModalRef;
   items: any =  [
-    { "product": "Sabonete", "img" : "assets/img/sabonete.png", "description": "3un", "value": 10, "qtd": 0 }, 
-    { "product": "Lenços", "img" : "assets/img/lenco.png", "description": "10un", "value": 20, "qtd": 0 }, 
-    { "product": "Shampoo", "img" : "assets/img/shampoo.png", "description": "300ml", "value": 30, "qtd": 0 }, 
-    { "product": "Fralda P", "img" : "assets/img/fralda.png", "description": "P30", "value": 40, "qtd": 0 }, 
-    { "product": "Fralda M", "img" : "assets/img/fralda.png", "description": "M30", "value": 50, "qtd": 0 }, 
-    { "product": "Fralda G", "img" : "assets/img/fralda.png", "description": "G30", "value": 60, "qtd": 0 }, 
+    { "product": "Pix", "img" : "assets/img/pixqr.png", "tp":"x", "description": "Scaneie o QRCode", "value": 0, "qtd": 0 }, 
+    { "product": "Transferência", "img" : "assets/img/itaulogo.png", "tp":"t", "description": "Conta Corrente", "value": 0, "qtd": 0 },     
+    { "product": "Sabonete", "img" : "assets/img/sabonete.png", "tp":"p", "description": "3un", "value": 10, "qtd": 0 }, 
+    { "product": "Lenços", "img" : "assets/img/lenco.png", "tp":"p", "description": "10un", "value": 20, "qtd": 0 }, 
+    { "product": "Shampoo", "img" : "assets/img/shampoo.png", "tp":"p", "description": "300ml", "value": 30, "qtd": 0 }, 
+    { "product": "Fralda P", "img" : "assets/img/fralda.png", "tp":"p", "description": "P30", "value": 40, "qtd": 0 }, 
+    { "product": "Fralda M", "img" : "assets/img/fralda.png", "tp":"p", "description": "M30", "value": 50, "qtd": 0 }, 
+    { "product": "Fralda G", "img" : "assets/img/fralda.png", "tp":"p", "description": "G30", "value": 60, "qtd": 0 }, 
     ];
-  tpPagto: any="";
   cart: Item[];
   step: number;
   cardHash: any;
@@ -39,8 +42,8 @@ export class CheckoutComponent implements OnInit {
     email: '',
     cpf:'',
     cartao: '',
-    mesvencto: '03',
-    anovencto: '2030',
+    mesvencto: '',
+    anovencto: '',
     cvc: '',
     endereco: '',
     num: '',
@@ -64,14 +67,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   initCart() {
+    console.log("ini");
     this.cart.forEach( x=>{
-      if(!this.items.filter(z=>z.product==x.product)){
-        this.shopService.delItem(x);
-      }else{
-      if(x.qtd){
-        this.items.filter(z=>z.product==x.product)[0].qtd = x.qtd;
+      let y = this.items.filter(z=>z.product==x.product)[0];
+      if( y ){ y.qtd = x.qtd}
+      else{
+        this.shopService.removeItem(x);
       }
-    }
     });
     setTimeout(() => 
     {
@@ -120,22 +122,22 @@ export class CheckoutComponent implements OnInit {
     this.junoCardService.cript(cardData, this.okPrepCartao.bind(this), this.nokPrepCartao.bind(this));
   }
 
-  finalizar(tpPagto,fechar){
-    if(tpPagto==1){
-      this.cobraCartao()
-    }else{
-      fechar();
-    }
+  finalizar(fechar){
+    this.cobraCartao()
   }
 
   cobraCartao() {
     let valor = this.cart.reduce((acc, x) => {
       return acc += x.value * x.qtd;
     }, 0);
-    let num = this.checkoutForm.get("num")?.value ?? "N/A";
+    let num = this.checkoutForm.get("num")?.value;
     if(!num){
       num = "N/A";
     }
+    let uf:string = this.checkoutForm.get("estado").value;
+    uf = uf.toUpperCase();
+    let cep:string = this.checkoutForm.get("cep").value;
+    cep = cep.replace(/\D/g,'');
 
     this.chargeContainer = {
                 charge: {
@@ -151,7 +153,7 @@ export class CheckoutComponent implements OnInit {
                     email : this.checkoutForm.get("email").value,
                     address: {
                         street : this.checkoutForm.get("endereco").value,
-                        number : this.checkoutForm.get("num")?.value ?? "N/A",
+                        number : num,
                         complement : this.checkoutForm.get("complement").value,
                         city : this.checkoutForm.get("cidade").value,
                         state : this.checkoutForm.get("estado").value,
@@ -192,27 +194,72 @@ export class CheckoutComponent implements OnInit {
           break
         }
       }
+      Swal.fire({
+        title: 'Verifique os dados',
+        icon: 'warning',
+        text: this.cardError,
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: `Ok`
+      }).then((result) => {
+        this.desceStep();
+      });
     }else{
       if(msg?.payments?.length>0){
         this.cleanCart();
-        this.modalRef.hide();        
-      }else{this.cardError = msg.status + ' ' + msg.error;}
+        this.modalRef.hide();
+        Swal.fire({
+          title: 'Pagamento efetuado',
+          icon: 'success',
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: `Ok`
+        })    ;    
+      }else{
+        this.cardError = msg.status + ' ' + msg.error;
+        Swal.fire({
+          title: 'Falha no pagamento',
+          icon: 'error',
+          text: this.cardError,
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: `Ok`
+        }).then((result) => {
+          this.desceStep();
+        });}
     }
   }
 
   nokCobraCartao(msg){
       console.log(msg);
       this.cardError = msg;
+      Swal.fire({
+        title: 'Verifique os dados',
+        icon: 'warning',
+        text: this.cardError,
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: `Ok`
+      }).then((result) => {
+        this.desceStep();
+      });
   }
 
   okPrepCartao(msg){
     this.cardHash = msg;
-    console.log(this.cardHash);
     this.sobeStep();
   }
 
   nokPrepCartao(msg){
-    console.log(msg);
+    Swal.fire({
+        title: 'Falha na geração de hash',
+        icon: 'warning',
+        text: msg,
+        titleText: 'Verifique os dados do cartão',
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: `Ok`
+      });
   }
 
   sobeStep(){
@@ -225,5 +272,15 @@ export class CheckoutComponent implements OnInit {
 
   copyContent() {
     this.clipboardService.copyFromContent("00020126650014BR.GOV.BCB.PIX0111253540508390228Lista de presentes do Martim52040000530398654040.005802BR5925ISMAEL RIBEIRO DOS SANTOS6009SAO PAULO622605224k8UVH6YIySWErJELgmdHb63043FB6");
+  }
+
+  showCartao(){
+    Swal.fire({
+      html: '<div class="text-light zoom-70"><div class="row w-100 h-50 mt-0"><div class="col-3 m-0 p-2"><img src="/assets/img/itaulogo.png" width=100% class="img-rounded mx-3" /></div><div class="col-8 m-2 text-left"><span class="h5">Ismael Ribeiro dos Santos</span><br><i class="fas fa-address-card mr-3"></i>CPF: 253.540.508-39<br ><i  class="fas fa-university mr-3"></i>Banco Itaú<br ><i  class="fas fa-home mr-3"></i>ag: 7068<br ><i  class="fas fa-file-invoice-dollar mr-3"></i>cc: 10376-6 </div></div></div>',
+      customClass: {
+        htmlContainer: 'bg-color-itau',
+        container: 'zoom-70'
+      } 
+      });
   }
 }
