@@ -4,16 +4,34 @@
       <h1 class="font-cond-b fg-text-d lts-md fs-300 fs-300-xs no-mg" contenteditable="false">Read Customer Reviews</h1> -->
         <button class="btn btn-sm small btn-primary mt-2 mb-2 " (click)="open(mymodal)"><i class="fas fa-comments mr-2" ></i>Nova mensagem</button>
     </div>
-    <ul class="hash-list cols-12 cols-12-xs m-0 p-0 align-center text-sm" *ngIf="Items">
+    <!--ul class="hash-list cols-12 cols-12-xs m-0 p-0 align-center text-sm" *ngIf="Items">
         <li *ngFor="let item of Items; ; let i= index" class="col-sm-3 col-6 m-0 p-0  text-center zoom-50">
             <div class="mr-1 mb-1 p-2 muraltransp">
                 <ngx-avatar size="70" name="{{item.nome}}" class="flex text-center"></ngx-avatar>
-                <!--p class="fs-110 font-cond-l" contenteditable="false">" {{item.ip}} "</p-->
                 <h5 class="pt-2 font-cond mgb-5 fg-text-d fs-130" contenteditable="false">{{item.nome}}</h5>
                 <small class="font-cond case-u lts-sm fs-80 fg-text-l" contenteditable="false" [innerHTML]="item.nota"></small>
             </div>
         </li>
-    </ul>
+    </ul-->
+    <div class="row p-0 m-0" *ngIf="Items">
+        <div class="col-xl-6 col-md-12 pt-0 m-0 pb-0" *ngFor="let item of Items; idx">
+            <div class="card bg-transparent overflow-hidden">
+                <div class="card-content">
+                    <div class="card-body cleartfix">
+                        <div class="media align-items-stretch">
+                            <div class="media-body ">
+                                <h4>{{item.nome}}</h4>
+                                <div class="text-center" [innerHTML]="item.nota"></div>
+                            </div>
+                            <div class="float-right">
+                                <i class="fas fa-comments primary font-large-6 ml-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="grey-bg container-fluid">
