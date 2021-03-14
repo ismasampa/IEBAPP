@@ -8,6 +8,7 @@ import { ChargeContainer, PayFullContainer } from '../models/Charge';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Injectable({
   providedIn: 'root'
 })
@@ -82,7 +83,7 @@ class JunoCardHash {
   publicToken: string;
   environment: ENV;
   axios: AxiosInstance;
-  constructor(publicToken: string, environment: ENV = "sandbox") {
+  constructor(publicToken: string, environment: ENV = "production") {
     this.publicToken = publicToken;
     this.environment = environment;
     this.axios = this._configureAxios(this.environment);
@@ -233,6 +234,7 @@ class JunoCardHash {
   }
 
   _configureAxios(environment: ENV) {
+
     const baseURL =
       environment === ENVIRONMENT.SANDBOX
         ? "https://sandbox.boletobancario.com/boletofacil/integration/api"

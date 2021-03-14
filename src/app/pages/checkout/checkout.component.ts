@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 })
 export class CheckoutComponent implements OnInit {
   checkout: any;
+  processing: boolean;
   modalRef: BsModalRef;
   items: any =  [
     { "product": "Pix", "img" : "assets/img/pixqr.png", "tp":"x", "description": "Scaneie o QRCode", "value": 0, "qtd": 0 }, 
@@ -140,6 +141,9 @@ export class CheckoutComponent implements OnInit {
 }
 
   preparaCartao() {
+    if(this.processing){return}
+    this.processing = true;
+
     const cardData = {
       holderName: this.checkoutForm.get("nome").value,
       cardNumber: this.checkoutForm.get("cartao").value,
@@ -156,6 +160,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   cobraCartao() {
+    
+    if(this.processing){return}
+    this.processing = true;
+
     let valor = this.cart.reduce((acc, x) => {
       return acc += x.value * x.qtd;
     }, 0);
@@ -219,6 +227,7 @@ export class CheckoutComponent implements OnInit {
           break
         }
       }
+      this.processing = false;
       Swal.fire({
         title: 'Verifique os dados',
         icon: 'warning',
@@ -235,6 +244,7 @@ export class CheckoutComponent implements OnInit {
         this.modalRef.hide();
         Swal.fire({
           title: 'Pagamento efetuado',
+          text: 'Muito obrigado.',
           icon: 'success',
           showDenyButton: false,
           showCancelButton: false,
@@ -252,12 +262,14 @@ export class CheckoutComponent implements OnInit {
         }).then((result) => {
           this.desceStep();
         });}
+        this.processing = false;
     }
   }
 
   nokCobraCartao(msg){
       console.log(msg);
       this.cardError = msg;
+      this.processing = false;
       Swal.fire({
         title: 'Verifique os dados',
         icon: 'warning',
@@ -273,6 +285,7 @@ export class CheckoutComponent implements OnInit {
   okPrepCartao(msg){
     this.cardHash = msg;
     this.sobeStep();
+    this.processing = false;
   }
 
   nokPrepCartao(msg){
@@ -285,6 +298,7 @@ export class CheckoutComponent implements OnInit {
         showCancelButton: false,
         confirmButtonText: `Ok`
       });
+      this.processing = false;
   }
 
   sobeStep(){

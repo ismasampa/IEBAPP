@@ -11,7 +11,7 @@ export const environment = {
   JUNO_CLIENT_ID:"h3k4OwqtSN2IKRfT",
   JUNO_SECRET:"?]D-:cw^w{PC_IclvOT0xaLeV5Ax*rU$",
   JUNO_TOKEN:"899F73CEC229B80B1616838302BE3F2D5152DD95D9B91058B2705BD35F545411",
-  JUNO_ENV:"dev",
+  JUNO_ENV:"PRD",
   JUNO_API_AUTH_SERVER_DEV:"https://sandbox.boletobancario.com/authorization-server",
   JUNO_API_AUTH_SERVER:"https://api.juno.com.br/authorization-server",
   JUNO_API_RESOUCE_DEV: "https://sandbox.boletobancario.com/api-integration",
