@@ -118,7 +118,7 @@ export class CheckoutComponent implements OnInit {
     Swal.fire({
       title: 'Retirar item',
       icon: 'warning',
-      text: 'Comfirma retirada do item?',
+      text: 'Confirma retirada do item?',
       showDenyButton: false,
       showCancelButton: true,
       confirmButtonText: `Sim`,
