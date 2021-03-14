@@ -32,6 +32,7 @@ import { AvatarModule, AvatarSource } from 'ngx-avatar';
 import { DatePipe } from '@angular/common';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ZoomComponent } from './zoom/zoom.component';
 
 const avatarSourcesOrder = [AvatarSource.CUSTOM, AvatarSource.INITIALS];
 @NgModule({
@@ -48,7 +49,8 @@ const avatarSourcesOrder = [AvatarSource.CUSTOM, AvatarSource.INITIALS];
     ItemsComponent,
     EventComponent,
     MuralComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ZoomComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { MuralComponent } from './pages/mural/mural.component';
 import { PreviewComponent } from './pages/preview/preview.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ZoomComponent } from './zoom/zoom.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'event', component: EventComponent},
   { path: 'mural', component: MuralComponent},
   { path: 'checkout', component: CheckoutComponent},
+  { path: 'zoom', component: ZoomComponent},
   { path: '**', component: HomeComponent},
 ];
 
