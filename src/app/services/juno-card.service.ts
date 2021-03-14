@@ -44,8 +44,8 @@ export class JunoCardService {
   cript(cardData, ok: Function, nok: Function) {
 
     console.log(cardData);
-    const publicToken = '970969AAD6BB843AE46EFEAC3022022BC7C8856109F8CD7E8796C2969FEE423D'; // Token público da api da JUNO
-    const environment = 'sandbox'; // 'sandbox' || 'production'
+    const publicToken = '182C899D93A9D11A8E8CAE1E24F12D5D2D5E6A31728549A2F6705707EFEA619821A3D731868D2574'; // Token público da api da JUNO
+    const environment = 'production'; // 'sandbox' || 'production'
 
     const cardData2 = {
       holderName: "José da Silva",
