@@ -309,8 +309,12 @@ export class CheckoutComponent implements OnInit {
     this.step--;
   }
 
-  copyContent() {
+  copyContentQR() {
     this.clipboardService.copyFromContent("00020126650014BR.GOV.BCB.PIX0111253540508390228Lista de presentes do Martim52040000530398654040.005802BR5925ISMAEL RIBEIRO DOS SANTOS6009SAO PAULO622605224k8UVH6YIySWErJELgmdHb63043FB6");
+  }
+
+  copyContentKey() {
+    this.clipboardService.copyFromContent("25354050839");
   }
 
   showCartao(){

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="col text-center pt-2">
-        <ngb-carousel *ngIf="Items">
+        <ngb-carousel wrap="true" animation="true" *ngIf="Items">
             <ng-template ngbSlide *ngFor="let image of Items; index">
                 <div class="picsum-img-wrapper vertical-align-center">
                     <img src="{{image.imageUrl}}" alt="Random slide">
