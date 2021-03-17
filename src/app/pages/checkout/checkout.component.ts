@@ -173,8 +173,15 @@ export class CheckoutComponent implements OnInit {
     }
     let uf:string = this.checkoutForm.get("uf").value;
     uf = uf.toUpperCase();
+    
     let cep:string = this.checkoutForm.get("cep").value;
     cep = cep.replace(/\D+/g,'');
+
+    let nome:string = this.checkoutForm.get("nome").value;
+    nome = nome.replace(/ /g, "").toUpperCase();
+
+    let email:string = this.checkoutForm.get("email").value;
+    email = email.replace(/ /g, "").toLowerCase();
 
     this.chargeContainer = {
                 charge: {
@@ -185,9 +192,9 @@ export class CheckoutComponent implements OnInit {
                     paymentTypes: ["CREDIT_CARD"]
                 },
                 billing: {
-                    name : this.checkoutForm.get("nome").value,
+                    name : nome,
                     document : this.checkoutForm.get("cpf").value,
-                    email : this.checkoutForm.get("email").value,
+                    email : email,
                     address: {
                         street : this.checkoutForm.get("endereco").value,
                         number : num,
