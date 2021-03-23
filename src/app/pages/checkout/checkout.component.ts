@@ -178,7 +178,7 @@ export class CheckoutComponent implements OnInit {
     cep = cep.replace(/\D+/g,'');
 
     let nome:string = this.checkoutForm.get("nome").value;
-    nome = nome.replace(/ /g, "").toUpperCase();
+    nome = nome.trim().toUpperCase();
 
     let email:string = this.checkoutForm.get("email").value;
     email = email.replace(/ /g, "").toLowerCase();
