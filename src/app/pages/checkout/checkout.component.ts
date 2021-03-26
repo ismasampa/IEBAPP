@@ -21,16 +21,14 @@ export class CheckoutComponent implements OnInit {
   modalRef: BsModalRef;
   items: any =  [
     { "product": "Pix", "img" : "assets/img/pixqr.png", "tp":"x", "description": "Scaneie o QRCode", "value": 0, "qtd": 0 }, 
-    { "product": "Transferência", "img" : "assets/img/itaulogo.png", "tp":"t", "description": "Conta Corrente", "value": 0, "qtd": 0 }
-  ]
-  /*,     
+    { "product": "Transferência", "img" : "assets/img/itaulogo.png", "tp":"t", "description": "Conta Corrente", "value": 0, "qtd": 0 },     
     { "product": "Sabonete", "img" : "assets/img/sabonete.png", "tp":"p", "description": "3un", "value": 10, "qtd": 0 }, 
     { "product": "Lenços", "img" : "assets/img/lenco.png", "tp":"p", "description": "10un", "value": 20, "qtd": 0 }, 
     { "product": "Shampoo", "img" : "assets/img/shampoo.png", "tp":"p", "description": "300ml", "value": 30, "qtd": 0 }, 
     { "product": "Fralda P", "img" : "assets/img/fralda.png", "tp":"p", "description": "P30", "value": 40, "qtd": 0 }, 
     { "product": "Fralda M", "img" : "assets/img/fralda.png", "tp":"p", "description": "M30", "value": 50, "qtd": 0 }, 
     { "product": "Fralda G", "img" : "assets/img/fralda.png", "tp":"p", "description": "G30", "value": 60, "qtd": 0 }, 
-    ];*/
+    ];
   cart: Item[];
   step: number;
   cardHash: any;
@@ -70,7 +68,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   initCart() {
-    console.log("ini");
     this.cart.forEach( x=>{
       let y = this.items.filter(z=>z.product==x.product)[0];
       if( y ){ y.qtd = x.qtd}
