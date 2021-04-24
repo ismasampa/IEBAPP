@@ -16,8 +16,8 @@ export class GalleryComponent implements OnInit {
     {"id":4,"description":"A caiçara","imageUrl":"assets/album/dpraia1.jpg","userId":null,"user":null},
     {"id":5,"description":"Nós três ...","imageUrl":"assets/album/epraia2.jpg","userId":null,"user":null},
     {"id":6,"description":"Gratidão ...","imageUrl":"assets/album/fpraia3.jpg","userId":null,"user":null},
-    {"id":7,"description":"Mamãe","imageUrl":"assets/album/barriga1.png","userId":null,"user":null},
-    {"id":8,"description":"Pais","imageUrl":"assets/album/barriga1.png","userId":null,"user":null},  
+    {"id":7,"description":"Mamãe","imageUrl":"assets/album/gpraia4.png","userId":null,"user":null},
+    {"id":8,"description":"Pais","imageUrl":"assets/album/hpraia5.png","userId":null,"user":null},  
     {"id":9,"description":" ","imageUrl":"assets/album/cartaz.png","userId":null,"user":null},
     {"id":10,"description":"Barriguinha ...","imageUrl":"assets/album/barriga0.png","userId":null,"user":null},
     {"id":11,"description":"Crescendo ...","imageUrl":"assets/album/barriga1.png","userId":null,"user":null}
